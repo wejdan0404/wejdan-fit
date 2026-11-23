@@ -14,7 +14,8 @@ function makeEnv(){
  vm.runInContext(fs.readFileSync(path+'fit-core.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'fit-next.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'exercise-coach.js','utf8'),ctx);
- const src=fs.readFileSync(path+'app.js','utf8').replace(/init\(\);\s*\}\)\(\);\s*$/,'globalThis.__test={getState:()=>state,handleClick,handleSubmit,handleChange,save,workoutFinished,workoutHistory,importJSON,today,nutrientCoverage,validDate,weeklySnapshot};init();})();');
+ vm.runInContext(fs.readFileSync(path+'exercise-alternatives.js','utf8'),ctx);
+ const src=fs.readFileSync(path+'app.js','utf8').replace(/init\(\);\s*\}\)\(\);\s*$/,'globalThis.__test={getState:()=>state,handleClick,handleSubmit,handleChange,save,workoutFinished,workoutHistory,importJSON,today,nutrientCoverage,validDate,weeklySnapshot,setSessionForTest:(value)=>{selectedSession=value}};init();})();');
  vm.runInContext(src,ctx,{timeout:3000});return {ctx,els};
 }
 function submit(x,id,fields){x.ctx.__test.handleSubmit({target:{id,data:fields},preventDefault(){}})}
@@ -54,4 +55,16 @@ const snapshot=JSON.stringify(x.ctx.__test.getState());
 x.ctx.__test.importJSON({text:JSON.stringify({data:{settings:{},weights:[],meals:[{name:'bad',date:'2026-11-23',cal:-40}],workouts:{}}})});
 assert.strictEqual(JSON.stringify(x.ctx.__test.getState()),snapshot,'bad backup cannot corrupt existing data');
 const y=makeEnv();assert.strictEqual(y.ctx.__test.workoutFinished(),1);assert.strictEqual(y.ctx.__test.getState().meals.length,1);assert.strictEqual(y.ctx.__test.getState().workouts[y.ctx.__test.today()+'__A'].setMetrics.A01[0].kg,0.5);
+// A substitute that only covers part of the original movement cannot falsely complete a full A/B workout.
+const z=makeEnv();
+z.ctx.__test.setSessionForTest('B');
+const day=z.ctx.__test.today(),bkey=day+'__B';
+const b=z.ctx.__test.getState();
+b.workouts[bkey]={session:'B',date:day,status:'in_progress',finished:false,sets:Object.fromEntries(['B01','B02','B03','B04','B05','B06'].map(id=>[id,[true]])),setMetrics:{},exerciseChoices:{B06:'B06-ALT2'}};
+assert(z.ctx.__test.save());
+click(z,'finish-workout');
+assert.strictEqual(z.ctx.__test.getState().workouts[bkey].finished,false,'partial-match alternative must not count as original full workout');
+click(z,'partial-workout');
+assert.strictEqual(z.ctx.__test.getState().workouts[bkey].status,'partial');
+assert.strictEqual(z.ctx.__test.workoutFinished(),1,'old completed A remains preserved; adapted B partial does not count');
 console.log('PASS: setup, validation, nutrition, actual reps and resistance, completed session, backup rejection, persistence across reopen');

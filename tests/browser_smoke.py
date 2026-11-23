@@ -6,7 +6,7 @@ html=(root/'index.html').read_text()
 html=re.sub(r'<script\s+src="[^"]+"\s*>\s*</script>', '', html)
 html=re.sub(r'<link[^>]*rel="stylesheet"[^>]*>', '', html)
 html=html.replace('</head>',f'<style>{(root/"styles.css").read_text()}</style></head>')
-jsfiles=['fit-data.js','masari-catalog.js','masari-migration.js','fit-core.js','fit-next.js','exercise-coach.js','app.js']
+jsfiles=['fit-data.js','masari-catalog.js','masari-migration.js','fit-core.js','fit-next.js','exercise-coach.js','exercise-alternatives.js','app.js']
 with sync_playwright() as p:
   browser=p.chromium.launch(headless=True, executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
   errors=[]
@@ -42,7 +42,23 @@ with sync_playwright() as p:
   assert 'لا تتابعي التقليد تلقائيًا' in page.locator('.modal').inner_text()
   page.locator('[data-action="close-modal"]').click()
   page.locator('button[data-session="A"]').click()
+  page.locator('[data-action="exercise-alternatives"][data-exercise="A01"]').click()
+  assert page.locator('.variant-card').count()==4
+  assert '3 بدائل' in page.locator('.modal').inner_text()
+  page.locator('[data-action="choose-exercise-alternative"][data-alt="A01-ALT1"]').click()
+  assert 'A01' not in (page.evaluate("JSON.stringify(JSON.parse(localStorage.getItem('wejdan-fit-app-v1')).workouts)"))
+  page.locator('#variantReviewed').check()
+  page.locator('[data-action="choose-exercise-alternative"][data-alt="A01-ALT1"]').click()
+  choice=page.evaluate("Object.values(JSON.parse(localStorage.getItem('wejdan-fit-app-v1')).workouts)[0].exerciseChoices.A01")
+  assert choice=='A01-ALT1',choice
+  assert page.get_by_text('قيام من كرسي أعلى بمساعدة اليدين').count()>0
+  page.locator('[data-action="exercise-details"][data-exercise="A01"]').click()
+  assert 'فيديو التمرين الأساسي لا يشرح هذا البديل' in page.locator('.modal').inner_text()
+  page.locator('[data-action="close-modal"]').click()
   page.locator('[data-action="toggle-set"]').first.click()
+  page.locator('[data-action="exercise-alternatives"][data-exercise="A01"]').click()
+  assert page.locator('[data-action="choose-exercise-alternative"][data-alt="A01-ALT2"]').is_disabled()
+  page.locator('[data-action="close-modal"]').click()
   page.locator('[data-action="partial-workout"]').click()
   w=page.evaluate("JSON.parse(localStorage.getItem('wejdan-fit-app-v1')).workouts")
   d=list(w)[0]

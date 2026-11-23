@@ -69,3 +69,18 @@ input:focus-visible,button:focus-visible,textarea:focus-visible,select:focus-vis
 .coach-video-status{border:1px dashed var(--border,#d6e5f3);border-radius:12px;padding:12px;margin-bottom:13px;line-height:1.7}
 .coach-video-status p{margin:6px 0}
 @media(max-width:700px){.workout-prep-grid{grid-template-columns:1fr}}
+
+/* Exercise alternatives — readable cards, touch-friendly selection, independent from original demo */
+.alternatives-trigger{border:1px solid var(--brand);padding:9px 13px;border-radius:12px;color:var(--brand);font-weight:750;min-height:42px}
+.variant-grid{display:grid;gap:12px;margin:12px 0}
+.variant-card{padding:16px;border-radius:15px;border:1px solid var(--line);background:var(--card, var(--surface));display:grid;gap:9px}
+.variant-card.selected{border:2px solid var(--brand)}
+.variant-card p{margin:0;line-height:1.7}
+.variant-heading{display:flex;align-items:flex-start;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.variant-heading strong{font-size:1rem}
+.variant-meta{display:flex;flex-wrap:wrap;gap:7px;font-size:.84rem;color:var(--muted, var(--text-muted))}
+.variant-meta span{border:1px solid var(--line);border-radius:10px;padding:5px 9px}
+.variant-ack{display:flex;align-items:flex-start;gap:10px;padding:15px;border:1px solid var(--line);border-radius:12px;line-height:1.8;margin:16px 0;font-weight:600}
+.variant-ack input{width:20px;height:20px;flex:none;margin-top:4px;accent-color:var(--brand)}
+.variant-card button,.variant-card a{min-height:42px}
+@media(max-width:470px){.variant-card{padding:13px}.variant-heading{gap:7px}.variant-grid{gap:10px}}

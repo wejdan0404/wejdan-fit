@@ -1,0 +1,54 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const path=require('node:path');
+const ALT=require('../exercise-alternatives.js');
+const FIT_NEXT=require('../fit-next.js');
+const sandbox={window:{}};
+vm.createContext(sandbox);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../fit-data.js'),'utf8'),sandbox,{timeout:3000});
+const original=sandbox.window.FIT_DATA.exercises;
+assert.equal(original.length,12);
+assert.equal(ALT.baseIds.length,12);
+assert.equal(ALT.count,36);
+const tiers=['easy','similar','progress'];
+for(const item of original){
+ const rows=ALT.get(item.id);
+ assert.equal(rows.length,3,`${item.id}: expected 3 options`);
+ assert.deepEqual(rows.map(x=>x.tier),tiers);
+ for(const alt of rows){
+  assert(alt.id.startsWith(item.id+'-ALT'));
+  assert(alt.title.length>12);
+  assert(alt.how.length>35);
+  assert(alt.caution.length>15);
+  assert(alt.equipment);
+  assert(alt.status==='review-required');
+  assert(['same','partial','similar'].includes(alt.relation));
+  assert(/^https:\/\//.test(alt.source));
+  assert.equal(ALT.find(item.id,alt.id).title,alt.title);
+ }
+}
+assert.equal(ALT.find('A01','B01-ALT1'),null);
+const empty={sets:{},setMetrics:{}};
+assert.equal(ALT.canChange(empty,'A01').ok,true);
+assert.throws(()=>ALT.setChoice(empty,'A01','A01-ALT1'),/راجعي ملاءمة/);
+const updated=ALT.setChoice(empty,'A01','A01-ALT2',true);
+assert.equal(updated.exerciseChoices.A01,'A01-ALT2');
+assert.equal(empty.exerciseChoices,undefined,'must not mutate previous workout');
+assert.equal(ALT.getSelected(updated,'A01').tier,'similar');
+assert.equal(ALT.canChange({...updated,sets:{A01:[true]}},'A01').ok,false);
+assert.equal(ALT.canChange({...updated,setMetrics:{A01:[{reps:8}] }},'A01').ok,false);
+assert.equal(ALT.canChange({...updated,finished:true},'A01').ok,false);
+assert.throws(()=>ALT.setChoice({...updated,sets:{A01:[true]}},'A01',null),/سجلتِ مجموعات/);
+assert.throws(()=>ALT.setChoice(empty,'A01','A01-ALT9',true),/بديل غير معروف/);
+const reset=ALT.setChoice(updated,'A01',null);
+assert.equal(reset.exerciseChoices.A01,undefined);
+const base={schemaVersion:3,settings:{avoidExercises:[],medicalNotes:''},weights:[],meals:[],habits:{},workouts:{'2026-11-23__A':{session:'A',date:'2026-11-23',finished:true,setMetrics:{A01:[{reps:8,kg:0}]},exerciseChoices:{A01:'A01-ALT1'}}}};
+FIT_NEXT.validateState(base);
+assert.throws(()=>FIT_NEXT.validateState({...base,workouts:{'2026-11-23__A':{exerciseChoices:{A01:'B01-ALT1'}}}}),/البديل/);
+assert.throws(()=>FIT_NEXT.validateState({...base,workouts:{'2026-11-23__A':{exerciseChoices:{A01:'A01-ALT999'}}}}),/البديل/);
+const mixed={'2026-11-20__A':{finished:true,setMetrics:{A01:[{reps:7,kg:0}]},exerciseChoices:{}},'2026-11-23__A':{finished:true,setMetrics:{A01:[{reps:11,kg:0}]},exerciseChoices:{A01:'A01-ALT2'}}};
+assert.equal(FIT_NEXT.strengthHistory(mixed,'A01').length,1);
+assert.equal(FIT_NEXT.strengthHistory(mixed,'A01','A01-ALT2').length,1);
+assert.equal(FIT_NEXT.strengthHistory(mixed,'A01','A01-ALT2')[0].reps,11);
+console.log('PASS: 36 researched alternatives for 12 movements, source labeling, explicit review, no changes after sets, variant-specific strength history and schema checks');

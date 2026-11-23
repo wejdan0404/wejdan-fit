@@ -47,3 +47,15 @@ This public bundle excludes the original `.xlsx` source file, screenshots, medic
 - تهيئة قبل الجلسة وتهدئة بعدها، وتعليمات وضعية سريعة ضمن قائمة التمرين.
 - بقي جدول A/B نفسه دون تغيير تلقائي في الشدة أو التكرارات أو الحركات.
 - التفاصيل والحدود: [docs/EXERCISE_QUALITY_V1_AR.md](docs/EXERCISE_QUALITY_V1_AR.md)
+
+## Exercise Alternatives V2 — 23 November 2026 (feature-branch review)
+
+- Added **36 educational exercise alternatives** for the **12 A/B beginner movements**, grouped as lower-load, alternative method, and higher-challenge. Their muscle/goal equivalence is explicitly labeled; not every alternative is equivalent.
+- Open **تماريني → بدائل التمرين (3)** to compare equipment, technique, cautions and a public professional reference, then explicitly acknowledge review before selecting a variant for the current workout. No automatic changes to the A/B template, repetitions, or intensity.
+- The chosen variant is stored as `workouts[date__session].exerciseChoices[exerciseId]`; previous records remain intact. Once sets/reps/load are recorded, variant switching is blocked to avoid misleading history.
+- Progress comparisons are separated by exact variant; the parent YouTube demonstration is hidden for selected alternatives until variant-specific media has been verified.
+- Partial-purpose options cannot mark the unchanged A/B plan as fully completed; the partial session can still be saved.
+- **Medical boundary:** all alternatives require individual suitability review, particularly for neck/back and neurological symptoms. These are suggestions rather than clinical clearance. The original plan is untouched in `main`.
+- New tests: `tests/exercise-alternatives.test.js` plus expanded browser/regression checks.
+
+[Exercise science review + full table](docs/EXERCISE_ALTERNATIVES_V2_AR.md) · [NHS strength exercises](https://www.nhs.uk/live-well/exercise/strength-exercises/) · [ACSM 2026 resistance guidelines](https://doi.org/10.1249/MSS.0000000000003897)

@@ -38,6 +38,7 @@
     for(const [key,w] of Object.entries(d.workouts)) {
       if(!/^\d{4}-\d{2}-\d{2}__/.test(key)||!validDate(key.slice(0,10))||!plain(w))throw new Error('سجل جلسة غير صالح');
       for(const rows of Object.values(w.setMetrics||{})){if(!Array.isArray(rows)||rows.length>3)throw new Error('عدد مجموعات غير صالح');for(const item of rows){if(!plain(item))throw new Error('بيانات مجموعة غير صالحة');for(const [f,lo,hi] of [['reps',0,100],['kg',0,100],['rpe',1,10]])if(item[f]!=null&&!finite(item[f],lo,hi))throw new Error('قيمة مجموعة غير صالحة');}}
+      if(w.exerciseChoices!==undefined){if(!plain(w.exerciseChoices)||Object.keys(w.exerciseChoices).length>12)throw new Error('خيارات التمارين غير صالحة');for(const [id,choice] of Object.entries(w.exerciseChoices))if(!/^[AB]\d{2}$/.test(id)||choice!==id+'-ALT1'&&choice!==id+'-ALT2'&&choice!==id+'-ALT3')throw new Error('البديل المحدد غير معروف');}
     }
     for(const x of Object.keys(d.recoveryModes))if(!validDate(x)||!['normal','gentle','rest'].includes(d.recoveryModes[x]))throw new Error('وضع تعافٍ غير صالح');
     if(d.settings.medicalNotes!=null && (typeof d.settings.medicalNotes!=='string'||d.settings.medicalNotes.length>2000))throw new Error('تعليمات طبية غير صالحة');
@@ -59,10 +60,11 @@
     const last=vals.slice(-Math.max(2,Math.min(14,windowSize)));const avg=round(last.reduce((a,x)=>a+x[1],0)/last.length,2);const first=vals.slice(0,last.length);const start=first.reduce((a,x)=>a+x[1],0)/first.length;
     return {status:'descriptive',observations:vals.length,average:avg,delta:round(avg-start,2),from:last[0][0],to:last.at(-1)[0]};
   }
-  function strengthHistory(workouts,exerciseId) {
+  function strengthHistory(workouts,exerciseId,choiceId=null) {
     const results=[];
     for(const [key,w] of Object.entries(workouts||{})){
       if(!w||!w.finished||w.migrated)continue;
+      if((w.exerciseChoices?.[exerciseId]||null)!==(choiceId||null))continue;
       const rows=w.setMetrics?.[exerciseId];
       if(!Array.isArray(rows))continue;
       const best=rows.filter(x=>finite(x?.reps,1,100)).map(x=>({reps:Number(x.reps),kg:finite(x.kg,0,100)?Number(x.kg):null,rpe:finite(x.rpe,1,10)?Number(x.rpe):null})).sort((a,b)=>b.reps-a.reps)[0];
