@@ -1,0 +1,14 @@
+# Local health backups, source spreadsheets, reports and secrets must never be published.
+*.xlsx
+*.xls
+*.pdf
+*.docx
+*.env
+.env.*
+*backup*.json
+*Backup*.json
+source_files/
+private/
+medical/
+node_modules/
+.DS_Store

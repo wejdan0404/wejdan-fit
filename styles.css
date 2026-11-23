@@ -26,3 +26,11 @@
 
 /* Use the ORIGINAL vector W from Wejdan Brand/Logo/W in Figma. */
 .brand-symbol{position:relative;overflow:hidden}.brand-symbol .brand-logo-svg{display:block;width:35px;height:35px;object-fit:contain}.brand-symbol .brand-logo-fallback{display:none}.hero-art img{display:block;width:min(155px,22vw);height:auto;filter:drop-shadow(10px 12px 0 rgba(20,35,90,.15))}.hero-art i{z-index:1}@media(max-width:760px){.brand-symbol .brand-logo-svg{width:30px;height:30px}.hero-art img{width:80px}}
+
+/* Masari source library — subordinate to the active A/B workout plan */
+.masari-section{border:1px solid var(--line, #d6dbe8)}
+.catalog-ingredients{padding-inline-start:22px;line-height:1.9;color:var(--text)}
+.masari-consent{display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:14px;line-height:1.65}
+.masari-consent input{flex:0 0 19px;width:19px;height:19px;accent-color:var(--brand, #6172B5);margin-top:2px}
+.masari-section .recipe{min-width:0}
+@media(max-width:480px){.masari-section .actions-row{flex-direction:column;align-items:stretch}.masari-section .actions-row button{width:100%}}
