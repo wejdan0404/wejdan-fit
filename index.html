@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6172B5" />
+  <meta name="description" content="WEJDAN FIT — مساحة شخصية لطيفة لمتابعة المقاومة والتغذية والوزن والعادات بدون ضغط." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="WEJDAN FIT" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>WEJDAN FIT — رحلتك، بطريقتك</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand" aria-label="WEJDAN FIT">
+          <div class="brand-symbol" aria-hidden="true">w<span>·</span></div>
+          <div><strong>WEJDAN <em>FIT</em></strong><small>رحلتك، بطريقتك</small></div>
+        </div>
+        <div class="header-actions">
+          <div id="saveIndicator" class="save-indicator" role="status" aria-live="polite" title="سجلاتك تُحفظ على جهازك فقط">● الحفظ المحلي جاهز</div>
+          <button id="installHelpBtn" class="icon-button" type="button" aria-label="تثبيت التطبيق على الجوال" title="تثبيت على الجوال"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 17v4h14v-4"/></svg></button>
+          <button id="themeSwitch" class="icon-button" type="button" aria-label="تبديل الوضع الليلي والنهاري" title="الوضع الليلي/النهاري">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8 8 0 0 1 9.8 4 8.4 8.4 0 1 0 20 14.2Z"/></svg>
+          </button>
+          <div class="header-avatar" aria-hidden="true">W</div>
+        </div>
+      </div>
+    </header>
+    <div class="main-layout">
+      <aside class="sidebar" aria-label="التنقل الرئيسي">
+        <div class="side-overline">مساحتك الخاصة</div>
+        <nav id="sideNav"></nav>
+        <div class="sidebar-bottom"><div class="mini-bloom">✳</div><strong>مو سباق.</strong><span>كل خطوة محسوبة لكِ.</span></div>
+      </aside>
+      <main id="app" class="main-content" tabindex="-1" aria-live="polite"></main>
+    </div>
+    <nav id="bottomNav" class="bottom-nav" aria-label="التنقل على الجوال"></nav>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="modalRoot"></div>
+  <div id="celebration" aria-hidden="true"></div>
+  <script src="fit-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

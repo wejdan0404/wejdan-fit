@@ -1,0 +1,33 @@
+{
+  "id": "./index.html",
+  "name": "WEJDAN FIT — رحلتك بطريقتك",
+  "short_name": "WEJDAN FIT",
+  "description": "رياضة وتغذية وتحفيز ومتابعة تقدم شخصية",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F7FE",
+  "theme_color": "#6172B5",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
