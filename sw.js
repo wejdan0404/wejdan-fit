@@ -1,5 +1,5 @@
 /* WEJDAN FIT offline cache. No personal logs leave browser storage. */
-const CACHE='wejdan-fit-static-v2-20261123';
+const CACHE='wejdan-fit-static-v3-20261123';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./fit-data.js','./manifest.webmanifest','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/apple-touch-icon.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('wejdan-fit-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
