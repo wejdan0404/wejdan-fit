@@ -53,3 +53,19 @@
 input:focus-visible,button:focus-visible,textarea:focus-visible,select:focus-visible {outline:3px solid #6172b5;outline-offset:3px}
 @media (max-width:560px){.exercise-restrictions{grid-template-columns:1fr}.shop-row{padding:10px}.pwa-update{bottom:85px}}
 @media (prefers-reduced-motion:reduce){.pwa-update,.shop-row{animation:none!important;transition:none!important}}
+
+/* Exercise quality review V1 — guidance without overriding program */
+.workout-prep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.workout-prep-grid>div{border:1px solid var(--border,#d6e5f3);background:var(--surface-subtle,#f2f7fe);border-radius:14px;padding:12px;min-width:0}
+.workout-prep-grid strong{font-weight:800;display:block}
+.workout-prep-grid p{font-size:13px;color:var(--text-secondary,#50545c);margin:7px 0 0;line-height:1.8}
+.coach-quick{font-size:12px!important;color:var(--text-secondary,#50545c);border-right:3px solid var(--brand,#6172b5);padding:3px 9px;margin:8px 0;line-height:1.75}
+.coach-spotlight{border:1px solid var(--border,#d6e5f3);border-radius:16px;background:var(--surface-subtle,#f2f7fe);padding:14px;margin-bottom:12px}
+.coach-spotlight h4{margin:10px 0 4px}
+.coach-spotlight p{margin:6px 0;line-height:1.7}
+.coach-cues{padding-inline-start:22px;margin:10px 0;line-height:1.8}
+.coach-cues li{padding-block:4px}
+.coach-mistake{border-right:3px solid #b77f33;padding:4px 11px;line-height:1.7}
+.coach-video-status{border:1px dashed var(--border,#d6e5f3);border-radius:12px;padding:12px;margin-bottom:13px;line-height:1.7}
+.coach-video-status p{margin:6px 0}
+@media(max-width:700px){.workout-prep-grid{grid-template-columns:1fr}}

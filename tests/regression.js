@@ -13,6 +13,7 @@ function makeEnv(){
  vm.runInContext(fs.readFileSync(path+'fit-data.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'fit-core.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'fit-next.js','utf8'),ctx);
+ vm.runInContext(fs.readFileSync(path+'exercise-coach.js','utf8'),ctx);
  const src=fs.readFileSync(path+'app.js','utf8').replace(/init\(\);\s*\}\)\(\);\s*$/,'globalThis.__test={getState:()=>state,handleClick,handleSubmit,handleChange,save,workoutFinished,workoutHistory,importJSON,today,nutrientCoverage,validDate,weeklySnapshot};init();})();');
  vm.runInContext(src,ctx,{timeout:3000});return {ctx,els};
 }

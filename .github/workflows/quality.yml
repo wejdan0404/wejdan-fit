@@ -17,6 +17,7 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check app.js
+          node --check exercise-coach.js
           node --check fit-data.js
           node --check sw.js
           node --check masari-catalog.js
@@ -28,6 +29,7 @@ jobs:
           node tests/regression.js
           node tests/fit-core.test.js
           node tests/fit-next.test.js
+          node tests/exercise-coach.test.js
       - name: Masari safe merge tests
         run: node tests/masari-merge.test.js
       - name: Offline package preflight

@@ -6,7 +6,7 @@ html=(root/'index.html').read_text()
 html=re.sub(r'<script\s+src="[^"]+"\s*>\s*</script>', '', html)
 html=re.sub(r'<link[^>]*rel="stylesheet"[^>]*>', '', html)
 html=html.replace('</head>',f'<style>{(root/"styles.css").read_text()}</style></head>')
-jsfiles=['fit-data.js','masari-catalog.js','masari-migration.js','fit-core.js','fit-next.js','app.js']
+jsfiles=['fit-data.js','masari-catalog.js','masari-migration.js','fit-core.js','fit-next.js','exercise-coach.js','app.js']
 with sync_playwright() as p:
   browser=p.chromium.launch(headless=True, executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
   errors=[]
@@ -32,6 +32,16 @@ with sync_playwright() as p:
   assert page.get_by_text('اليوم للراحة').count()>0
   page.locator('[data-action="day-plan"][data-plan="A"]').click()
   page.locator('button[data-view="workout"]').last.click()
+  assert page.get_by_text('قبل التمرين · 3 خطوات').count()>0
+  page.locator('[data-action="exercise-details"][data-exercise="A03"]').click()
+  assert page.locator('.coach-cues li').count()==3
+  assert 'الفيديو يثبت المطاط عند القدمين' in page.locator('.modal').inner_text()
+  page.locator('[data-action="close-modal"]').click()
+  page.locator('button[data-session="B"]').click()
+  page.locator('[data-action="exercise-details"][data-exercise="B04"]').click()
+  assert 'لا تتابعي التقليد تلقائيًا' in page.locator('.modal').inner_text()
+  page.locator('[data-action="close-modal"]').click()
+  page.locator('button[data-session="A"]').click()
   page.locator('[data-action="toggle-set"]').first.click()
   page.locator('[data-action="partial-workout"]').click()
   w=page.evaluate("JSON.parse(localStorage.getItem('wejdan-fit-app-v1')).workouts")
