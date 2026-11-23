@@ -22,10 +22,12 @@ jobs:
           node --check masari-catalog.js
           node --check masari-migration.js
           node --check fit-core.js
+          node --check fit-next.js
       - name: App regression tests
         run: |
           node tests/regression.js
           node tests/fit-core.test.js
+          node tests/fit-next.test.js
       - name: Masari safe merge tests
         run: node tests/masari-merge.test.js
       - name: Offline package preflight
@@ -34,6 +36,7 @@ jobs:
           test -s masari-catalog.js
           test -s masari-migration.js
           test -s fit-core.js
+          test -s fit-next.js
           test -s manifest.webmanifest
           test -s assets/wejdan-w-reversed.svg
           test -s assets/icon-192.png
