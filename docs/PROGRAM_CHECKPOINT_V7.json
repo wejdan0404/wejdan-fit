@@ -3,7 +3,7 @@
   "date": "2026-11-27",
   "runId": "scheduled-08-rc-verification",
   "scheduledRunsConsumed": 9,
-  "headExamined": "aa8f0b47ac35cbb96a15f157e7ff08aa66a99605",
+  "headExamined": "73053194d49d254e99d6bb3064eebfb71b3540dc",
   "latestImplementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
   "phase": "RC-01 safety patch, V7 gates unchanged",
   "completedIds": [
@@ -3284,29 +3284,25 @@
     "status": "PARTIAL",
     "scope": "Existing app personal-use release candidate; separate from V7 expansion",
     "implementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-    "ci": "Exact head aa8f0b47ac35cbb96a15f157e7ff08aa66a99605 SUCCESS GitHub Actions 46016384635; new test commit pending CI",
+    "ci": "Exact SHA 73053194d49d254e99d6bb3064eebfb71b3540dc GitHub Actions 46024793037 completed/success (synthetic CI only)",
     "release": "NO-GO",
     "remaining": [
-      "CI success for new regression test commit",
       "HTTP browser import/export/restore/offline smoke",
       "Safety/content audit and real iPhone/Safari",
       "Explicit owner approval"
     ],
-    "lastVerifiedHead": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
-    "mutationAudit": "M04/M05 rollback verified; emergency recovery-key swap now checks write and warns on failure; synthetic test pending CI"
+    "lastVerifiedHead": "73053194d49d254e99d6bb3064eebfb71b3540dc",
+    "mutationAudit": "M04/M05 rollback verified; emergency recovery-key swap now checks write and warns on failure; synthetic test pending CI",
+    "verificationEvidence": {
+      "sha": "73053194d49d254e99d6bb3064eebfb71b3540dc",
+      "workflowRunId": 46024793037,
+      "conclusion": "success",
+      "scope": "synthetic CI only",
+      "documentCommit": "308298d4bd0af6e5bfdecee5b499f22b52532ef1"
+    },
+    "ordinalNote": "Manual continuation; scheduledRunsConsumed unchanged because no confirmed new scheduled occurrence ID"
   },
   "rcNextActions": [
-    {
-      "id": "RC-01-A",
-      "priority": "P0",
-      "action": "Verify new exact SHA CI and fix failing synthetic tests",
-      "files": [
-        "tests/regression.js"
-      ],
-      "dependencies": [],
-      "acceptance": "GitHub Actions completed success for exact SHA",
-      "reason": "No unverified RC promotion"
-    },
     {
       "id": "RC-01-B",
       "priority": "P0",
@@ -3316,9 +3312,7 @@
         "sw.js",
         "tests/regression.js"
       ],
-      "dependencies": [
-        "RC-01-A"
-      ],
+      "dependencies": [],
       "acceptance": "Browser evidence and synthetic fixtures or explicit BLOCKED",
       "reason": "Prevent data loss"
     },
