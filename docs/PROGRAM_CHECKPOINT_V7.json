@@ -3300,7 +3300,7 @@
       "scope": "synthetic CI only",
       "documentCommit": "308298d4bd0af6e5bfdecee5b499f22b52532ef1"
     },
-    "ordinalNote": "Manual continuation; scheduledRunsConsumed unchanged absent confirmed scheduled run ID",
+    "ordinalNote": "No trustworthy scheduled occurrence identifier available; preserved scheduledRunsConsumed",
     "browserAcceptance": {
       "status": "BLOCKED",
       "reason": "No real HTTP browser/iPhone execution in this turn; manual acceptance protocol recorded",
@@ -3320,9 +3320,34 @@
         "clinical/content review",
         "real device"
       ]
+    },
+    "syntheticAllergenRegression": {
+      "status": "PARTIAL",
+      "commit": "e63b1cf7d50f0e19eee791759d32c0235fbf071c",
+      "file": "tests/regression.js",
+      "cases": [
+        "peanut avoid",
+        "coconut avoid",
+        "unknown and empty ingredients unknown",
+        "known allergen overrides reviewed flag",
+        "unverified portion remains unverified"
+      ],
+      "ci": "No workflow run returned for exact commit at check time; NOT VERIFIED",
+      "scope": "mock classification, not rendered consent or clinical clearance"
     }
   },
   "rcNextActions": [
+    {
+      "id": "RC-01-C-CI",
+      "priority": "P0",
+      "action": "Check GitHub Actions exact SHA e63b1cf and fix any failed regression",
+      "files": [
+        "tests/regression.js"
+      ],
+      "dependencies": [],
+      "acceptance": "completed/success on exact SHA or documented failure",
+      "reason": "New tests have not been verified"
+    },
     {
       "id": "RC-01-B",
       "priority": "P0",
