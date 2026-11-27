@@ -177,3 +177,17 @@ try{
  assert.strictEqual(data.get(actualRecoveryKey),'{synthetic-broken-recovery','corrupted recovery remains available for private inspection');
 }finally{if(oldCorruptRecovery===undefined)data.delete(actualRecoveryKey);else data.set(actualRecoveryKey,oldCorruptRecovery);}
 console.log('PASS: denied and malformed recovery reads preserve current state (synthetic mock only)');
+
+// RC-01-C: synthetic allergen classification; lexical detection is not a clinical clearance.
+const allergyEnv=makeEnv();
+const review=allergyEnv.ctx.window.FIT_NEXT.reviewAllergens;
+assert.strictEqual(review([{name:'زبدة فول سوداني'}]).status,'avoid','known peanut token must be blocked');
+assert.strictEqual(review([{name:'حليب جوز الهند'}]).status,'avoid','known coconut token must be blocked');
+assert.strictEqual(review([{name:'مكوّن غير محدد'}]).status,'unknown','unverified ingredients cannot be marked safe');
+assert.strictEqual(review([]).status,'unknown','empty ingredients must remain unknown');
+assert.strictEqual(review([{name:'دقيق'}],true).status,'source-reviewed','source-reviewed must not mean clinically safe');
+assert.strictEqual(review([{name:'peanut'}],true).status,'avoid','known allergen must override reviewed flag');
+const estimate=allergyEnv.ctx.window.FIT_NEXT.recipePortion({servings:1,cal:400,protein:null,carbs:null,fat:null},.5);
+assert.strictEqual(estimate.cal,200,'synthetic portion estimate scales');
+assert.strictEqual(estimate.verified,false,'unverified recipe must remain unverified');
+console.log('PASS: RC-01-C synthetic allergen unknown/avoid precedence and unverified portions (mock only)');
