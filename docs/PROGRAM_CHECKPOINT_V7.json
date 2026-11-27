@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-08",
-  "scheduledRunsConsumed": 8,
-  "headExamined": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
+  "runId": "scheduled-09",
+  "scheduledRunsConsumed": 9,
+  "headExamined": "2423f7fa7ada08ac964928c3459c2e3d2c92fd20",
   "latestImplementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
   "phase": "RC-01 safety patch, V7 gates unchanged",
   "completedIds": [
@@ -197,6 +197,15 @@
         "conclusion": "success"
       },
       "scope": "CI for descendant head, synthetic tests only; no iPhone"
+    },
+    "scheduled09": {
+      "previousHead": "2423f7fa7ada08ac964928c3459c2e3d2c92fd20",
+      "previousCI": {
+        "id": 46008035467,
+        "conclusion": "success"
+      },
+      "newPatch": "pending",
+      "environment": "GitHub Actions + synthetic VM; no Safari or real device"
     }
   },
   "tasks": [
@@ -3229,13 +3238,21 @@
       "after": "Both roll back in memory on failure, synthetic regression added; exact new SHA CI pending",
       "reason": "M04/M05 integrity before expanded features",
       "evidence": "app.js and tests/regression.js; CI on predecessor 46002353540"
+    },
+    {
+      "run": "scheduled-09",
+      "decision": "Verify recovery-key swap and distinguish successful restore from unavailable undo; preserve original V7 tasks",
+      "before": "Recovery-key write failure swallowed with unconditional success toast",
+      "after": "Verify key swap and show explicit warning if undo copy unavailable",
+      "reason": "Accurate data-integrity feedback",
+      "evidence": "app.js and tests/regression.js; CI pending"
     }
   ],
   "lastScheduledRun": {
-    "checkpointRun": "scheduled-08",
-    "ordinal": 8,
-    "scheduledFor": "2026-11-27T13:29:13Z",
-    "note": "Automation turn 8; no manual run counted. Actual invocation occurred after scheduled time."
+    "checkpointRun": "scheduled-09",
+    "ordinal": 9,
+    "scheduledFor": "2026-11-27T14:29:13Z",
+    "note": "Automation turn 8 label was supplied by runtime but scheduled-08 already recorded; ordinal 9 inferred from previous checkpoint and schedule, no manual work counted."
   },
   "executionPolicy": {
     "version": "V7.1",
@@ -3252,72 +3269,71 @@
     "status": "PARTIAL",
     "scope": "Existing app personal-use release candidate; separate from V7 expansion",
     "implementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-    "ci": "verified CI success on descendant head 4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c (run 46002353540); new M04/M05 changes pending",
+    "ci": "Verified 46008035467 SUCCESS for predecessor 2423f7f; new recovery patch pending",
     "release": "NO-GO",
     "remaining": [
-      "CI for M04/M05 patch SHA",
-      "Recovery flow/normal restore and export",
-      "Browser HTTP/offline and iPhone real-device verification",
-      "Safety/content review and explicit release approval"
+      "Exact-SHA CI for recovery patch",
+      "Import/restore/export full browser smoke and offline",
+      "Food safety/content audit",
+      "Real iPhone/Safari, owner approval"
     ],
     "lastVerifiedHead": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
-    "mutationAudit": "M04 legacy workout field and M05 trainingSets rollback patched with synthetic regression; other paths remain to audit"
+    "mutationAudit": "M04/M05 rollback verified; emergency recovery-key swap now checks write and warns on failure; synthetic test pending CI"
   },
   "rcNextActions": [
     {
       "id": "RC-01-A",
       "priority": "P0",
-      "action": "Verify exact SHA CI for M04/M05 patch; fix failure before other work",
+      "action": "Verify exact SHA CI for recovery patch, fix failures before further work",
       "files": [
         "app.js",
         "tests/regression.js"
       ],
       "dependencies": [],
-      "acceptance": "GitHub Actions completed success on exact patch SHA",
-      "reason": "No unverified code promotion"
+      "acceptance": "Completed success on exact SHA",
+      "reason": "No unverified promotion"
     },
     {
       "id": "RC-01-B",
       "priority": "P0",
-      "action": "Review restore/import rollback and raw export; ensure no loss on denied reads or writes",
+      "action": "Test import and backup recovery success/failure including quota, read denial, corrupted recovery and raw export",
       "files": [
-        "app.js",
-        "tests/regression.js"
+        "tests/regression.js",
+        "app.js"
       ],
       "dependencies": [
         "RC-01-A"
       ],
-      "acceptance": "Synthetic tests preserve bytes, old key and recovery copy; no false restore toast",
-      "reason": "Data loss prevention"
+      "acceptance": "Synthetic fixtures preserve original bytes and accurate toasts; browser check distinguished",
+      "reason": "Data integrity"
     },
     {
       "id": "RC-01-C",
       "priority": "P1",
-      "action": "Core flows smoke (daily plan, workout, food, rest, backup) via HTTP/offline browser if available",
+      "action": "Run HTTP browser/offline smoke for home/workout/food/rest/export if environment available",
       "files": [
         "app.js",
-        "tests/browser_smoke.py"
+        "sw.js"
       ],
       "dependencies": [
         "RC-01-A"
       ],
-      "acceptance": "Actual browser results with environment specified, not mock labeled iPhone",
-      "reason": "RC usability"
+      "acceptance": "Browser test evidence or explicit BLOCKED",
+      "reason": "Personal-use RC"
     },
     {
       "id": "RC-01-D",
       "priority": "P0",
-      "action": "RC checklist, safety/content, iPhone and explicit approval gates",
+      "action": "Safety/content and device gates, explicit approval; honest NO-GO until satisfied",
       "files": [
         "docs/RC_01_TODAY_AR.md"
       ],
       "dependencies": [
-        "RC-01-A",
         "RC-01-B",
         "RC-01-C"
       ],
-      "acceptance": "Honest GO/NO-GO and evidence",
-      "reason": "Release safety"
+      "acceptance": "Gate checklist with sources and limitations",
+      "reason": "Prevent premature launch"
     }
   ]
 }

@@ -15,7 +15,7 @@ function makeEnv(){
  vm.runInContext(fs.readFileSync(path+'fit-next.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'exercise-coach.js','utf8'),ctx);
  vm.runInContext(fs.readFileSync(path+'exercise-alternatives.js','utf8'),ctx);
- const src=fs.readFileSync(path+'app.js','utf8').replace(/init\(\);\s*\}\)\(\);\s*$/,'globalThis.__test={getState:()=>state,handleClick,handleSubmit,handleChange,save,workoutFinished,workoutHistory,importJSON,today,nutrientCoverage,validDate,weeklySnapshot,setSessionForTest:(value)=>{selectedSession=value}};init();})();');
+ const src=fs.readFileSync(path+'app.js','utf8').replace(/init\(\);\s*\}\)\(\);\s*$/,'globalThis.__test={getState:()=>state,handleClick,handleSubmit,handleChange,save,workoutFinished,workoutHistory,importJSON,restoreEmergencyBackup,today,nutrientCoverage,validDate,weeklySnapshot,setSessionForTest:(value)=>{selectedSession=value}};init();})();');
  vm.runInContext(src,ctx,{timeout:3000});return {ctx,els};
 }
 function submit(x,id,fields){x.ctx.__test.handleSubmit({target:{id,data:fields},preventDefault(){}})}
@@ -138,3 +138,26 @@ try {
  assert.strictEqual(JSON.stringify(rollbackEnv.ctx.__test.getState()),beforeRollback,'training set setting rolls back');
 } finally {storage.setItem=previousSetter;}
 console.log('PASS: M04/M05 synthetic workout/setting denied-write rollback');
+
+// RC-01: emergency restore cannot claim a reversible swap when recovery-key write fails.
+const recoveryEnv=makeEnv();
+const recoveryOld=JSON.stringify(recoveryEnv.ctx.__test.getState());
+const recoveryKey='wejdan-fit-emergency-backup-v1';
+const recoveryFixture=JSON.parse(recoveryOld);recoveryFixture.settings.theme=recoveryFixture.settings.theme==='dark'?'light':'dark';
+const recoveryKeys=[...data.keys()].filter(k=>k.includes('recover')||k.includes('backup'));
+const backupKey=recoveryKeys.find(k=>k!==syntheticKey)||recoveryKey;
+// This fixture is synthetic; use the actual app recovery key if discoverable.
+const source=fs.readFileSync(path+'app.js','utf8');
+const match=source.match(/const RECOVERY_KEY='([^']+)'/);
+assert(match,'recovery key must be declared');
+const actualRecoveryKey=match[1];
+const beforeRecoveryRaw=data.get(actualRecoveryKey);
+data.set(actualRecoveryKey,JSON.stringify(recoveryFixture));
+const restoreWrite=storage.setItem;
+storage.setItem=(k,v)=>{if(k===actualRecoveryKey)throw Error('synthetic recovery swap denied');return restoreWrite(k,v)};
+try{
+ recoveryEnv.ctx.__test.restoreEmergencyBackup();
+ assert.strictEqual(recoveryEnv.ctx.__test.getState().settings.theme,recoveryFixture.settings.theme,'restored state saved even if swap denied');
+ assert.strictEqual(data.get(actualRecoveryKey),JSON.stringify(recoveryFixture),'failed swap leaves prior recovery bytes intact');
+}finally{storage.setItem=restoreWrite;if(beforeRecoveryRaw===undefined)data.delete(actualRecoveryKey);else data.set(actualRecoveryKey,beforeRecoveryRaw);}
+console.log('PASS: emergency restore survives denied recovery-key swap (mock only)');

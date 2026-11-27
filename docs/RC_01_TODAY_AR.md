@@ -6,3 +6,7 @@ Remaining before RC acceptance: exact-SHA CI, real HTTP browser/offline check if
 
 ## Scheduled-08 — bounded M04/M05 fix
 Verified GitHub Actions run [46002353540](https://github.com/wejdan0404/wejdan-fit/actions/runs/46002353540) SUCCESS for predecessor HEAD `4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c`; this is **not** the result for the new patch. Patched legacy workout reps/kg and trainingSets controls to restore prior in-memory state if localStorage write is rejected; added synthetic regression and guarded recovery-key read failures. No schema or storage key change. Pending exact patch SHA CI, recovery/restore flow, HTTP/offline, iPhone, content safety, explicit owner approval. RC remains NO-GO.
+
+
+## Scheduled-09 — recovery transparency and exact-SHA CI
+Verified [GitHub Actions 46008035467](https://github.com/wejdan0404/wejdan-fit/actions/runs/46008035467) SUCCESS on prior HEAD 2423f7fa7ada08ac964928c3459c2e3d2c92fd20. RC-01-B: emergency recovery now verifies the recovery-key swap; if it fails, warns that the new state was restored but undo copy was not updated. Synthetic regression added. New patch CI pending. No production release, Safari/device validation, or clinical review.
