@@ -38,3 +38,18 @@ Status: **BLOCKED for real-browser evidence**; no local HTTP browser or iPhone t
 8. **iPhone gate:** Repeat Safari and Home Screen install-context export/import and persistence on a real iPhone, plus VoiceOver and content review; otherwise NO-GO.
 
 **Rollback:** no data schema or storage-key change permitted; if a candidate breaks acceptance, revert only its coherent development-branch commit after HEAD/conflict check. Do not replace live user data with a test fixture. **Evidence required:** tested SHA, browser/version, HTTP origin, exact steps, synthetic fixture IDs, assertions and results, offline mode, and redacted screenshots (no personal data). All cases remain unverified until executed.
+
+## RC-01-C — scoped static food and movement copy inspection (manual continuation)
+Source inspected: `app.js` blob `42c0803704d0305c5400b7c09486716691eb07d3` and `fit-data.js` blob `54b9f0bcb9f21655b51e4d7245f3e0b0922b1211`. **Static code inspection only**, not clinical review or browser test.
+
+| Surface | Observed code evidence | Status and acceptance |
+|---|---|---|
+| Food page | Explicit Arabic warning: nutritional targets are experimental, not medically approved; carb cycling optional | Present copy, **PARTIAL** until rendered UI and complete food routes inspected |
+| Masari recipe details | Estimated calories/macros are labelled unverified; unknown peanut/coconut/cross-contact cannot be ruled out from recipe text; package-label check requested | Present copy, **PARTIAL**; test actual modal and keyboard/VoiceOver access |
+| Masari recipe logging | `masariRecipeToMeal` blocks `reviewAllergens(...).status==='avoid'`, requires both allergy and estimate confirmations, validates kcal/portion; stores `source:'masari-estimate'` | Static guard present; **PARTIAL** until synthetic avoid/unknown and missing-confirmation cases run; user checkbox is not clinical clearance |
+| Masari exercise reference | `masariExerciseDetails` says references are not active A/B recommendations, deferred movements remain deferred, and no automatic dose is authorized | Present copy, **PARTIAL**; check all alternate entry points and variant warnings |
+| Alternatives | UI explicitly says selected variant is not medically approved and original video is not a demonstration of the alternative | Present copy, **PARTIAL**; require regression across selection/reopen/completion paths |
+
+**Safety issue to resolve before GO:** do not equate an ingredient string scan or a checked box with proof of allergen absence; unknown ingredients, label changes and cross-contact remain unresolved. This is a review gate, not a claim that a concrete bypass was reproduced. Test with synthetic ingredient fixtures, including unknown and `avoid` statuses, and inspect the rendered copy. No personal medical/food data or source file copied into the repo.
+
+Next: run actual-origin browser acceptance protocol, then fix only reproduced P0 failures; run exact-SHA CI on any code changes. Real iPhone, safety/content review and owner approval remain BLOCKED release gates. NO-GO.
