@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-09",
+  "runId": "scheduled-08-rc-verification",
   "scheduledRunsConsumed": 9,
-  "headExamined": "2423f7fa7ada08ac964928c3459c2e3d2c92fd20",
+  "headExamined": "aa8f0b47ac35cbb96a15f157e7ff08aa66a99605",
   "latestImplementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
   "phase": "RC-01 safety patch, V7 gates unchanged",
   "completedIds": [
@@ -206,6 +206,13 @@
       },
       "newPatch": "pending",
       "environment": "GitHub Actions + synthetic VM; no Safari or real device"
+    },
+    "rcReadDenial": {
+      "baselineSha": "aa8f0b47ac35cbb96a15f157e7ff08aa66a99605",
+      "baselineRunId": 46016384635,
+      "baselineConclusion": "success",
+      "newTest": "pending CI",
+      "scope": "Synthetic denied recovery-key read and malformed recovery JSON; no device"
     }
   },
   "tasks": [
@@ -3246,6 +3253,14 @@
       "after": "Verify key swap and show explicit warning if undo copy unavailable",
       "reason": "Accurate data-integrity feedback",
       "evidence": "app.js and tests/regression.js; CI pending"
+    },
+    {
+      "run": "scheduled-08-rc-verification",
+      "decision": "Do not decrement or increment checkpoint scheduledRunsConsumed because stored scheduled-09 exceeds current runtime turn 8; preserve history and flag ordinal inconsistency",
+      "before": "checkpoint scheduledRunsConsumed=9 and runtime turn 8",
+      "after": "count retained 9; new synthetic recovery read tests queued",
+      "reason": "Avoid double-counting and protect continuity",
+      "evidence": "GitHub exact-head CI 46016384635; tests/regression.js"
     }
   ],
   "lastScheduledRun": {
@@ -3269,13 +3284,13 @@
     "status": "PARTIAL",
     "scope": "Existing app personal-use release candidate; separate from V7 expansion",
     "implementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-    "ci": "Verified 46008035467 SUCCESS for predecessor 2423f7f; new recovery patch pending",
+    "ci": "Exact head aa8f0b47ac35cbb96a15f157e7ff08aa66a99605 SUCCESS GitHub Actions 46016384635; new test commit pending CI",
     "release": "NO-GO",
     "remaining": [
-      "Exact-SHA CI for recovery patch",
-      "Import/restore/export full browser smoke and offline",
-      "Food safety/content audit",
-      "Real iPhone/Safari, owner approval"
+      "CI success for new regression test commit",
+      "HTTP browser import/export/restore/offline smoke",
+      "Safety/content audit and real iPhone/Safari",
+      "Explicit owner approval"
     ],
     "lastVerifiedHead": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
     "mutationAudit": "M04/M05 rollback verified; emergency recovery-key swap now checks write and warns on failure; synthetic test pending CI"
@@ -3284,47 +3299,46 @@
     {
       "id": "RC-01-A",
       "priority": "P0",
-      "action": "Verify exact SHA CI for recovery patch, fix failures before further work",
+      "action": "Verify new exact SHA CI and fix failing synthetic tests",
       "files": [
-        "app.js",
         "tests/regression.js"
       ],
       "dependencies": [],
-      "acceptance": "Completed success on exact SHA",
-      "reason": "No unverified promotion"
+      "acceptance": "GitHub Actions completed success for exact SHA",
+      "reason": "No unverified RC promotion"
     },
     {
       "id": "RC-01-B",
       "priority": "P0",
-      "action": "Test import and backup recovery success/failure including quota, read denial, corrupted recovery and raw export",
+      "action": "Exercise browser import/export, recovery UI, read/write denial and offline via local HTTP if available",
       "files": [
-        "tests/regression.js",
-        "app.js"
+        "app.js",
+        "sw.js",
+        "tests/regression.js"
       ],
       "dependencies": [
         "RC-01-A"
       ],
-      "acceptance": "Synthetic fixtures preserve original bytes and accurate toasts; browser check distinguished",
-      "reason": "Data integrity"
+      "acceptance": "Browser evidence and synthetic fixtures or explicit BLOCKED",
+      "reason": "Prevent data loss"
     },
     {
       "id": "RC-01-C",
-      "priority": "P1",
-      "action": "Run HTTP browser/offline smoke for home/workout/food/rest/export if environment available",
+      "priority": "P0",
+      "action": "Audit meal/fitness safety language and document unsupported clinical claims",
       "files": [
         "app.js",
-        "sw.js"
+        "fit-data.js",
+        "docs/RC_01_TODAY_AR.md"
       ],
-      "dependencies": [
-        "RC-01-A"
-      ],
-      "acceptance": "Browser test evidence or explicit BLOCKED",
-      "reason": "Personal-use RC"
+      "dependencies": [],
+      "acceptance": "Source-backed content issues and mitigations; no clinical approval claim",
+      "reason": "Release safety gate"
     },
     {
       "id": "RC-01-D",
       "priority": "P0",
-      "action": "Safety/content and device gates, explicit approval; honest NO-GO until satisfied",
+      "action": "iPhone Safari offline/restore test and owner release approval",
       "files": [
         "docs/RC_01_TODAY_AR.md"
       ],
@@ -3332,8 +3346,8 @@
         "RC-01-B",
         "RC-01-C"
       ],
-      "acceptance": "Gate checklist with sources and limitations",
-      "reason": "Prevent premature launch"
+      "acceptance": "Real device evidence and explicit approval, otherwise BLOCKED",
+      "reason": "Final release gate"
     }
   ]
 }

@@ -160,3 +160,20 @@ try{
  assert.strictEqual(data.get(actualRecoveryKey),JSON.stringify(recoveryFixture),'failed swap leaves prior recovery bytes intact');
 }finally{storage.setItem=restoreWrite;if(beforeRecoveryRaw===undefined)data.delete(actualRecoveryKey);else data.set(actualRecoveryKey,beforeRecoveryRaw);}
 console.log('PASS: emergency restore survives denied recovery-key swap (mock only)');
+
+// RC-01: recovery read denied or corrupted must never mutate the active state.
+const readGuardEnv=makeEnv(),readGuardState=JSON.stringify(readGuardEnv.ctx.__test.getState());
+const originalGet=storage.getItem;
+storage.getItem=(k)=>{if(k===actualRecoveryKey)throw Error('synthetic read denied');return originalGet(k)};
+try{
+ readGuardEnv.ctx.__test.restoreEmergencyBackup();
+ assert.strictEqual(JSON.stringify(readGuardEnv.ctx.__test.getState()),readGuardState,'denied recovery read preserves active state');
+}finally{storage.getItem=originalGet;}
+const oldCorruptRecovery=data.get(actualRecoveryKey);
+data.set(actualRecoveryKey,'{synthetic-broken-recovery');
+try{
+ readGuardEnv.ctx.__test.restoreEmergencyBackup();
+ assert.strictEqual(JSON.stringify(readGuardEnv.ctx.__test.getState()),readGuardState,'corrupted recovery bytes preserve active state');
+ assert.strictEqual(data.get(actualRecoveryKey),'{synthetic-broken-recovery','corrupted recovery remains available for private inspection');
+}finally{if(oldCorruptRecovery===undefined)data.delete(actualRecoveryKey);else data.set(actualRecoveryKey,oldCorruptRecovery);}
+console.log('PASS: denied and malformed recovery reads preserve current state (synthetic mock only)');

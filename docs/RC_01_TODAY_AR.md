@@ -10,3 +10,10 @@ Verified GitHub Actions run [46002353540](https://github.com/wejdan0404/wejdan-f
 
 ## Scheduled-09 — recovery transparency and exact-SHA CI
 Verified [GitHub Actions 46008035467](https://github.com/wejdan0404/wejdan-fit/actions/runs/46008035467) SUCCESS on prior HEAD 2423f7fa7ada08ac964928c3459c2e3d2c92fd20. RC-01-B: emergency recovery now verifies the recovery-key swap; if it fails, warns that the new state was restored but undo copy was not updated. Synthetic regression added. New patch CI pending. No production release, Safari/device validation, or clinical review.
+
+## RC-01 verification addendum — scheduled turn 8, 27 Nov 2026
+- Verified GitHub Actions SUCCESS for exact prior head `aa8f0b47ac35cbb96a15f157e7ff08aa66a99605`: run 46016384635 (synthetic CI only).
+- Added two synthetic regression scenarios: denied recovery-key read and corrupted recovery JSON. Both must preserve active state; no real user data.
+- No claim of browser/iPhone/offline testing, clinical validation, or production release.
+- P0 outstanding: validate new commit CI; import/export round-trip and recovery UI in real HTTP browser; offline storage smoke; content and safety review.
+- Decision: NO-GO for release. Keep draft PR, unchanged main and no automatic deployment.
