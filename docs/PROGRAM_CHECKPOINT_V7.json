@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-06",
+  "runId": "scheduled-07",
   "scheduledRunsConsumed": 0,
-  "headExamined": "83f601aa810feec08bb292c946b98e3b045d7e3d",
+  "headExamined": "796d759b35e45a1e9f5f4027cdcb69b7fc4d367e",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
@@ -150,6 +150,17 @@
         "conclusion": "success"
       },
       "scope": "static source audit + CI verification only; no app change or real browser/device test"
+    },
+    "scheduled07": {
+      "testCommit": "19f27596643d830038c6ae91d481482f76be29ae",
+      "ci": "pending verification",
+      "scope": "mock-only characterization for A10-M01 and M02; no production fix, browser or device test",
+      "tests": [
+        "food-mode unpersisted state",
+        "theme unpersisted state",
+        "persisted raw unchanged",
+        "failure indicator"
+      ]
     }
   },
   "tasks": [
@@ -3046,22 +3057,21 @@
     {
       "id": "V7-002",
       "priority": "P0",
-      "action": "Add synthetic denied-storage characterization for foodMode and theme; inspect M04–M06 mutation side effects and full write rollback map",
+      "action": "Check exact-SHA CI for 19f2759; repair failing test if needed, then audit M04–M06 side effects with synthetic fixtures",
       "files": [
         "tests/regression.js",
-        "app.js",
-        "docs/STORAGE_CI_VERIFICATION_V7_AR.md"
+        "app.js"
       ],
       "dependencies": [
         "V7-003"
       ],
-      "acceptance": "Exact-SHA CI verified; raw bytes unchanged; failed-save UI divergence classified without false repair claim",
-      "reason": "Data integrity P0"
+      "acceptance": "CI success for test SHA; classify only reproduced behavior",
+      "reason": "P0 data integrity"
     },
     {
       "id": "V7-007",
       "priority": "P1",
-      "action": "Trace 86 competitor, 49 FIT, 16 PSY/BEH/JOY requirements to unique acceptance criteria, preserving overlap without losing obligations",
+      "action": "Account for all 151 stable requirement IDs and cross-references, preserving independent acceptance criteria",
       "files": [
         "docs/FEATURE_MATRIX_V7_AR.md",
         "docs/BEHAVIOR_TRACE_V7_AR.md"
@@ -3069,39 +3079,39 @@
       "dependencies": [
         "V7-006"
       ],
-      "acceptance": "151 stable IDs accounted for, overlaps documented",
-      "reason": "Avoid duplicate implementations"
+      "acceptance": "151 unique IDs and documented overlaps",
+      "reason": "Avoid duplicate development"
     },
     {
       "id": "V7-008",
       "priority": "P1",
-      "action": "Verify original studies, dated competitor features and license permissions with URLs and explicit confidence levels",
+      "action": "Verify primary scientific evidence, competitor claims and licenses with dated URLs",
       "files": [
         "docs/EVIDENCE_REGISTER_V7_AR.md"
       ],
       "dependencies": [
         "V7-001"
       ],
-      "acceptance": "Dated source register with primary evidence and uncertainty",
-      "reason": "Research gate"
+      "acceptance": "Source type, confidence, date and limitations",
+      "reason": "Evidence gate"
     },
     {
       "id": "V7-009",
       "priority": "P1",
-      "action": "Map every acceptance criterion to concrete code/test evidence or mark missing",
+      "action": "Trace each acceptance requirement to concrete code/test evidence or missing status",
       "files": [
         "docs/CODE_CAPABILITY_MAP_V7_AR.md"
       ],
       "dependencies": [
         "V7-007"
       ],
-      "acceptance": "No criterion called implemented without test evidence",
-      "reason": "Accurate build backlog"
+      "acceptance": "No unverified implemented claims",
+      "reason": "Build readiness"
     },
     {
       "id": "V7-010",
       "priority": "P1",
-      "action": "Reprioritize dependency-aware backlog after P0 audit and evidence gate",
+      "action": "Prioritize P0 fixes and dependency-aware implementation backlog after evidence gates",
       "files": [
         "docs/PRIORITY_BACKLOG_V7_AR.md"
       ],
@@ -3110,8 +3120,8 @@
         "V7-008",
         "V7-009"
       ],
-      "acceptance": "P0 data safety before P1 engagement",
-      "reason": "Preserve gate ordering"
+      "acceptance": "Risk-first sequence",
+      "reason": "Safety"
     }
   ],
   "backlog": [
