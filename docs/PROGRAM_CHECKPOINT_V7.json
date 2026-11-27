@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-07",
-  "scheduledRunsConsumed": 0,
-  "headExamined": "796d759b35e45a1e9f5f4027cdcb69b7fc4d367e",
+  "runId": "manual-recovery-v7.1",
+  "scheduledRunsConsumed": 7,
+  "headExamined": "9ca770884203cf6f4db047451b48d73fb1f2195e",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
@@ -11,16 +11,17 @@
     "V7-003",
     "V7-004",
     "V7-005",
-    "V7-006"
+    "V7-006",
+    "V7-007"
   ],
   "partial": [
     {
       "id": "V7-002",
-      "reason": "Verified characterization CI on 122b4d0 (run 45982274956 SUCCESS), HEAD 83f601a CI SUCCESS; audited M01–M06 mutation callsites. M01/M02 lack rollback; other scenarios require synthetic tests. No app fix or device test. docs/STORAGE_CI_VERIFICATION_V7_AR.md"
+      "reason": "Exact-SHA synthetic characterization CI success for 19f2759; M01/M02 reproduced, M04–M06 still require audit. No app repair."
     },
     {
-      "id": "V7-007",
-      "reason": "Added 16 newly authored PSY/BEH/JOY acceptance IDs with links to existing FIT and competitor families; historic 86+49 IDs preserved. Full duplicate/code coverage proof and external evidence still pending. docs/BEHAVIOR_TRACE_V7_AR.md"
+      "id": "V7-008",
+      "reason": "Six original indexed scientific references verified and mapped; local competitor claims, licenses and further clinical/nutrition evidence pending."
     },
     {
       "id": "V7-009",
@@ -30,10 +31,10 @@
   "blocked": [],
   "nextIds": [
     "V7-002",
-    "V7-007",
     "V7-008",
     "V7-009",
-    "V7-010"
+    "V7-011",
+    "V7-016"
   ],
   "artifacts": [
     "tests/pwa-preflight.test.js",
@@ -46,7 +47,9 @@
     "docs/CODE_CAPABILITY_MAP_V7_AR.md",
     "tests/regression.js",
     "tests/fit-next.test.js",
-    "docs/STORAGE_CI_VERIFICATION_V7_AR.md"
+    "docs/STORAGE_CI_VERIFICATION_V7_AR.md",
+    "docs/UNIFIED_REQUIREMENTS_V7_AR.md",
+    "docs/EVIDENCE_REGISTER_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -153,7 +156,13 @@
     },
     "scheduled07": {
       "testCommit": "19f27596643d830038c6ae91d481482f76be29ae",
-      "ci": "pending verification",
+      "ci": [
+        {
+          "id": 45999596445,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
       "scope": "mock-only characterization for A10-M01 and M02; no production fix, browser or device test",
       "tests": [
         "food-mode unpersisted state",
@@ -161,6 +170,21 @@
         "persisted raw unchanged",
         "failure indicator"
       ]
+    },
+    "recoveryV71": {
+      "sourceHead": "9ca770884203cf6f4db047451b48d73fb1f2195e",
+      "unifiedCommit": "d342911f344b0106d63a1342a8d245919ed9f1e1",
+      "evidenceCommit": "bcbe9ffb080b09978df6684da4e3da2aab8cfea0",
+      "uniqueIds": 151,
+      "evidenceRows": 6,
+      "ci": [
+        {
+          "id": 45999596445,
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "scope": "Document validation and prior synthetic CI, no new runtime app or device testing."
     }
   },
   "tasks": [
@@ -180,7 +204,7 @@
       "focus": "تثبيت نقطة الانطلاق",
       "task": "تدقيق PR والكود",
       "status": "PARTIAL",
-      "note": "Verified characterization CI on 122b4d0 (run 45982274956 SUCCESS), HEAD 83f601a CI SUCCESS; audited M01–M06 mutation callsites. M01/M02 lack rollback; other scenarios require synthetic tests. No app fix or device test. docs/STORAGE_CI_VERIFICATION_V7_AR.md"
+      "note": "Exact-SHA synthetic characterization CI success for 19f2759; M01/M02 reproduced, M04–M06 still require audit. No app repair."
     },
     {
       "id": "V7-003",
@@ -224,8 +248,8 @@
       "phase": "R",
       "focus": "مصفوفة المنافسين",
       "task": "إزالة التكرار",
-      "status": "PARTIAL",
-      "note": "Added 16 newly authored PSY/BEH/JOY acceptance IDs with links to existing FIT and competitor families; historic 86+49 IDs preserved. Full duplicate/code coverage proof and external evidence still pending. docs/BEHAVIOR_TRACE_V7_AR.md"
+      "status": "DONE",
+      "note": "151 unique source IDs (86+49+16) verified in unified crosswalk; all explicit behavioral overlap references resolve. Shared implementation families preserve independent acceptance. Exact semantic/code coverage remains V7-009/design gate."
     },
     {
       "id": "V7-008",
@@ -233,7 +257,8 @@
       "phase": "R",
       "focus": "مصفوفة المنافسين",
       "task": "تدقيق الأدلة",
-      "status": "TODO"
+      "status": "PARTIAL",
+      "note": "Six original indexed scientific references verified and mapped; local competitor claims, licenses and further clinical/nutrition evidence pending."
     },
     {
       "id": "V7-009",
@@ -3057,71 +3082,71 @@
     {
       "id": "V7-002",
       "priority": "P0",
-      "action": "Check exact-SHA CI for 19f2759; repair failing test if needed, then audit M04–M06 side effects with synthetic fixtures",
+      "action": "Bounded audit M04–M06; classify reproducible failures and hand off repair acceptance to build gate instead of repeated review",
       "files": [
-        "tests/regression.js",
-        "app.js"
+        "app.js",
+        "tests/regression.js"
       ],
       "dependencies": [
         "V7-003"
       ],
-      "acceptance": "CI success for test SHA; classify only reproduced behavior",
-      "reason": "P0 data integrity"
-    },
-    {
-      "id": "V7-007",
-      "priority": "P1",
-      "action": "Account for all 151 stable requirement IDs and cross-references, preserving independent acceptance criteria",
-      "files": [
-        "docs/FEATURE_MATRIX_V7_AR.md",
-        "docs/BEHAVIOR_TRACE_V7_AR.md"
-      ],
-      "dependencies": [
-        "V7-006"
-      ],
-      "acceptance": "151 unique IDs and documented overlaps",
-      "reason": "Avoid duplicate development"
+      "acceptance": "Evidence, fixture, failure vs risk separated; no production change",
+      "reason": "Data integrity; one bounded lane"
     },
     {
       "id": "V7-008",
       "priority": "P1",
-      "action": "Verify primary scientific evidence, competitor claims and licenses with dated URLs",
+      "action": "Verify local competitor primary claims and licensing/source registry; extend scientific evidence to fear avoidance and enjoyment",
       "files": [
         "docs/EVIDENCE_REGISTER_V7_AR.md"
       ],
       "dependencies": [
         "V7-001"
       ],
-      "acceptance": "Source type, confidence, date and limitations",
-      "reason": "Evidence gate"
+      "acceptance": "Dated primary links, limitations and no invented coverage",
+      "reason": "Independent evidence lane"
     },
     {
       "id": "V7-009",
       "priority": "P1",
-      "action": "Trace each acceptance requirement to concrete code/test evidence or missing status",
+      "action": "Trace 151 IDs by family against actual code and tests, starting F14/F04/F07",
       "files": [
+        "docs/UNIFIED_REQUIREMENTS_V7_AR.md",
         "docs/CODE_CAPABILITY_MAP_V7_AR.md"
       ],
       "dependencies": [
         "V7-007"
       ],
-      "acceptance": "No unverified implemented claims",
-      "reason": "Build readiness"
+      "acceptance": "Explicit evidence or gap for each criterion, no false implemented status",
+      "reason": "No duplicate builds"
     },
     {
-      "id": "V7-010",
+      "id": "V7-011",
       "priority": "P1",
-      "action": "Prioritize P0 fixes and dependency-aware implementation backlog after evidence gates",
+      "action": "Independent local Saudi competitor research; verify official features and access limitations",
       "files": [
-        "docs/PRIORITY_BACKLOG_V7_AR.md"
+        "docs/COMPETITOR_RESEARCH_ROUND_03_AR.md",
+        "docs/EVIDENCE_REGISTER_V7_AR.md"
       ],
       "dependencies": [
-        "V7-002",
-        "V7-008",
-        "V7-009"
+        "V7-001"
       ],
-      "acceptance": "Risk-first sequence",
-      "reason": "Safety"
+      "acceptance": "Verified dated official claims and mapped V7 feature",
+      "reason": "Advance independent research while P0 audited"
+    },
+    {
+      "id": "V7-016",
+      "priority": "P1",
+      "action": "Verify SDT research and produce design rationale with acceptance; reuse E01, no duplicate search",
+      "files": [
+        "docs/EVIDENCE_REGISTER_V7_AR.md",
+        "docs/BEHAVIOR_TRACE_V7_AR.md"
+      ],
+      "dependencies": [
+        "V7-001"
+      ],
+      "acceptance": "Evidence-based autonomy choices and limits; no efficacy claim",
+      "reason": "Behavioral design research lane"
     }
   ],
   "backlog": [
@@ -3168,6 +3193,32 @@
       "before": "A10 mock save test pending verification",
       "after": "A10 CI confirmed; six callsites classified; remaining failure reproduction required",
       "evidence": "docs/STORAGE_CI_VERIFICATION_V7_AR.md"
+    },
+    {
+      "run": "manual-recovery-v7.1",
+      "decision": "V7.1 bounded independent research lanes and repaired checkpoint ordinal",
+      "before": "scheduledRunsConsumed=0 despite scheduled-07; repeated P0-only work",
+      "after": "7 recorded ordinal, manual run does not increment; 151 IDs unified, six sources verified, nextActions diversified",
+      "reason": "Prevent starvation without bypassing phase gates; original schedule untouched",
+      "evidence": "UNIFIED_REQUIREMENTS_V7_AR.md; EVIDENCE_REGISTER_V7_AR.md"
     }
-  ]
+  ],
+  "lastScheduledRun": {
+    "checkpointRun": "scheduled-07",
+    "ordinal": 7,
+    "automationRunId": "02d53762-d6e0-832b-8a77-ff991e1a5c04",
+    "scheduledFor": "2026-11-27T12:29:13Z",
+    "note": "Latest recorded automation run and checkpoint ordinal matched; full per-run history not independently enumerated."
+  },
+  "executionPolicy": {
+    "version": "V7.1",
+    "lanes": [
+      "P0/CI",
+      "requirements/code mapping",
+      "scientific evidence",
+      "local competitors/technical research",
+      "acceptance and checkpoint"
+    ],
+    "note": "Independent research advances while P0 waits; no phase gate bypass, same original 72 scheduled occurrences."
+  }
 }
