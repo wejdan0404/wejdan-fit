@@ -3300,21 +3300,28 @@
       "scope": "synthetic CI only",
       "documentCommit": "308298d4bd0af6e5bfdecee5b499f22b52532ef1"
     },
-    "ordinalNote": "Manual continuation; scheduledRunsConsumed unchanged because no confirmed new scheduled occurrence ID"
+    "ordinalNote": "Manual continuation: do not advance scheduledRunsConsumed absent trusted scheduled run ID",
+    "browserAcceptance": {
+      "status": "BLOCKED",
+      "reason": "No real HTTP browser/iPhone execution in this turn; manual acceptance protocol recorded",
+      "artifact": "docs/RC_01_TODAY_AR.md",
+      "commit": "185a5f0127958dd24e8bd1f91a989cd808da524d",
+      "cases": 8
+    }
   },
   "rcNextActions": [
     {
       "id": "RC-01-B",
       "priority": "P0",
-      "action": "Exercise browser import/export, recovery UI, read/write denial and offline via local HTTP if available",
+      "action": "Execute eight documented acceptance cases on real localhost HTTP browser using isolated synthetic profile; record exact SHA and outcomes",
       "files": [
         "app.js",
         "sw.js",
         "tests/regression.js"
       ],
       "dependencies": [],
-      "acceptance": "Browser evidence and synthetic fixtures or explicit BLOCKED",
-      "reason": "Prevent data loss"
+      "acceptance": "Real-origin browser evidence for import/export, corruption, denial and offline or BLOCKED with environment reason",
+      "reason": "Documented acceptance protocol exists; execution evidence still missing"
     },
     {
       "id": "RC-01-C",
