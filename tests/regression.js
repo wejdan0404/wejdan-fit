@@ -83,3 +83,19 @@ assert.notStrictEqual(data.get(syntheticKey),'{invalid-synthetic-json','current 
 assert.strictEqual(JSON.parse(data.get(syntheticKey)).settings.setupComplete,false);
 if(previousRaw===undefined)data.delete(syntheticKey);else data.set(syntheticKey,previousRaw);
 console.log('V7-002 CHARACTERIZATION: save after corrupt JSON overwrites original raw (known P0 risk, not fixed)');
+
+
+// V7-002 A10 characterization: synthetic quota/permission failure, without touching real data.
+// The write is rejected by the mock and the prior persisted snapshot must remain intact.
+const stableRaw=data.get(syntheticKey);
+const realSetItem=storage.setItem;
+storage.setItem=()=>{throw new Error('QuotaExceededError synthetic')};
+try {
+  const deniedEnv=makeEnv();
+  assert.strictEqual(deniedEnv.ctx.__test.save(),false,'save must report a failed local write');
+  assert.strictEqual(data.get(syntheticKey),stableRaw,'failed write must not change persisted bytes');
+  assert.strictEqual(deniedEnv.els.get('saveIndicator').textContent,'تعذّر الحفظ المحلي','UI must show failure');
+} finally {
+  storage.setItem=realSetItem;
+}
+console.log('V7-002 CHARACTERIZATION: denied localStorage write returns false and preserves persisted bytes (mock only)');
