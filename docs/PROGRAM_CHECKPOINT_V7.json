@@ -1,0 +1,2944 @@
+{
+  "version": "V7.0",
+  "date": "2026-11-27",
+  "runId": "manual-bootstrap-01",
+  "scheduledRunsConsumed": 0,
+  "headExamined": "acdf71012dfd017ef27f6500b5f51ca19cac4a09",
+  "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
+  "phase": "R",
+  "completedIds": [
+    "V7-003",
+    "V7-005"
+  ],
+  "partial": [
+    {
+      "id": "V7-001",
+      "reason": "Reviewed headings and key findings of all four archived rounds; full source and requirement extraction remains."
+    },
+    {
+      "id": "V7-002",
+      "reason": "Inspected PR, index, service worker, core modules and workflow; comprehensive code audit remains."
+    },
+    {
+      "id": "V7-004",
+      "reason": "Product and release guardrails recovered from V7 and existing docs; complete decision log remains."
+    }
+  ],
+  "blocked": [],
+  "nextIds": [
+    "V7-001",
+    "V7-002",
+    "V7-004",
+    "V7-006",
+    "V7-007"
+  ],
+  "artifacts": [
+    "tests/pwa-preflight.test.js",
+    ".github/workflows/quality.yml",
+    "docs/MASTER_PROGRAM_V7_AR.md"
+  ],
+  "tests": {
+    "baseline": {
+      "sha": "acdf71012dfd017ef27f6500b5f51ca19cac4a09",
+      "conclusion": "success"
+    },
+    "preflight": {
+      "sha": "256420249e7e06353802f9686ec2a5b79cd04710",
+      "workflow": [
+        {
+          "status": "queued",
+          "conclusion": null,
+          "id": 45945858325
+        }
+      ],
+      "scope": "static package plus simulated install/request boundaries, not actual device or offline browsing"
+    }
+  },
+  "tasks": [
+    {
+      "id": "V7-001",
+      "run": 1,
+      "phase": "R",
+      "focus": "تثبيت نقطة الانطلاق",
+      "task": "قراءة الأبحاث الأربع",
+      "status": "PARTIAL",
+      "note": "Reviewed headings and key findings of all four archived rounds; full source and requirement extraction remains."
+    },
+    {
+      "id": "V7-002",
+      "run": 1,
+      "phase": "R",
+      "focus": "تثبيت نقطة الانطلاق",
+      "task": "تدقيق PR والكود",
+      "status": "PARTIAL",
+      "note": "Inspected PR, index, service worker, core modules and workflow; comprehensive code audit remains."
+    },
+    {
+      "id": "V7-003",
+      "run": 1,
+      "phase": "R",
+      "focus": "تثبيت نقطة الانطلاق",
+      "task": "جرد الاختبارات",
+      "status": "DONE",
+      "note": "Baseline CI success confirmed at acdf710; inspected commands and identified offline dependency coverage gap. New preflight test added; its run status tracked separately."
+    },
+    {
+      "id": "V7-004",
+      "run": 1,
+      "phase": "R",
+      "focus": "تثبيت نقطة الانطلاق",
+      "task": "استخراج القرارات",
+      "status": "PARTIAL",
+      "note": "Product and release guardrails recovered from V7 and existing docs; complete decision log remains."
+    },
+    {
+      "id": "V7-005",
+      "run": 1,
+      "phase": "R",
+      "focus": "تثبيت نقطة الانطلاق",
+      "task": "تحديد خط الأساس",
+      "status": "DONE",
+      "note": "Baseline branch HEAD acdf71012dfd017ef27f6500b5f51ca19cac4a09 and main 5463c14025d2af7e937d0405e2d215d98979ffe1 confirmed; PR open draft."
+    },
+    {
+      "id": "V7-006",
+      "run": 2,
+      "phase": "R",
+      "focus": "مصفوفة المنافسين",
+      "task": "دمج الجولات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-007",
+      "run": 2,
+      "phase": "R",
+      "focus": "مصفوفة المنافسين",
+      "task": "إزالة التكرار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-008",
+      "run": 2,
+      "phase": "R",
+      "focus": "مصفوفة المنافسين",
+      "task": "تدقيق الأدلة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-009",
+      "run": 2,
+      "phase": "R",
+      "focus": "مصفوفة المنافسين",
+      "task": "مطابقة الكود",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-010",
+      "run": 2,
+      "phase": "R",
+      "focus": "مصفوفة المنافسين",
+      "task": "ترتيب الفجوات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-011",
+      "run": 3,
+      "phase": "R",
+      "focus": "السوق المحلي",
+      "task": "منافسون سعوديون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-012",
+      "run": 3,
+      "phase": "R",
+      "focus": "السوق المحلي",
+      "task": "عرب",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-013",
+      "run": 3,
+      "phase": "R",
+      "focus": "السوق المحلي",
+      "task": "رمضان",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-014",
+      "run": 3,
+      "phase": "R",
+      "focus": "السوق المحلي",
+      "task": "ملاءمة اللغة والثقافة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-015",
+      "run": 3,
+      "phase": "R",
+      "focus": "السوق المحلي",
+      "task": "مصادر رسمية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-016",
+      "run": 4,
+      "phase": "R",
+      "focus": "الدافعية والعادات",
+      "task": "SDT",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-017",
+      "run": 4,
+      "phase": "R",
+      "focus": "الدافعية والعادات",
+      "task": "COM-B",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-018",
+      "run": 4,
+      "phase": "R",
+      "focus": "الدافعية والعادات",
+      "task": "BCT taxonomy",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-019",
+      "run": 4,
+      "phase": "R",
+      "focus": "الدافعية والعادات",
+      "task": "كفاءة ذاتية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-020",
+      "run": 4,
+      "phase": "R",
+      "focus": "الدافعية والعادات",
+      "task": "إشارات البداية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-021",
+      "run": 5,
+      "phase": "R",
+      "focus": "علم نفس المتعة",
+      "task": "توقع المتعة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-022",
+      "run": 5,
+      "phase": "R",
+      "focus": "علم نفس المتعة",
+      "task": "المشاعر أثناء النشاط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-023",
+      "run": 5,
+      "phase": "R",
+      "focus": "علم نفس المتعة",
+      "task": "الموسيقى",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-024",
+      "run": 5,
+      "phase": "R",
+      "focus": "علم نفس المتعة",
+      "task": "التنويع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-025",
+      "run": 5,
+      "phase": "R",
+      "focus": "علم نفس المتعة",
+      "task": "مكافآت فورية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-026",
+      "run": 6,
+      "phase": "R",
+      "focus": "علم نفس الألم",
+      "task": "الخوف من الحركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-027",
+      "run": 6,
+      "phase": "R",
+      "focus": "علم نفس الألم",
+      "task": "التعرض التدريجي بإشراف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-028",
+      "run": 6,
+      "phase": "R",
+      "focus": "علم نفس الألم",
+      "task": "تعليم الحركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-029",
+      "run": 6,
+      "phase": "R",
+      "focus": "علم نفس الألم",
+      "task": "علامات الإحالة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-030",
+      "run": 6,
+      "phase": "R",
+      "focus": "علم نفس الألم",
+      "task": "حدود التخصيص",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-031",
+      "run": 7,
+      "phase": "R",
+      "focus": "الكمالية والتعثر",
+      "task": "التفكير الثنائي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-032",
+      "run": 7,
+      "phase": "R",
+      "focus": "الكمالية والتعثر",
+      "task": "التعاطف مع الذات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-033",
+      "run": 7,
+      "phase": "R",
+      "focus": "الكمالية والتعثر",
+      "task": "التخطيط الشرطي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-034",
+      "run": 7,
+      "phase": "R",
+      "focus": "الكمالية والتعثر",
+      "task": "العودة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-035",
+      "run": 7,
+      "phase": "R",
+      "focus": "الكمالية والتعثر",
+      "task": "أهداف مرنة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-036",
+      "run": 8,
+      "phase": "R",
+      "focus": "الأكل العاطفي",
+      "task": "تنظيم المشاعر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-037",
+      "run": 8,
+      "phase": "R",
+      "focus": "الأكل العاطفي",
+      "task": "الجوع والشبع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-038",
+      "run": 8,
+      "phase": "R",
+      "focus": "الأكل العاطفي",
+      "task": "المرونة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-039",
+      "run": 8,
+      "phase": "R",
+      "focus": "الأكل العاطفي",
+      "task": "عبء التسجيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-040",
+      "run": 8,
+      "phase": "R",
+      "focus": "الأكل العاطفي",
+      "task": "حدود التدخل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-041",
+      "run": 9,
+      "phase": "R",
+      "focus": "الانشغال والبيئة",
+      "task": "التسويف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-042",
+      "run": 9,
+      "phase": "R",
+      "focus": "الانشغال والبيئة",
+      "task": "بدء المهام",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-043",
+      "run": 9,
+      "phase": "R",
+      "focus": "الانشغال والبيئة",
+      "task": "تصميم البيئة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-044",
+      "run": 9,
+      "phase": "R",
+      "focus": "الانشغال والبيئة",
+      "task": "العادات المرتبطة بالروتين",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-045",
+      "run": 9,
+      "phase": "R",
+      "focus": "الانشغال والبيئة",
+      "task": "تذكيرات غير عقابية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-046",
+      "run": 10,
+      "phase": "R",
+      "focus": "التلعيب الأخلاقي",
+      "task": "المكافآت",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-047",
+      "run": 10,
+      "phase": "R",
+      "focus": "التلعيب الأخلاقي",
+      "task": "الهوية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-048",
+      "run": 10,
+      "phase": "R",
+      "focus": "التلعيب الأخلاقي",
+      "task": "الاختيار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-049",
+      "run": 10,
+      "phase": "R",
+      "focus": "التلعيب الأخلاقي",
+      "task": "خطر السلوك القهري",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-050",
+      "run": 10,
+      "phase": "R",
+      "focus": "التلعيب الأخلاقي",
+      "task": "مقاييس نجاح صحية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-051",
+      "run": 11,
+      "phase": "R",
+      "focus": "المقاومة",
+      "task": "A/B الحالي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-052",
+      "run": 11,
+      "phase": "R",
+      "focus": "المقاومة",
+      "task": "سجل المجموعات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-053",
+      "run": 11,
+      "phase": "R",
+      "focus": "المقاومة",
+      "task": "بدائل الحركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-054",
+      "run": 11,
+      "phase": "R",
+      "focus": "المقاومة",
+      "task": "شرح الوضعيات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-055",
+      "run": 11,
+      "phase": "R",
+      "focus": "المقاومة",
+      "task": "التدرج المشروط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-056",
+      "run": 12,
+      "phase": "R",
+      "focus": "البيلاتس والمرونة",
+      "task": "تصنيف الحركات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-057",
+      "run": 12,
+      "phase": "R",
+      "focus": "البيلاتس والمرونة",
+      "task": "الأدوات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-058",
+      "run": 12,
+      "phase": "R",
+      "focus": "البيلاتس والمرونة",
+      "task": "مصادر مختصة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-059",
+      "run": 12,
+      "phase": "R",
+      "focus": "البيلاتس والمرونة",
+      "task": "تراخيص الوسائط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-060",
+      "run": 12,
+      "phase": "R",
+      "focus": "البيلاتس والمرونة",
+      "task": "فصل التأهيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-061",
+      "run": 13,
+      "phase": "R",
+      "focus": "المشي",
+      "task": "تسجيل السير",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-062",
+      "run": 13,
+      "phase": "R",
+      "focus": "المشي",
+      "task": "الوحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-063",
+      "run": 13,
+      "phase": "R",
+      "focus": "المشي",
+      "task": "مؤقت",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-064",
+      "run": 13,
+      "phase": "R",
+      "focus": "المشي",
+      "task": "سلامة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-065",
+      "run": 13,
+      "phase": "R",
+      "focus": "المشي",
+      "task": "تقارير النشاط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-066",
+      "run": 14,
+      "phase": "R",
+      "focus": "التغذية",
+      "task": "SFDA والتحقق من الإتاحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-067",
+      "run": 14,
+      "phase": "R",
+      "focus": "التغذية",
+      "task": "USDA",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-068",
+      "run": 14,
+      "phase": "R",
+      "focus": "التغذية",
+      "task": "Open Food Facts",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-069",
+      "run": 14,
+      "phase": "R",
+      "focus": "التغذية",
+      "task": "مصادر المكونات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-070",
+      "run": 14,
+      "phase": "R",
+      "focus": "التغذية",
+      "task": "دقة الطاقة والماكروز",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-071",
+      "run": 15,
+      "phase": "R",
+      "focus": "المطبخ",
+      "task": "حصص الوصفات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-072",
+      "run": 15,
+      "phase": "R",
+      "focus": "المطبخ",
+      "task": "الوحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-073",
+      "run": 15,
+      "phase": "R",
+      "focus": "المطبخ",
+      "task": "المخزون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-074",
+      "run": 15,
+      "phase": "R",
+      "focus": "المطبخ",
+      "task": "التسوق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-075",
+      "run": 15,
+      "phase": "R",
+      "focus": "المطبخ",
+      "task": "مراجعة مسببات الحساسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-076",
+      "run": 16,
+      "phase": "R",
+      "focus": "التقدم والتعافي",
+      "task": "اتجاه الوزن",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-077",
+      "run": 16,
+      "phase": "R",
+      "focus": "التقدم والتعافي",
+      "task": "قياسات اختيارية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-078",
+      "run": 16,
+      "phase": "R",
+      "focus": "التقدم والتعافي",
+      "task": "أداء القوة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-079",
+      "run": 16,
+      "phase": "R",
+      "focus": "التقدم والتعافي",
+      "task": "النوم والطاقة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-080",
+      "run": 16,
+      "phase": "R",
+      "focus": "التقدم والتعافي",
+      "task": "كفاية البيانات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-081",
+      "run": 17,
+      "phase": "R",
+      "focus": "التقنيات المفتوحة",
+      "task": "GitHub",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-082",
+      "run": 17,
+      "phase": "R",
+      "focus": "التقنيات المفتوحة",
+      "task": "تراخيص الكود والبيانات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-083",
+      "run": 17,
+      "phase": "R",
+      "focus": "التقنيات المفتوحة",
+      "task": "IndexedDB",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-084",
+      "run": 17,
+      "phase": "R",
+      "focus": "التقنيات المفتوحة",
+      "task": "PWA/WebKit",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-085",
+      "run": 17,
+      "phase": "R",
+      "focus": "التقنيات المفتوحة",
+      "task": "جدوى التكامل الصحي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-086",
+      "run": 18,
+      "phase": "R",
+      "focus": "بوابة البحث",
+      "task": "دمج FIT/R3/R4/PSY/BEH/JOY",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-087",
+      "run": 18,
+      "phase": "R",
+      "focus": "بوابة البحث",
+      "task": "جودة الأدلة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-088",
+      "run": 18,
+      "phase": "R",
+      "focus": "بوابة البحث",
+      "task": "مصفوفة القبول",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-089",
+      "run": 18,
+      "phase": "R",
+      "focus": "بوابة البحث",
+      "task": "التبعيات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-090",
+      "run": 18,
+      "phase": "R",
+      "focus": "بوابة البحث",
+      "task": "اعتماد خط أساس البناء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-091",
+      "run": 19,
+      "phase": "D",
+      "focus": "معمارية UX",
+      "task": "خريطة المنتج",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-092",
+      "run": 19,
+      "phase": "D",
+      "focus": "معمارية UX",
+      "task": "التنقل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-093",
+      "run": 19,
+      "phase": "D",
+      "focus": "معمارية UX",
+      "task": "الصفحة الرئيسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-094",
+      "run": 19,
+      "phase": "D",
+      "focus": "معمارية UX",
+      "task": "إتاحة الميزات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-095",
+      "run": 19,
+      "phase": "D",
+      "focus": "معمارية UX",
+      "task": "حالات الخطأ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-096",
+      "run": 20,
+      "phase": "D",
+      "focus": "رحلات السلوك",
+      "task": "بداية اليوم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-097",
+      "run": 20,
+      "phase": "D",
+      "focus": "رحلات السلوك",
+      "task": "بدء النشاط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-098",
+      "run": 20,
+      "phase": "D",
+      "focus": "رحلات السلوك",
+      "task": "اختيار الراحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-099",
+      "run": 20,
+      "phase": "D",
+      "focus": "رحلات السلوك",
+      "task": "التعامل مع التعثر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-100",
+      "run": 20,
+      "phase": "D",
+      "focus": "رحلات السلوك",
+      "task": "العودة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-101",
+      "run": 21,
+      "phase": "D",
+      "focus": "رحلات التدريب",
+      "task": "بدء الجلسة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-102",
+      "run": 21,
+      "phase": "D",
+      "focus": "رحلات التدريب",
+      "task": "التسجيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-103",
+      "run": 21,
+      "phase": "D",
+      "focus": "رحلات التدريب",
+      "task": "استئناف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-104",
+      "run": 21,
+      "phase": "D",
+      "focus": "رحلات التدريب",
+      "task": "البدائل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-105",
+      "run": 21,
+      "phase": "D",
+      "focus": "رحلات التدريب",
+      "task": "إنهاء جزئي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-106",
+      "run": 22,
+      "phase": "D",
+      "focus": "رحلات التغذية",
+      "task": "التسجيل السريع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-107",
+      "run": 22,
+      "phase": "D",
+      "focus": "رحلات التغذية",
+      "task": "المفصل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-108",
+      "run": 22,
+      "phase": "D",
+      "focus": "رحلات التغذية",
+      "task": "الوصفات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-109",
+      "run": 22,
+      "phase": "D",
+      "focus": "رحلات التغذية",
+      "task": "المخزون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-110",
+      "run": 22,
+      "phase": "D",
+      "focus": "رحلات التغذية",
+      "task": "الحساسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-111",
+      "run": 23,
+      "phase": "D",
+      "focus": "نظام التصميم",
+      "task": "الهوية الحالية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-112",
+      "run": 23,
+      "phase": "D",
+      "focus": "نظام التصميم",
+      "task": "RTL",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-113",
+      "run": 23,
+      "phase": "D",
+      "focus": "نظام التصميم",
+      "task": "Light/Dark",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-114",
+      "run": 23,
+      "phase": "D",
+      "focus": "نظام التصميم",
+      "task": "مكونات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-115",
+      "run": 23,
+      "phase": "D",
+      "focus": "نظام التصميم",
+      "task": "إتاحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-116",
+      "run": 24,
+      "phase": "D",
+      "focus": "معمارية البيانات",
+      "task": "المخطط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-117",
+      "run": 24,
+      "phase": "D",
+      "focus": "معمارية البيانات",
+      "task": "المعرفات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-118",
+      "run": 24,
+      "phase": "D",
+      "focus": "معمارية البيانات",
+      "task": "الترحيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-119",
+      "run": 24,
+      "phase": "D",
+      "focus": "معمارية البيانات",
+      "task": "حفظ الحالة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-120",
+      "run": 24,
+      "phase": "D",
+      "focus": "معمارية البيانات",
+      "task": "الخصوصية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-121",
+      "run": 25,
+      "phase": "D",
+      "focus": "معمارية الكود",
+      "task": "حدود الوحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-122",
+      "run": 25,
+      "phase": "D",
+      "focus": "معمارية الكود",
+      "task": "قواعد السلوك",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-123",
+      "run": 25,
+      "phase": "D",
+      "focus": "معمارية الكود",
+      "task": "التخزين",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-124",
+      "run": 25,
+      "phase": "D",
+      "focus": "معمارية الكود",
+      "task": "الكاش",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-125",
+      "run": 25,
+      "phase": "D",
+      "focus": "معمارية الكود",
+      "task": "معالجة الأخطاء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-126",
+      "run": 26,
+      "phase": "D",
+      "focus": "بوابة التنفيذ",
+      "task": "backlog موحد",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-127",
+      "run": 26,
+      "phase": "D",
+      "focus": "بوابة التنفيذ",
+      "task": "ترتيب P0/P1/P2",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-128",
+      "run": 26,
+      "phase": "D",
+      "focus": "بوابة التنفيذ",
+      "task": "اختبارات قبول",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-129",
+      "run": 26,
+      "phase": "D",
+      "focus": "بوابة التنفيذ",
+      "task": "خطة rollback",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-130",
+      "run": 26,
+      "phase": "D",
+      "focus": "بوابة التنفيذ",
+      "task": "مراجعة النطاق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-131",
+      "run": 27,
+      "phase": "B",
+      "focus": "الحوكمة والاختبارات",
+      "task": "تثبيت خط الأساس",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-132",
+      "run": 27,
+      "phase": "B",
+      "focus": "الحوكمة والاختبارات",
+      "task": "fixtures اصطناعية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-133",
+      "run": 27,
+      "phase": "B",
+      "focus": "الحوكمة والاختبارات",
+      "task": "فصل الوحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-134",
+      "run": 27,
+      "phase": "B",
+      "focus": "الحوكمة والاختبارات",
+      "task": "CI",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-135",
+      "run": 27,
+      "phase": "B",
+      "focus": "الحوكمة والاختبارات",
+      "task": "توثيق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-136",
+      "run": 28,
+      "phase": "B",
+      "focus": "حفظ البيانات",
+      "task": "التحقق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-137",
+      "run": 28,
+      "phase": "B",
+      "focus": "حفظ البيانات",
+      "task": "schema migration",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-138",
+      "run": 28,
+      "phase": "B",
+      "focus": "حفظ البيانات",
+      "task": "سلامة السجلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-139",
+      "run": 28,
+      "phase": "B",
+      "focus": "حفظ البيانات",
+      "task": "معالجة فشل الحفظ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-140",
+      "run": 28,
+      "phase": "B",
+      "focus": "حفظ البيانات",
+      "task": "منع التكرار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-141",
+      "run": 29,
+      "phase": "B",
+      "focus": "النسخ والاستعادة",
+      "task": "معاينة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-142",
+      "run": 29,
+      "phase": "B",
+      "focus": "النسخ والاستعادة",
+      "task": "snapshot",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-143",
+      "run": 29,
+      "phase": "B",
+      "focus": "النسخ والاستعادة",
+      "task": "rollback",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-144",
+      "run": 29,
+      "phase": "B",
+      "focus": "النسخ والاستعادة",
+      "task": "تلف البيانات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-145",
+      "run": 29,
+      "phase": "B",
+      "focus": "النسخ والاستعادة",
+      "task": "اختبار الانحدار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-146",
+      "run": 30,
+      "phase": "B",
+      "focus": "محرك السلامة",
+      "task": "حالات الإيقاف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-147",
+      "run": 30,
+      "phase": "B",
+      "focus": "محرك السلامة",
+      "task": "القيود المدخلة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-148",
+      "run": 30,
+      "phase": "B",
+      "focus": "محرك السلامة",
+      "task": "منع التجاوز",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-149",
+      "run": 30,
+      "phase": "B",
+      "focus": "محرك السلامة",
+      "task": "رسائل الإحالة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-150",
+      "run": 30,
+      "phase": "B",
+      "focus": "محرك السلامة",
+      "task": "اختبارات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-151",
+      "run": 31,
+      "phase": "B",
+      "focus": "أوضاع اليوم",
+      "task": "طبيعي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-152",
+      "run": 31,
+      "phase": "B",
+      "focus": "أوضاع اليوم",
+      "task": "مخفف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-153",
+      "run": 31,
+      "phase": "B",
+      "focus": "أوضاع اليوم",
+      "task": "راحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-154",
+      "run": 31,
+      "phase": "B",
+      "focus": "أوضاع اليوم",
+      "task": "اختيار صريح",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-155",
+      "run": 31,
+      "phase": "B",
+      "focus": "أوضاع اليوم",
+      "task": "عدم تغيير الخطة صامتًا",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-156",
+      "run": 32,
+      "phase": "B",
+      "focus": "عوائق الالتزام",
+      "task": "اختيار عائق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-157",
+      "run": 32,
+      "phase": "B",
+      "focus": "عوائق الالتزام",
+      "task": "تفضيلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-158",
+      "run": 32,
+      "phase": "B",
+      "focus": "عوائق الالتزام",
+      "task": "خطوات صغيرة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-159",
+      "run": 32,
+      "phase": "B",
+      "focus": "عوائق الالتزام",
+      "task": "اقتراحات غير علاجية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-160",
+      "run": 32,
+      "phase": "B",
+      "focus": "عوائق الالتزام",
+      "task": "اختبار الحالات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-161",
+      "run": 33,
+      "phase": "B",
+      "focus": "البدء السهل",
+      "task": "طقوس",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-162",
+      "run": 33,
+      "phase": "B",
+      "focus": "البدء السهل",
+      "task": "إشارات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-163",
+      "run": 33,
+      "phase": "B",
+      "focus": "البدء السهل",
+      "task": "اختصارات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-164",
+      "run": 33,
+      "phase": "B",
+      "focus": "البدء السهل",
+      "task": "خطوة واحدة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-165",
+      "run": 33,
+      "phase": "B",
+      "focus": "البدء السهل",
+      "task": "قياس زمن البدء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-166",
+      "run": 34,
+      "phase": "B",
+      "focus": "التخطيط المرن",
+      "task": "جدول أسبوعي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-167",
+      "run": 34,
+      "phase": "B",
+      "focus": "التخطيط المرن",
+      "task": "إعادة جدولة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-168",
+      "run": 34,
+      "phase": "B",
+      "focus": "التخطيط المرن",
+      "task": "معاينة الأثر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-169",
+      "run": 34,
+      "phase": "B",
+      "focus": "التخطيط المرن",
+      "task": "pause",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-170",
+      "run": 34,
+      "phase": "B",
+      "focus": "التخطيط المرن",
+      "task": "عدم مضاعفة الجلسات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-171",
+      "run": 35,
+      "phase": "B",
+      "focus": "العودة بعد الانقطاع",
+      "task": "حفظ التقدم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-172",
+      "run": 35,
+      "phase": "B",
+      "focus": "العودة بعد الانقطاع",
+      "task": "استئناف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-173",
+      "run": 35,
+      "phase": "B",
+      "focus": "العودة بعد الانقطاع",
+      "task": "مراجعة المستوى",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-174",
+      "run": 35,
+      "phase": "B",
+      "focus": "العودة بعد الانقطاع",
+      "task": "حماية الراحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-175",
+      "run": 35,
+      "phase": "B",
+      "focus": "العودة بعد الانقطاع",
+      "task": "اختبار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-176",
+      "run": 36,
+      "phase": "B",
+      "focus": "الثقة بالحركة",
+      "task": "تعلم قبل النشاط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-177",
+      "run": 36,
+      "phase": "B",
+      "focus": "الثقة بالحركة",
+      "task": "تسجيل توقع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-178",
+      "run": 36,
+      "phase": "B",
+      "focus": "الثقة بالحركة",
+      "task": "تجربة اختيارية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-179",
+      "run": 36,
+      "phase": "B",
+      "focus": "الثقة بالحركة",
+      "task": "دفتر القوة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-180",
+      "run": 36,
+      "phase": "B",
+      "focus": "الثقة بالحركة",
+      "task": "عدم تصعيد الخطة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-181",
+      "run": 37,
+      "phase": "B",
+      "focus": "محرك المتعة",
+      "task": "تفضيلات وروابط ترفيه",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-182",
+      "run": 37,
+      "phase": "B",
+      "focus": "محرك المتعة",
+      "task": "طقوس وأجواء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-183",
+      "run": 37,
+      "phase": "B",
+      "focus": "محرك المتعة",
+      "task": "تقييم أثناء/بعد النشاط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-184",
+      "run": 37,
+      "phase": "B",
+      "focus": "محرك المتعة",
+      "task": "مقارنة التوقع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-185",
+      "run": 37,
+      "phase": "B",
+      "focus": "محرك المتعة",
+      "task": "تنويع معتمد وحفظ محلي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-186",
+      "run": 38,
+      "phase": "B",
+      "focus": "تحفيز غير عقابي",
+      "task": "إنجازات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-187",
+      "run": 38,
+      "phase": "B",
+      "focus": "تحفيز غير عقابي",
+      "task": "نجوم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-188",
+      "run": 38,
+      "phase": "B",
+      "focus": "تحفيز غير عقابي",
+      "task": "خريطة رحلة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-189",
+      "run": 38,
+      "phase": "B",
+      "focus": "تحفيز غير عقابي",
+      "task": "تعطيل التلعيب",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-190",
+      "run": 38,
+      "phase": "B",
+      "focus": "تحفيز غير عقابي",
+      "task": "عدم مكافأة الإفراط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-191",
+      "run": 39,
+      "phase": "B",
+      "focus": "واجهة اليوم",
+      "task": "هيكل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-192",
+      "run": 39,
+      "phase": "B",
+      "focus": "واجهة اليوم",
+      "task": "اختصارات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-193",
+      "run": 39,
+      "phase": "B",
+      "focus": "واجهة اليوم",
+      "task": "حالة الراحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-194",
+      "run": 39,
+      "phase": "B",
+      "focus": "واجهة اليوم",
+      "task": "الوصول للمهام",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-195",
+      "run": 39,
+      "phase": "B",
+      "focus": "واجهة اليوم",
+      "task": "حالات فارغة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-196",
+      "run": 40,
+      "phase": "B",
+      "focus": "الهوية والوصول",
+      "task": "tokens",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-197",
+      "run": 40,
+      "phase": "B",
+      "focus": "الهوية والوصول",
+      "task": "RTL",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-198",
+      "run": 40,
+      "phase": "B",
+      "focus": "الهوية والوصول",
+      "task": "الوضع الداكن",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-199",
+      "run": 40,
+      "phase": "B",
+      "focus": "الهوية والوصول",
+      "task": "focus",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-200",
+      "run": 40,
+      "phase": "B",
+      "focus": "الهوية والوصول",
+      "task": "تباين",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-201",
+      "run": 41,
+      "phase": "B",
+      "focus": "بنية الجلسة",
+      "task": "معرف ثابت",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-202",
+      "run": 41,
+      "phase": "B",
+      "focus": "بنية الجلسة",
+      "task": "مخطط/جزئي/مكتمل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-203",
+      "run": 41,
+      "phase": "B",
+      "focus": "بنية الجلسة",
+      "task": "ترتيب",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-204",
+      "run": 41,
+      "phase": "B",
+      "focus": "بنية الجلسة",
+      "task": "تأكيد",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-205",
+      "run": 41,
+      "phase": "B",
+      "focus": "بنية الجلسة",
+      "task": "اختبار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-206",
+      "run": 42,
+      "phase": "B",
+      "focus": "ذاكرة آخر أداء",
+      "task": "نسخة الحركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-207",
+      "run": 42,
+      "phase": "B",
+      "focus": "ذاكرة آخر أداء",
+      "task": "أرقام سابقة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-208",
+      "run": 42,
+      "phase": "B",
+      "focus": "ذاكرة آخر أداء",
+      "task": "نسخ صريح",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-209",
+      "run": 42,
+      "phase": "B",
+      "focus": "ذاكرة آخر أداء",
+      "task": "تعديل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-210",
+      "run": 42,
+      "phase": "B",
+      "focus": "ذاكرة آخر أداء",
+      "task": "منع المقارنة الخاطئة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-211",
+      "run": 43,
+      "phase": "B",
+      "focus": "استئناف التمرين",
+      "task": "جلسة جارية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-212",
+      "run": 43,
+      "phase": "B",
+      "focus": "استئناف التمرين",
+      "task": "موضع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-213",
+      "run": 43,
+      "phase": "B",
+      "focus": "استئناف التمرين",
+      "task": "مؤقت",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-214",
+      "run": 43,
+      "phase": "B",
+      "focus": "استئناف التمرين",
+      "task": "إعادة فتح",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-215",
+      "run": 43,
+      "phase": "B",
+      "focus": "استئناف التمرين",
+      "task": "اختبار تنقل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-216",
+      "run": 44,
+      "phase": "B",
+      "focus": "مكتبة التدريب",
+      "task": "بحث",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-217",
+      "run": 44,
+      "phase": "B",
+      "focus": "مكتبة التدريب",
+      "task": "فلاتر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-218",
+      "run": 44,
+      "phase": "B",
+      "focus": "مكتبة التدريب",
+      "task": "وضعيات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-219",
+      "run": 44,
+      "phase": "B",
+      "focus": "مكتبة التدريب",
+      "task": "بدائل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-220",
+      "run": 44,
+      "phase": "B",
+      "focus": "مكتبة التدريب",
+      "task": "مصادر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-221",
+      "run": 45,
+      "phase": "B",
+      "focus": "شرح الحركات",
+      "task": "مراجعة 12 حركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-222",
+      "run": 45,
+      "phase": "B",
+      "focus": "شرح الحركات",
+      "task": "مطابقة فيديو",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-223",
+      "run": 45,
+      "phase": "B",
+      "focus": "شرح الحركات",
+      "task": "تحذيرات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-224",
+      "run": 45,
+      "phase": "B",
+      "focus": "شرح الحركات",
+      "task": "حالة توثيق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-225",
+      "run": 45,
+      "phase": "B",
+      "focus": "شرح الحركات",
+      "task": "لا تغيير جرعات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-226",
+      "run": 46,
+      "phase": "B",
+      "focus": "المشي",
+      "task": "مدة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-227",
+      "run": 46,
+      "phase": "B",
+      "focus": "المشي",
+      "task": "مسافة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-228",
+      "run": 46,
+      "phase": "B",
+      "focus": "المشي",
+      "task": "سرعة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-229",
+      "run": 46,
+      "phase": "B",
+      "focus": "المشي",
+      "task": "الوحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-230",
+      "run": 46,
+      "phase": "B",
+      "focus": "المشي",
+      "task": "فحص حسابات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-231",
+      "run": 47,
+      "phase": "B",
+      "focus": "جلسات المشي",
+      "task": "مؤقت",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-232",
+      "run": 47,
+      "phase": "B",
+      "focus": "جلسات المشي",
+      "task": "إيقاف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-233",
+      "run": 47,
+      "phase": "B",
+      "focus": "جلسات المشي",
+      "task": "استئناف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-234",
+      "run": 47,
+      "phase": "B",
+      "focus": "جلسات المشي",
+      "task": "تاريخ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-235",
+      "run": 47,
+      "phase": "B",
+      "focus": "جلسات المشي",
+      "task": "ملخص أسبوعي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-236",
+      "run": 48,
+      "phase": "B",
+      "focus": "البيلاتس",
+      "task": "فلاتر أدوات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-237",
+      "run": 48,
+      "phase": "B",
+      "focus": "البيلاتس",
+      "task": "مستوى",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-238",
+      "run": 48,
+      "phase": "B",
+      "focus": "البيلاتس",
+      "task": "وضعيات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-239",
+      "run": 48,
+      "phase": "B",
+      "focus": "البيلاتس",
+      "task": "مراجع مرخصة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-240",
+      "run": 48,
+      "phase": "B",
+      "focus": "البيلاتس",
+      "task": "منع التفعيل غير المراجع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-241",
+      "run": 49,
+      "phase": "B",
+      "focus": "المرونة",
+      "task": "مكتبة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-242",
+      "run": 49,
+      "phase": "B",
+      "focus": "المرونة",
+      "task": "روتين اختياري",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-243",
+      "run": 49,
+      "phase": "B",
+      "focus": "المرونة",
+      "task": "حدود الحركة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-244",
+      "run": 49,
+      "phase": "B",
+      "focus": "المرونة",
+      "task": "تسجيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-245",
+      "run": 49,
+      "phase": "B",
+      "focus": "المرونة",
+      "task": "فصل التأهيل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-246",
+      "run": 50,
+      "phase": "B",
+      "focus": "بيانات الأغذية",
+      "task": "مصدر لكل مكون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-247",
+      "run": 50,
+      "phase": "B",
+      "focus": "بيانات الأغذية",
+      "task": "نيء/مطبوخ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-248",
+      "run": 50,
+      "phase": "B",
+      "focus": "بيانات الأغذية",
+      "task": "وحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-249",
+      "run": 50,
+      "phase": "B",
+      "focus": "بيانات الأغذية",
+      "task": "قيم مجهولة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-250",
+      "run": 50,
+      "phase": "B",
+      "focus": "بيانات الأغذية",
+      "task": "تحقق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-251",
+      "run": 51,
+      "phase": "B",
+      "focus": "تسجيل الطعام",
+      "task": "بسيط",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-252",
+      "run": 51,
+      "phase": "B",
+      "focus": "تسجيل الطعام",
+      "task": "محفوظ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-253",
+      "run": 51,
+      "phase": "B",
+      "focus": "تسجيل الطعام",
+      "task": "مفصل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-254",
+      "run": 51,
+      "phase": "B",
+      "focus": "تسجيل الطعام",
+      "task": "تعديل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-255",
+      "run": 51,
+      "phase": "B",
+      "focus": "تسجيل الطعام",
+      "task": "عدم تحويل المجهول إلى صفر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-256",
+      "run": 52,
+      "phase": "B",
+      "focus": "الوصفات",
+      "task": "حصص",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-257",
+      "run": 52,
+      "phase": "B",
+      "focus": "الوصفات",
+      "task": "غرامات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-258",
+      "run": 52,
+      "phase": "B",
+      "focus": "الوصفات",
+      "task": "خطوات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-259",
+      "run": 52,
+      "phase": "B",
+      "focus": "الوصفات",
+      "task": "مفضلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-260",
+      "run": 52,
+      "phase": "B",
+      "focus": "الوصفات",
+      "task": "اتساق الحساب",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-261",
+      "run": 53,
+      "phase": "B",
+      "focus": "المطبخ",
+      "task": "المخزون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-262",
+      "run": 53,
+      "phase": "B",
+      "focus": "المطبخ",
+      "task": "وحدات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-263",
+      "run": 53,
+      "phase": "B",
+      "focus": "المطبخ",
+      "task": "خصم المتوفر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-264",
+      "run": 53,
+      "phase": "B",
+      "focus": "المطبخ",
+      "task": "دمج مشتريات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-265",
+      "run": 53,
+      "phase": "B",
+      "focus": "المطبخ",
+      "task": "اختبار",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-266",
+      "run": 54,
+      "phase": "B",
+      "focus": "حماية الحساسية",
+      "task": "حالة المكون",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-267",
+      "run": 54,
+      "phase": "B",
+      "focus": "حماية الحساسية",
+      "task": "العبوة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-268",
+      "run": 54,
+      "phase": "B",
+      "focus": "حماية الحساسية",
+      "task": "مجهول",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-269",
+      "run": 54,
+      "phase": "B",
+      "focus": "حماية الحساسية",
+      "task": "إعادة المراجعة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-270",
+      "run": 54,
+      "phase": "B",
+      "focus": "حماية الحساسية",
+      "task": "منع ادعاء الأمان",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-271",
+      "run": 55,
+      "phase": "B",
+      "focus": "سياق الأكل",
+      "task": "مشاعر اختيارية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-272",
+      "run": 55,
+      "phase": "B",
+      "focus": "سياق الأكل",
+      "task": "جوع وشبع",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-273",
+      "run": 55,
+      "phase": "B",
+      "focus": "سياق الأكل",
+      "task": "خيارات دعم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-274",
+      "run": 55,
+      "phase": "B",
+      "focus": "سياق الأكل",
+      "task": "لا عقاب",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-275",
+      "run": 55,
+      "phase": "B",
+      "focus": "سياق الأكل",
+      "task": "حذف محلي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-276",
+      "run": 56,
+      "phase": "B",
+      "focus": "الوزن والقياسات",
+      "task": "اتجاه",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-277",
+      "run": 56,
+      "phase": "B",
+      "focus": "الوزن والقياسات",
+      "task": "كفاية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-278",
+      "run": 56,
+      "phase": "B",
+      "focus": "الوزن والقياسات",
+      "task": "تعديل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-279",
+      "run": 56,
+      "phase": "B",
+      "focus": "الوزن والقياسات",
+      "task": "إخفاء اختياري",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-280",
+      "run": 56,
+      "phase": "B",
+      "focus": "الوزن والقياسات",
+      "task": "لا وعود",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-281",
+      "run": 57,
+      "phase": "B",
+      "focus": "القوة والتقدم",
+      "task": "تاريخ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-282",
+      "run": 57,
+      "phase": "B",
+      "focus": "القوة والتقدم",
+      "task": "مقارنة نفس النسخة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-283",
+      "run": 57,
+      "phase": "B",
+      "focus": "القوة والتقدم",
+      "task": "إنجازات نوعية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-284",
+      "run": 57,
+      "phase": "B",
+      "focus": "القوة والتقدم",
+      "task": "رسوم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-285",
+      "run": 57,
+      "phase": "B",
+      "focus": "القوة والتقدم",
+      "task": "مراجعة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-286",
+      "run": 58,
+      "phase": "B",
+      "focus": "التعافي",
+      "task": "نوم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-287",
+      "run": 58,
+      "phase": "B",
+      "focus": "التعافي",
+      "task": "طاقة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-288",
+      "run": 58,
+      "phase": "B",
+      "focus": "التعافي",
+      "task": "شعور",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-289",
+      "run": 58,
+      "phase": "B",
+      "focus": "التعافي",
+      "task": "راحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-290",
+      "run": 58,
+      "phase": "B",
+      "focus": "التعافي",
+      "task": "لا نسب جاهزية مختلقة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-291",
+      "run": 59,
+      "phase": "B",
+      "focus": "العادات",
+      "task": "التزام أسبوعي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-292",
+      "run": 59,
+      "phase": "B",
+      "focus": "العادات",
+      "task": "if-then",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-293",
+      "run": 59,
+      "phase": "B",
+      "focus": "العادات",
+      "task": "مؤشرات غير وزنية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-294",
+      "run": 59,
+      "phase": "B",
+      "focus": "العادات",
+      "task": "مراجعة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-295",
+      "run": 59,
+      "phase": "B",
+      "focus": "العادات",
+      "task": "خيارات التنبيه",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-296",
+      "run": 60,
+      "phase": "B",
+      "focus": "تكامل المنتج",
+      "task": "وحدات مترابطة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-297",
+      "run": 60,
+      "phase": "B",
+      "focus": "تكامل المنتج",
+      "task": "تفضيلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-298",
+      "run": 60,
+      "phase": "B",
+      "focus": "تكامل المنتج",
+      "task": "الخصوصية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-299",
+      "run": 60,
+      "phase": "B",
+      "focus": "تكامل المنتج",
+      "task": "PWA",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-300",
+      "run": 60,
+      "phase": "B",
+      "focus": "تكامل المنتج",
+      "task": "معالجة أخطاء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-301",
+      "run": 61,
+      "phase": "Q",
+      "focus": "اختبارات الوحدات",
+      "task": "المدخلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-302",
+      "run": 61,
+      "phase": "Q",
+      "focus": "اختبارات الوحدات",
+      "task": "حسابات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-303",
+      "run": 61,
+      "phase": "Q",
+      "focus": "اختبارات الوحدات",
+      "task": "الحدود",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-304",
+      "run": 61,
+      "phase": "Q",
+      "focus": "اختبارات الوحدات",
+      "task": "migration",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-305",
+      "run": 61,
+      "phase": "Q",
+      "focus": "اختبارات الوحدات",
+      "task": "regression",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-306",
+      "run": 62,
+      "phase": "Q",
+      "focus": "اختبارات التكامل",
+      "task": "السجلات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-307",
+      "run": 62,
+      "phase": "Q",
+      "focus": "اختبارات التكامل",
+      "task": "استعادة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-308",
+      "run": 62,
+      "phase": "Q",
+      "focus": "اختبارات التكامل",
+      "task": "نسخ",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-309",
+      "run": 62,
+      "phase": "Q",
+      "focus": "اختبارات التكامل",
+      "task": "التزام",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-310",
+      "run": 62,
+      "phase": "Q",
+      "focus": "اختبارات التكامل",
+      "task": "عزل البيانات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-311",
+      "run": 63,
+      "phase": "Q",
+      "focus": "E2E التدريب",
+      "task": "بدء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-312",
+      "run": 63,
+      "phase": "Q",
+      "focus": "E2E التدريب",
+      "task": "استئناف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-313",
+      "run": 63,
+      "phase": "Q",
+      "focus": "E2E التدريب",
+      "task": "بدائل",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-314",
+      "run": 63,
+      "phase": "Q",
+      "focus": "E2E التدريب",
+      "task": "توقف",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-315",
+      "run": 63,
+      "phase": "Q",
+      "focus": "E2E التدريب",
+      "task": "حفظ جزئي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-316",
+      "run": 64,
+      "phase": "Q",
+      "focus": "E2E التغذية والسلوك",
+      "task": "وجبة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-317",
+      "run": 64,
+      "phase": "Q",
+      "focus": "E2E التغذية والسلوك",
+      "task": "حصة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-318",
+      "run": 64,
+      "phase": "Q",
+      "focus": "E2E التغذية والسلوك",
+      "task": "حساسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-319",
+      "run": 64,
+      "phase": "Q",
+      "focus": "E2E التغذية والسلوك",
+      "task": "راحة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-320",
+      "run": 64,
+      "phase": "Q",
+      "focus": "E2E التغذية والسلوك",
+      "task": "عودة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-321",
+      "run": 65,
+      "phase": "Q",
+      "focus": "متصفح وأوفلاين",
+      "task": "Chromium",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-322",
+      "run": 65,
+      "phase": "Q",
+      "focus": "متصفح وأوفلاين",
+      "task": "WebKit",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-323",
+      "run": 65,
+      "phase": "Q",
+      "focus": "متصفح وأوفلاين",
+      "task": "offline",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-324",
+      "run": 65,
+      "phase": "Q",
+      "focus": "متصفح وأوفلاين",
+      "task": "cache upgrade",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-325",
+      "run": 65,
+      "phase": "Q",
+      "focus": "متصفح وأوفلاين",
+      "task": "تخزين",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-326",
+      "run": 66,
+      "phase": "Q",
+      "focus": "تدقيق UX",
+      "task": "baseline",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-327",
+      "run": 66,
+      "phase": "Q",
+      "focus": "تدقيق UX",
+      "task": "زمن",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-328",
+      "run": 66,
+      "phase": "Q",
+      "focus": "تدقيق UX",
+      "task": "لمسات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-329",
+      "run": 66,
+      "phase": "Q",
+      "focus": "تدقيق UX",
+      "task": "أخطاء",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-330",
+      "run": 66,
+      "phase": "Q",
+      "focus": "تدقيق UX",
+      "task": "فهم الرسائل دون ادعاء اختبار مشاركين",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-331",
+      "run": 67,
+      "phase": "Q",
+      "focus": "الوصول والهوية",
+      "task": "WCAG",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-332",
+      "run": 67,
+      "phase": "Q",
+      "focus": "الوصول والهوية",
+      "task": "RTL",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-333",
+      "run": 67,
+      "phase": "Q",
+      "focus": "الوصول والهوية",
+      "task": "contrast",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-334",
+      "run": 67,
+      "phase": "Q",
+      "focus": "الوصول والهوية",
+      "task": "keyboard",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-335",
+      "run": 67,
+      "phase": "Q",
+      "focus": "الوصول والهوية",
+      "task": "VoiceOver الفعلي يبقى pending إن لم يتاح",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-336",
+      "run": 68,
+      "phase": "Q",
+      "focus": "سلامة وأدلة",
+      "task": "الحركات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-337",
+      "run": 68,
+      "phase": "Q",
+      "focus": "سلامة وأدلة",
+      "task": "التغذية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-338",
+      "run": 68,
+      "phase": "Q",
+      "focus": "سلامة وأدلة",
+      "task": "الحساسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-339",
+      "run": 68,
+      "phase": "Q",
+      "focus": "سلامة وأدلة",
+      "task": "الرسائل النفسية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-340",
+      "run": 68,
+      "phase": "Q",
+      "focus": "سلامة وأدلة",
+      "task": "حدود التوصية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-341",
+      "run": 69,
+      "phase": "Q",
+      "focus": "الأمن والأداء والتراخيص",
+      "task": "XSS",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-342",
+      "run": 69,
+      "phase": "Q",
+      "focus": "الأمن والأداء والتراخيص",
+      "task": "بيانات خاصة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-343",
+      "run": 69,
+      "phase": "Q",
+      "focus": "الأمن والأداء والتراخيص",
+      "task": "التبعيات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-344",
+      "run": 69,
+      "phase": "Q",
+      "focus": "الأمن والأداء والتراخيص",
+      "task": "حجم الكاش",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-345",
+      "run": 69,
+      "phase": "Q",
+      "focus": "الأمن والأداء والتراخيص",
+      "task": "تراخيص",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-346",
+      "run": 70,
+      "phase": "Q",
+      "focus": "مرشح الإصدار",
+      "task": "مصفوفة التغطية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-347",
+      "run": 70,
+      "phase": "Q",
+      "focus": "مرشح الإصدار",
+      "task": "CI",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-348",
+      "run": 70,
+      "phase": "Q",
+      "focus": "مرشح الإصدار",
+      "task": "مخاطر",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-349",
+      "run": 70,
+      "phase": "Q",
+      "focus": "مرشح الإصدار",
+      "task": "checklist الجهاز الحقيقي",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-350",
+      "run": 70,
+      "phase": "Q",
+      "focus": "مرشح الإصدار",
+      "task": "GO/NO-GO",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-351",
+      "run": 71,
+      "phase": "X",
+      "focus": "احتياط 1",
+      "task": "أعلى blocker",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-352",
+      "run": 71,
+      "phase": "X",
+      "focus": "احتياط 1",
+      "task": "إصلاح محدود",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-353",
+      "run": 71,
+      "phase": "X",
+      "focus": "احتياط 1",
+      "task": "إعادة اختبارات",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-354",
+      "run": 71,
+      "phase": "X",
+      "focus": "احتياط 1",
+      "task": "توثيق",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-355",
+      "run": 71,
+      "phase": "X",
+      "focus": "احتياط 1",
+      "task": "checkpoint",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-356",
+      "run": 72,
+      "phase": "X",
+      "focus": "احتياط 2",
+      "task": "مراجعة نهائية",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-357",
+      "run": 72,
+      "phase": "X",
+      "focus": "احتياط 2",
+      "task": "إصلاحات حرجة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-358",
+      "run": 72,
+      "phase": "X",
+      "focus": "احتياط 2",
+      "task": "تسليم",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-359",
+      "run": 72,
+      "phase": "X",
+      "focus": "احتياط 2",
+      "task": "مهام معلقة",
+      "status": "TODO"
+    },
+    {
+      "id": "V7-360",
+      "run": 72,
+      "phase": "X",
+      "focus": "احتياط 2",
+      "task": "لا نشر",
+      "status": "TODO"
+    }
+  ]
+}
