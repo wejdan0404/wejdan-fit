@@ -1,20 +1,18 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "manual-bootstrap-01",
+  "runId": "manual-continuation-02",
   "scheduledRunsConsumed": 0,
-  "headExamined": "acdf71012dfd017ef27f6500b5f51ca19cac4a09",
+  "headExamined": "55f92d7248e424b1a50dddb5366076ffbb291fd4",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
+    "V7-001",
     "V7-003",
-    "V7-005"
+    "V7-005",
+    "V7-006"
   ],
   "partial": [
-    {
-      "id": "V7-001",
-      "reason": "Reviewed headings and key findings of all four archived rounds; full source and requirement extraction remains."
-    },
     {
       "id": "V7-002",
       "reason": "Inspected PR, index, service worker, core modules and workflow; comprehensive code audit remains."
@@ -22,20 +20,25 @@
     {
       "id": "V7-004",
       "reason": "Product and release guardrails recovered from V7 and existing docs; complete decision log remains."
+    },
+    {
+      "id": "V7-007",
+      "reason": "Capability grouping is complete for R1–R4, but exact duplicate consolidation and FIT/PSY/BEH/JOY integration remain."
     }
   ],
   "blocked": [],
   "nextIds": [
-    "V7-001",
     "V7-002",
     "V7-004",
-    "V7-006",
-    "V7-007"
+    "V7-007",
+    "V7-008",
+    "V7-009"
   ],
   "artifacts": [
     "tests/pwa-preflight.test.js",
     ".github/workflows/quality.yml",
-    "docs/MASTER_PROGRAM_V7_AR.md"
+    "docs/MASTER_PROGRAM_V7_AR.md",
+    "docs/FEATURE_MATRIX_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -46,12 +49,26 @@
       "sha": "256420249e7e06353802f9686ec2a5b79cd04710",
       "workflow": [
         {
-          "status": "queued",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "id": 45945858325
         }
       ],
       "scope": "static package plus simulated install/request boundaries, not actual device or offline browsing"
+    },
+    "checkpointBaseline": {
+      "sha": "55f92d7248e424b1a50dddb5366076ffbb291fd4",
+      "conclusion": "success",
+      "id": 45945875385
+    },
+    "matrix": {
+      "sha": "08d89db232a86b0dda7291aa4af5ba68a3cf0485",
+      "status": "verified extraction",
+      "rows": 86,
+      "families": 16,
+      "duplicateIds": 0,
+      "missingIds": 0,
+      "scope": "document check, not application or competitor verification"
     }
   },
   "tasks": [
@@ -61,8 +78,8 @@
       "phase": "R",
       "focus": "تثبيت نقطة الانطلاق",
       "task": "قراءة الأبحاث الأربع",
-      "status": "PARTIAL",
-      "note": "Reviewed headings and key findings of all four archived rounds; full source and requirement extraction remains."
+      "status": "DONE",
+      "note": "Extracted all 86 requirements and acceptance criteria from the four archived research files; source re-verification is V7-008."
     },
     {
       "id": "V7-002",
@@ -106,7 +123,8 @@
       "phase": "R",
       "focus": "مصفوفة المنافسين",
       "task": "دمج الجولات",
-      "status": "TODO"
+      "status": "DONE",
+      "note": "All 86 original IDs from R1–R4 mapped to 16 proposed families; no missing or duplicate IDs; saved FEATURE_MATRIX_V7_AR.md."
     },
     {
       "id": "V7-007",
@@ -114,7 +132,8 @@
       "phase": "R",
       "focus": "مصفوفة المنافسين",
       "task": "إزالة التكرار",
-      "status": "TODO"
+      "status": "PARTIAL",
+      "note": "Capability grouping is complete for R1–R4, but exact duplicate consolidation and FIT/PSY/BEH/JOY integration remain."
     },
     {
       "id": "V7-008",
