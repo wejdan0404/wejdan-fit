@@ -4,7 +4,7 @@ const data=new Map();
 const storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,String(v)),removeItem:k=>data.delete(k)};
 function makeEnv(){
  const els=new Map();
- const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){},toggle(){}},style:{},dataset:{},addEventListener(){},querySelector(){return{focus(){}}},click(){}});return els.get(id)};
+ const el=id=>{if(!els.has(id))els.set(id,{innerHTML:'',textContent:'',value:'',classList:{add(){},remove(){},toggle(){}},style:{},dataset:{},addEventListener(event,callback){this.listeners??={};this.listeners[event]=callback},querySelector(){return{focus(){}}},click(){}});return els.get(id)};
  const doc={getElementById:el,querySelector(){return {content:''}},querySelectorAll(){return[]},addEventListener(){},body:{style:{}},documentElement:{dataset:{}},createElement:tag=>({style:{},className:'',remove(){}})};
  const win={FIT_DATA:null,scrollY:0,matchMedia(){return{matches:true}},addEventListener(){},scrollTo(){}};
  class FR{readAsText(file){this.result=file.text;this.onload()}}
@@ -99,3 +99,25 @@ try {
   storage.setItem=realSetItem;
 }
 console.log('V7-002 CHARACTERIZATION: denied localStorage write returns false and preserves persisted bytes (mock only)');
+
+// V7-002 A10-M01/M02: characterize unpersisted UI state after a rejected write.
+// Mock-only, deliberately asserts current divergence, not a fix or desired outcome.
+const stableModeRaw=data.get(syntheticKey);
+const modeEnv=makeEnv();
+const modeBefore=modeEnv.ctx.__test.getState().foodModes[modeEnv.ctx.__test.today()];
+storage.setItem=()=>{throw new Error('synthetic denied storage')};
+try {
+  const foodNode={dataset:{foodMode:'gentle'}};
+  modeEnv.ctx.__test.handleClick({target:{classList:{contains(){return false}},closest(query){return query==='[data-food-mode]'?foodNode:null}}});
+  assert.strictEqual(modeEnv.ctx.__test.getState().foodModes[modeEnv.ctx.__test.today()],'gentle','current food-mode state remains changed after failed write');
+  assert.strictEqual(data.get(syntheticKey),stableModeRaw,'food-mode failure must preserve stored raw bytes');
+  assert.strictEqual(modeEnv.els.get('saveIndicator').textContent,'تعذّر الحفظ المحلي');
+  const themeBefore=modeEnv.ctx.__test.getState().settings.theme;
+  const switcher=modeEnv.els.get('themeSwitch');
+  assert.strictEqual(typeof switcher.listeners?.click,'function','theme click listener must be registered');
+  switcher.listeners.click();
+  assert.notStrictEqual(modeEnv.ctx.__test.getState().settings.theme,themeBefore,'current theme state remains changed after failed write');
+  assert.strictEqual(data.get(syntheticKey),stableModeRaw,'theme failure must preserve stored raw bytes');
+  assert.strictEqual(modeEnv.els.get('saveIndicator').textContent,'تعذّر الحفظ المحلي');
+} finally {storage.setItem=realSetItem;}
+console.log('V7-002 CHARACTERIZATION: food-mode/theme diverge in memory after denied write; raw persisted bytes remain unchanged (mock only)');
