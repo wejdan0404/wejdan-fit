@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-01",
+  "runId": "scheduled-02",
   "scheduledRunsConsumed": 0,
-  "headExamined": "160f0cff0490bd877e8807eff792ab528aabb86e",
+  "headExamined": "540bb42a1bac50460b7f398e690285548dd397ba",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
@@ -20,7 +20,7 @@
     },
     {
       "id": "V7-007",
-      "reason": "86 historical competitor requirements and all 49 FIT tasks mapped; generalized PSY/BEH/JOY deduplication remains."
+      "reason": "Added 16 newly authored PSY/BEH/JOY acceptance IDs with links to existing FIT and competitor families; historic 86+49 IDs preserved. Full duplicate/code coverage proof and external evidence still pending. docs/BEHAVIOR_TRACE_V7_AR.md"
     }
   ],
   "blocked": [],
@@ -37,7 +37,8 @@
     "docs/MASTER_PROGRAM_V7_AR.md",
     "docs/FEATURE_MATRIX_V7_AR.md",
     "docs/BASELINE_AUDIT_V7_AR.md",
-    "docs/STORAGE_MUTATION_AUDIT_V7_AR.md"
+    "docs/STORAGE_MUTATION_AUDIT_V7_AR.md",
+    "docs/BEHAVIOR_TRACE_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -93,6 +94,11 @@
       "verification": "static document and code inspection only",
       "newTestsRun": false,
       "deviceTests": false
+    },
+    "behaviorTrace": {
+      "sourceSha": "cab0e8eab5a521c50158bfd2d671e5fb2d93870d",
+      "criteria": 16,
+      "status": "document row and id count verified; no behavioral efficacy or app tests claimed"
     }
   },
   "tasks": [
@@ -157,7 +163,7 @@
       "focus": "مصفوفة المنافسين",
       "task": "إزالة التكرار",
       "status": "PARTIAL",
-      "note": "86 historical competitor requirements and all 49 FIT tasks mapped; generalized PSY/BEH/JOY deduplication remains."
+      "note": "Added 16 newly authored PSY/BEH/JOY acceptance IDs with links to existing FIT and competitor families; historic 86+49 IDs preserved. Full duplicate/code coverage proof and external evidence still pending. docs/BEHAVIOR_TRACE_V7_AR.md"
     },
     {
       "id": "V7-008",
@@ -2987,65 +2993,66 @@
   "nextActions": [
     {
       "id": "V7-002",
-      "action": "Design synthetic corruption and quota-denial fixtures; reproduce parseSaved fallback and no-rollback handlers; finish remaining save callsites",
+      "action": "Add synthetic non-mutating tests to reproduce corrupt JSON fallback and wrong-type present fields; audit save callsites",
       "files": [
-        "app.js",
-        "fit-next.js",
         "tests/regression.js",
-        "tests/fit-next.test.js"
+        "tests/fit-next.test.js",
+        "app.js",
+        "fit-next.js"
       ],
-      "dependencies": [
-        "V7-002"
-      ],
-      "acceptance": "Reproduced vs unverified labeled separately; no real data and no code behavior changes before build gate",
+      "dependencies": [],
+      "acceptance": "Clearly distinguish current behavior, reproduced risk and failing desired behavior; no private data",
       "priority": "P0",
-      "why": "Prevent irreversible local data loss"
+      "why": "Data loss risk before new features"
     },
     {
       "id": "V7-007",
-      "action": "Merge PSY/BEH/JOY acceptance requirements with 86 competitor + 49 FIT trace IDs, preserving independent criteria",
+      "action": "Cross-check 16 authored PSY/BEH/JOY criteria against all 86 competitor and 49 FIT IDs; remove only verified duplicate implementations",
       "files": [
+        "docs/BEHAVIOR_TRACE_V7_AR.md",
         "docs/FEATURE_MATRIX_V7_AR.md",
-        "docs/MASTER_PROGRAM_V7_AR.md"
+        "docs/BASELINE_AUDIT_V7_AR.md"
       ],
       "dependencies": [
         "V7-006"
       ],
-      "acceptance": "No missing original ID or untracked duplicate; behavioral safety constraints explicit",
+      "acceptance": "All identifiers remain traceable, independent acceptance criteria retained",
       "priority": "P1",
-      "why": "Avoid parallel implementations"
+      "why": "Prevent redundant UX systems"
     },
     {
       "id": "V7-008",
-      "action": "Verify source quality, primary citations, licensing and Saudi applicability for high-risk claims",
+      "action": "Verify original academic evidence and official documentation, including date, methodology, licensing and applicability",
       "files": [
+        "docs/BEHAVIOR_TRACE_V7_AR.md",
         "docs/FEATURE_MATRIX_V7_AR.md"
       ],
       "dependencies": [
         "V7-006"
       ],
-      "acceptance": "Verified URL, source date, evidence type, limitations",
+      "acceptance": "Source links independently checked and unsupported claims marked",
       "priority": "P1",
-      "why": "Evidence gate before design"
+      "why": "Evidence before behavioral intervention design"
     },
     {
       "id": "V7-009",
-      "action": "Map F01-F16 and FIT-001..049 to current code and tests, classify existing/partial/missing/blocked",
+      "action": "Map F01-F16 plus behavioral criteria to code and tests with verified coverage labels",
       "files": [
-        "docs/BASELINE_AUDIT_V7_AR.md",
+        "app.js",
+        "fit-next.js",
         "docs/FEATURE_MATRIX_V7_AR.md"
       ],
       "dependencies": [
         "V7-002",
         "V7-007"
       ],
-      "acceptance": "Specific code and test evidence per feature",
+      "acceptance": "Evidence path and test per capability; no inferred completion",
       "priority": "P1",
-      "why": "Reuse before building"
+      "why": "Reuse existing code"
     },
     {
       "id": "V7-010",
-      "action": "Reprioritize backlog with data loss and clinical/content gates ahead of delight features",
+      "action": "Prioritize data integrity, symptom safety and optional behavioral UX; defer camera/cloud",
       "files": [
         "docs/PROGRAM_CHECKPOINT_V7.json"
       ],
@@ -3053,9 +3060,9 @@
         "V7-008",
         "V7-009"
       ],
-      "acceptance": "Ordered backlog and blockers, no premature build",
+      "acceptance": "Risk-ranked backlog and gates",
       "priority": "P1",
-      "why": "Risk-first delivery"
+      "why": "No premature build"
     }
   ],
   "backlog": [
@@ -3065,6 +3072,16 @@
       "source": "docs/STORAGE_MUTATION_AUDIT_V7_AR.md",
       "scope": "12 baseline risks; no feature scope expansion",
       "decision": "Data loss P0 ahead of UX enhancement; code fixes deferred until V7 design/build gates"
+    }
+  ],
+  "decisionLog": [
+    {
+      "id": "DEC-V7-002",
+      "run": "scheduled-02",
+      "decision": "Use 16 new cross-cutting behavioral acceptance IDs rather than relabel historical requirements",
+      "reason": "Preserves historical provenance and avoids pretending unapproved IDs were prior requirements",
+      "before": "Behavioral requirements not separately traceable",
+      "after": "16 authored acceptance criteria mapped to existing families; no new implementation store authorized"
     }
   ]
 }
