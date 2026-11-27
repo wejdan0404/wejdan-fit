@@ -68,3 +68,18 @@ click(z,'partial-workout');
 assert.strictEqual(z.ctx.__test.getState().workouts[bkey].status,'partial');
 assert.strictEqual(z.ctx.__test.workoutFinished(),1,'old completed A remains preserved; adapted B partial does not count');
 console.log('PASS: setup, validation, nutrition, actual reps and resistance, completed session, backup rejection, persistence across reopen');
+
+
+// V7-002 characterization: synthetic corrupt JSON and save on the existing storage key.
+// This documents the current destructive path, NOT approval of the behavior.
+const syntheticKey='wejdan-fit-app-v1';
+const previousRaw=data.get(syntheticKey);
+data.set(syntheticKey,'{invalid-synthetic-json');
+const corruptEnv=makeEnv();
+assert.strictEqual(corruptEnv.ctx.__test.getState().settings.setupComplete,false,'corrupt stored JSON falls back to setup');
+assert.strictEqual(data.get(syntheticKey),'{invalid-synthetic-json','initialization itself does not rewrite the invalid raw value');
+assert.strictEqual(corruptEnv.ctx.__test.save(),true,'current save accepts the fresh baseline state');
+assert.notStrictEqual(data.get(syntheticKey),'{invalid-synthetic-json','current save overwrites invalid raw data (known P0 risk)');
+assert.strictEqual(JSON.parse(data.get(syntheticKey)).settings.setupComplete,false);
+if(previousRaw===undefined)data.delete(syntheticKey);else data.set(syntheticKey,previousRaw);
+console.log('V7-002 CHARACTERIZATION: save after corrupt JSON overwrites original raw (known P0 risk, not fixed)');
