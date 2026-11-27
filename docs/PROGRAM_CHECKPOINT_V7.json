@@ -1,11 +1,11 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "manual-rc01-today",
-  "scheduledRunsConsumed": 7,
-  "headExamined": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
+  "runId": "scheduled-08",
+  "scheduledRunsConsumed": 8,
+  "headExamined": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
   "latestImplementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-  "phase": "R",
+  "phase": "RC-01 safety patch, V7 gates unchanged",
   "completedIds": [
     "V7-001",
     "V7-003",
@@ -189,8 +189,14 @@
     },
     "rc01": {
       "sha": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-      "status": "pending CI verification",
-      "scope": "synthetic data, no real device test"
+      "status": "verified via descendant head",
+      "workflow": {
+        "sha": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
+        "id": 46002353540,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "scope": "CI for descendant head, synthetic tests only; no iPhone"
     }
   },
   "tasks": [
@@ -3215,14 +3221,21 @@
       "after": "Narrow existing-app defect fixes with acceptance tests and release checklist",
       "evidence": "docs/RC_01_TODAY_AR.md",
       "commit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319"
+    },
+    {
+      "run": "scheduled-08",
+      "decision": "Fix two remaining P0 local-write divergence paths under narrow RC lane; no change to V7 task statuses",
+      "before": "Legacy workout-field and training-set changes retained in memory on denied storage",
+      "after": "Both roll back in memory on failure, synthetic regression added; exact new SHA CI pending",
+      "reason": "M04/M05 integrity before expanded features",
+      "evidence": "app.js and tests/regression.js; CI on predecessor 46002353540"
     }
   ],
   "lastScheduledRun": {
-    "checkpointRun": "scheduled-07",
-    "ordinal": 7,
-    "automationRunId": "02d53762-d6e0-832b-8a77-ff991e1a5c04",
-    "scheduledFor": "2026-11-27T12:29:13Z",
-    "note": "Latest recorded automation run and checkpoint ordinal matched; full per-run history not independently enumerated."
+    "checkpointRun": "scheduled-08",
+    "ordinal": 8,
+    "scheduledFor": "2026-11-27T13:29:13Z",
+    "note": "Automation turn 8; no manual run counted. Actual invocation occurred after scheduled time."
   },
   "executionPolicy": {
     "version": "V7.1",
@@ -3239,56 +3252,72 @@
     "status": "PARTIAL",
     "scope": "Existing app personal-use release candidate; separate from V7 expansion",
     "implementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
-    "ci": "not yet verified",
+    "ci": "verified CI success on descendant head 4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c (run 46002353540); new M04/M05 changes pending",
     "release": "NO-GO",
     "remaining": [
-      "Exact-SHA CI and remediation",
-      "Remaining storage mutation/recovery audit M04/M05 and recovery UX",
-      "Core flow and HTTP/offline tests",
-      "Real iPhone, safety/content review, explicit release approval"
-    ]
+      "CI for M04/M05 patch SHA",
+      "Recovery flow/normal restore and export",
+      "Browser HTTP/offline and iPhone real-device verification",
+      "Safety/content review and explicit release approval"
+    ],
+    "lastVerifiedHead": "4ecf0327b8d45ed2f7d583d8b0d1bf68641eb98c",
+    "mutationAudit": "M04 legacy workout field and M05 trainingSets rollback patched with synthetic regression; other paths remain to audit"
   },
   "rcNextActions": [
     {
       "id": "RC-01-A",
       "priority": "P0",
-      "action": "Verify exact-SHA CI; fix any failed syntax/regression",
-      "files": [
-        "app.js",
-        "fit-next.js",
-        "tests/regression.js",
-        "tests/fit-next.test.js"
-      ],
-      "acceptance": "All relevant CI workflows green on tested SHA"
-    },
-    {
-      "id": "RC-01-B",
-      "priority": "P0",
-      "action": "Review recovery flow and remaining save-failure paths M04/M05",
+      "action": "Verify exact SHA CI for M04/M05 patch; fix failure before other work",
       "files": [
         "app.js",
         "tests/regression.js"
       ],
-      "acceptance": "No lost prior records or phantom session; blocked raw never overwritten"
+      "dependencies": [],
+      "acceptance": "GitHub Actions completed success on exact patch SHA",
+      "reason": "No unverified code promotion"
+    },
+    {
+      "id": "RC-01-B",
+      "priority": "P0",
+      "action": "Review restore/import rollback and raw export; ensure no loss on denied reads or writes",
+      "files": [
+        "app.js",
+        "tests/regression.js"
+      ],
+      "dependencies": [
+        "RC-01-A"
+      ],
+      "acceptance": "Synthetic tests preserve bytes, old key and recovery copy; no false restore toast",
+      "reason": "Data loss prevention"
     },
     {
       "id": "RC-01-C",
       "priority": "P1",
-      "action": "Verify existing daily plan, workout, food, progress, backup and rest choice",
+      "action": "Core flows smoke (daily plan, workout, food, rest, backup) via HTTP/offline browser if available",
       "files": [
         "app.js",
         "tests/browser_smoke.py"
       ],
-      "acceptance": "Core flow works with synthetic data; actual device tests separate"
+      "dependencies": [
+        "RC-01-A"
+      ],
+      "acceptance": "Actual browser results with environment specified, not mock labeled iPhone",
+      "reason": "RC usability"
     },
     {
       "id": "RC-01-D",
       "priority": "P0",
-      "action": "Complete release checklist and report blockers",
+      "action": "RC checklist, safety/content, iPhone and explicit approval gates",
       "files": [
         "docs/RC_01_TODAY_AR.md"
       ],
-      "acceptance": "Honest GO/NO-GO, no automatic publish"
+      "dependencies": [
+        "RC-01-A",
+        "RC-01-B",
+        "RC-01-C"
+      ],
+      "acceptance": "Honest GO/NO-GO and evidence",
+      "reason": "Release safety"
     }
   ]
 }

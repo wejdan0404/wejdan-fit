@@ -127,3 +127,14 @@ console.log('PASS: food-mode/theme rollback after denied write (mock only)');
 for(const bad of ['null','[]','{"schemaVersion":999}','{"meals":{}}','{"weights":null}']){data.set(syntheticKey,bad);const e=makeEnv();assert.strictEqual(e.ctx.__test.save(),false);assert.strictEqual(data.get(syntheticKey),bad);assert(e.els.get('app').innerHTML.includes('حماية بياناتك'));}
 if(stableModeRaw===undefined)data.delete(syntheticKey);else data.set(syntheticKey,stableModeRaw);
 console.log('PASS: unsupported or malformed stored roots cannot be overwritten');
+
+// RC-01 M04/M05: rejected writes cannot leave phantom workout defaults or settings.
+const rollbackEnv=makeEnv();const rollbackKey=rollbackEnv.ctx.__test.today()+'__A';const beforeRollback=JSON.stringify(rollbackEnv.ctx.__test.getState());
+const previousSetter=storage.setItem;storage.setItem=()=>{throw Error('synthetic write rejected')};
+try {
+ rollbackEnv.ctx.__test.handleChange({target:{dataset:{workoutField:'reps',exercise:'A01'},value:'8'}});
+ assert.strictEqual(JSON.stringify(rollbackEnv.ctx.__test.getState()),beforeRollback,'legacy workout field rolls back');
+ rollbackEnv.ctx.__test.handleChange({target:{id:'setLevel',dataset:{},value:'3'}});
+ assert.strictEqual(JSON.stringify(rollbackEnv.ctx.__test.getState()),beforeRollback,'training set setting rolls back');
+} finally {storage.setItem=previousSetter;}
+console.log('PASS: M04/M05 synthetic workout/setting denied-write rollback');
