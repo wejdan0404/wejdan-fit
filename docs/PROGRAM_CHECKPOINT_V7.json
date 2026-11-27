@@ -3300,13 +3300,26 @@
       "scope": "synthetic CI only",
       "documentCommit": "308298d4bd0af6e5bfdecee5b499f22b52532ef1"
     },
-    "ordinalNote": "Manual continuation: do not advance scheduledRunsConsumed absent trusted scheduled run ID",
+    "ordinalNote": "Manual continuation; scheduledRunsConsumed unchanged absent confirmed scheduled run ID",
     "browserAcceptance": {
       "status": "BLOCKED",
       "reason": "No real HTTP browser/iPhone execution in this turn; manual acceptance protocol recorded",
       "artifact": "docs/RC_01_TODAY_AR.md",
       "commit": "185a5f0127958dd24e8bd1f91a989cd808da524d",
       "cases": 8
+    },
+    "contentAudit": {
+      "status": "PARTIAL",
+      "scope": "static code and warning copy only",
+      "artifact": "docs/RC_01_TODAY_AR.md",
+      "commit": "56b140b41b0a9e38e3984e8af4ba0ac175b90aa3",
+      "codeBlob": "42c0803704d0305c5400b7c09486716691eb07d3",
+      "outstanding": [
+        "synthetic unknown/avoid allergen path tests",
+        "rendered UI review",
+        "clinical/content review",
+        "real device"
+      ]
     }
   },
   "rcNextActions": [
@@ -3326,15 +3339,15 @@
     {
       "id": "RC-01-C",
       "priority": "P0",
-      "action": "Audit meal/fitness safety language and document unsupported clinical claims",
+      "action": "Run synthetic allergen avoid/unknown and consent-path tests; inspect rendered warnings and alternative movement paths",
       "files": [
         "app.js",
         "fit-data.js",
         "docs/RC_01_TODAY_AR.md"
       ],
       "dependencies": [],
-      "acceptance": "Source-backed content issues and mitigations; no clinical approval claim",
-      "reason": "Release safety gate"
+      "acceptance": "Executable regression plus exact-SHA CI and reviewed warnings; no medical approval claim",
+      "reason": "Static review identified existing safeguards but did not establish end-to-end coverage"
     },
     {
       "id": "RC-01-D",
