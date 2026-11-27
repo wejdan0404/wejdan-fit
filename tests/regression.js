@@ -148,9 +148,8 @@ const recoveryKeys=[...data.keys()].filter(k=>k.includes('recover')||k.includes(
 const backupKey=recoveryKeys.find(k=>k!==syntheticKey)||recoveryKey;
 // This fixture is synthetic; use the actual app recovery key if discoverable.
 const source=fs.readFileSync(path+'app.js','utf8');
-const match=source.match(/const RECOVERY_KEY='([^']+)'/);
-assert(match,'recovery key must be declared');
-const actualRecoveryKey=match[1];
+assert(source.includes("const RECOVERY_KEY=KEY+'-pre-restore-v3'"),'recovery key derivation must remain stable');
+const actualRecoveryKey=syntheticKey+'-pre-restore-v3';
 const beforeRecoveryRaw=data.get(actualRecoveryKey);
 data.set(actualRecoveryKey,JSON.stringify(recoveryFixture));
 const restoreWrite=storage.setItem;
