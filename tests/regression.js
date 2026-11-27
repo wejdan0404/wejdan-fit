@@ -78,11 +78,11 @@ data.set(syntheticKey,'{invalid-synthetic-json');
 const corruptEnv=makeEnv();
 assert.strictEqual(corruptEnv.ctx.__test.getState().settings.setupComplete,false,'corrupt stored JSON falls back to setup');
 assert.strictEqual(data.get(syntheticKey),'{invalid-synthetic-json','initialization itself does not rewrite the invalid raw value');
-assert.strictEqual(corruptEnv.ctx.__test.save(),true,'current save accepts the fresh baseline state');
-assert.notStrictEqual(data.get(syntheticKey),'{invalid-synthetic-json','current save overwrites invalid raw data (known P0 risk)');
-assert.strictEqual(JSON.parse(data.get(syntheticKey)).settings.setupComplete,false);
+assert.strictEqual(corruptEnv.ctx.__test.save(),false,'corrupt data must block writes');
+assert.strictEqual(data.get(syntheticKey),'{invalid-synthetic-json','original raw bytes preserved');
+assert(corruptEnv.els.get('app').innerHTML.includes('حماية بياناتك'),'show recovery instead of setup');
 if(previousRaw===undefined)data.delete(syntheticKey);else data.set(syntheticKey,previousRaw);
-console.log('V7-002 CHARACTERIZATION: save after corrupt JSON overwrites original raw (known P0 risk, not fixed)');
+console.log('PASS: corrupt stored JSON blocks writes and preserves original bytes');
 
 
 // V7-002 A10 characterization: synthetic quota/permission failure, without touching real data.
@@ -107,17 +107,23 @@ const modeEnv=makeEnv();
 const modeBefore=modeEnv.ctx.__test.getState().foodModes[modeEnv.ctx.__test.today()];
 storage.setItem=()=>{throw new Error('synthetic denied storage')};
 try {
-  const foodNode={dataset:{foodMode:'gentle'}};
+  const targetMode=modeBefore==='high'?'medium':'high';
+  const foodNode={dataset:{foodMode:targetMode}};
   modeEnv.ctx.__test.handleClick({target:{classList:{contains(){return false}},closest(query){return query==='[data-food-mode]'?foodNode:null}}});
-  assert.strictEqual(modeEnv.ctx.__test.getState().foodModes[modeEnv.ctx.__test.today()],'gentle','current food-mode state remains changed after failed write');
+  assert.strictEqual(modeEnv.ctx.__test.getState().foodModes[modeEnv.ctx.__test.today()],modeBefore,'food mode rolls back on denied write');
   assert.strictEqual(data.get(syntheticKey),stableModeRaw,'food-mode failure must preserve stored raw bytes');
   assert.strictEqual(modeEnv.els.get('saveIndicator').textContent,'تعذّر الحفظ المحلي');
   const themeBefore=modeEnv.ctx.__test.getState().settings.theme;
   const switcher=modeEnv.els.get('themeSwitch');
   assert.strictEqual(typeof switcher.listeners?.click,'function','theme click listener must be registered');
   switcher.listeners.click();
-  assert.notStrictEqual(modeEnv.ctx.__test.getState().settings.theme,themeBefore,'current theme state remains changed after failed write');
+  assert.strictEqual(modeEnv.ctx.__test.getState().settings.theme,themeBefore,'theme rolls back on denied write');
   assert.strictEqual(data.get(syntheticKey),stableModeRaw,'theme failure must preserve stored raw bytes');
   assert.strictEqual(modeEnv.els.get('saveIndicator').textContent,'تعذّر الحفظ المحلي');
 } finally {storage.setItem=realSetItem;}
-console.log('V7-002 CHARACTERIZATION: food-mode/theme diverge in memory after denied write; raw persisted bytes remain unchanged (mock only)');
+console.log('PASS: food-mode/theme rollback after denied write (mock only)');
+
+// Fail closed on unsupported version and wrong-shaped saved data.
+for(const bad of ['null','[]','{"schemaVersion":999}','{"meals":{}}','{"weights":null}']){data.set(syntheticKey,bad);const e=makeEnv();assert.strictEqual(e.ctx.__test.save(),false);assert.strictEqual(data.get(syntheticKey),bad);assert(e.els.get('app').innerHTML.includes('حماية بياناتك'));}
+if(stableModeRaw===undefined)data.delete(syntheticKey);else data.set(syntheticKey,stableModeRaw);
+console.log('PASS: unsupported or malformed stored roots cannot be overwritten');

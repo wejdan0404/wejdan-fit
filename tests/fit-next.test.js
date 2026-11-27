@@ -33,13 +33,13 @@ const restored=NEXT.validateState(v);assert.equal(restored.weights[0].kg,80);ass
 console.log('PASS: phase2 schema migrations, local backups, units, allergens, portions, weekly statistics, progress, exercise safety');
 
 
-// V7-002 characterization: synthetic malformed-present collections are currently normalized.
-// This is a documented risk, NOT an assertion that this behavior is safe or desired.
-const malformedPresent={...base,meals:{unexpected:'synthetic'},weights:'synthetic-corrupt',shopping:{unexpected:true}};
-const normalized=NEXT.migrateState(malformedPresent);
-assert.deepEqual(normalized.meals,[], 'current migration silently drops malformed-present meals');
-assert.deepEqual(normalized.weights,[], 'current migration silently drops malformed-present weights');
-assert.deepEqual(normalized.shopping,[], 'current migration silently drops malformed-present shopping');
-assert.equal(NEXT.validateState(malformedPresent).meals.length,0, 'validator currently accepts silently normalized malformed meals');
-assert.equal(typeof malformedPresent.weights,'string','original fixture remains unmodified');
-console.log('V7-002 CHARACTERIZATION: malformed-present collections are silently normalized (known risk, not fixed)');
+// RC-01: reject malformed present collections; migrate genuinely absent optional fields.
+for(const bad of [{meals:{}},{weights:'synthetic-corrupt'},{shopping:{}},{workouts:[]},{settings:null},{settings:{avoidExercises:null}}]){
+ const fixture={...base,...bad};const before=JSON.stringify(fixture);
+ assert.throws(()=>NEXT.validateState(fixture),/Invalid/);
+ assert.throws(()=>NEXT.previewBackup({data:fixture}),/Invalid/);
+ assert.equal(JSON.stringify(fixture),before);
+}
+const legacy=NEXT.validateState({settings:{},weights:[],meals:[]});
+assert.deepEqual(legacy.shopping,[]);assert.deepEqual(legacy.workouts,{});
+console.log('PASS: malformed present fields rejected; absent legacy fields migrated');

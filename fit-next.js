@@ -17,11 +17,11 @@
     if(!plain(value)) throw new Error('Invalid data root');
     if(value.schemaVersion!==undefined && (!Number.isInteger(value.schemaVersion)||value.schemaVersion>SCHEMA_VERSION||value.schemaVersion<1))throw new Error('Unsupported data version');
     const result=copy(value);
-    for(const field of ['meals','weights','measurements','shopping']) if(!Array.isArray(result[field]))result[field]=[];
-    for(const field of ['habits','workouts','dayPlans','checkins','foodModes','feelings','recoveryModes','reflections','mealPlans']) if(!plain(result[field]))result[field]={};
-    if(!plain(result.settings))result.settings={};
+    for(const field of ['meals','weights','measurements','shopping']) {if(!Object.prototype.hasOwnProperty.call(result,field))result[field]=[];else if(!Array.isArray(result[field]))throw new Error('Invalid collection: '+field);}
+    for(const field of ['habits','workouts','dayPlans','checkins','foodModes','feelings','recoveryModes','reflections','mealPlans']) {if(!Object.prototype.hasOwnProperty.call(result,field))result[field]={};else if(!plain(result[field]))throw new Error('Invalid collection: '+field);}
+    if(!Object.prototype.hasOwnProperty.call(result,'settings'))result.settings={};else if(!plain(result.settings))throw new Error('Invalid settings');
     result.settings={calorieVisibility:true,medicalNotes:'',avoidExercises:[],...result.settings};
-    if(!Array.isArray(result.settings.avoidExercises))result.settings.avoidExercises=[];
+    if(!Array.isArray(result.settings.avoidExercises))throw new Error('Invalid avoidExercises');
     if(result.settings.avoidExercises.length>46)throw new Error('Too many excluded exercises');
     result.schemaVersion=SCHEMA_VERSION;
     return result;
