@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "scheduled-02",
+  "runId": "scheduled-03",
   "scheduledRunsConsumed": 0,
-  "headExamined": "540bb42a1bac50460b7f398e690285548dd397ba",
+  "headExamined": "ac159503e2752491e3aae9134694cefb0d101303",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
@@ -21,6 +21,10 @@
     {
       "id": "V7-007",
       "reason": "Added 16 newly authored PSY/BEH/JOY acceptance IDs with links to existing FIT and competitor families; historic 86+49 IDs preserved. Full duplicate/code coverage proof and external evidence still pending. docs/BEHAVIOR_TRACE_V7_AR.md"
+    },
+    {
+      "id": "V7-009",
+      "reason": "16 capability families mapped to code evidence and acceptance gaps in docs/CODE_CAPABILITY_MAP_V7_AR.md; exhaustive 86+49 criterion-by-criterion code/test verification pending."
     }
   ],
   "blocked": [],
@@ -38,7 +42,8 @@
     "docs/FEATURE_MATRIX_V7_AR.md",
     "docs/BASELINE_AUDIT_V7_AR.md",
     "docs/STORAGE_MUTATION_AUDIT_V7_AR.md",
-    "docs/BEHAVIOR_TRACE_V7_AR.md"
+    "docs/BEHAVIOR_TRACE_V7_AR.md",
+    "docs/CODE_CAPABILITY_MAP_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -99,6 +104,16 @@
       "sourceSha": "cab0e8eab5a521c50158bfd2d671e5fb2d93870d",
       "criteria": 16,
       "status": "document row and id count verified; no behavioral efficacy or app tests claimed"
+    },
+    "scheduled03": {
+      "baseHead": "ac159503e2752491e3aae9134694cefb0d101303",
+      "baseCI": {
+        "runId": 45959372746,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "verification": "16 static mapping rows checked; no app code change; no new test execution",
+      "deviceTests": false
     }
   },
   "tasks": [
@@ -179,7 +194,8 @@
       "phase": "R",
       "focus": "مصفوفة المنافسين",
       "task": "مطابقة الكود",
-      "status": "TODO"
+      "status": "PARTIAL",
+      "note": "16 capability families mapped to code evidence and acceptance gaps in docs/CODE_CAPABILITY_MAP_V7_AR.md; exhaustive 86+49 criterion-by-criterion code/test verification pending."
     },
     {
       "id": "V7-010",
@@ -2993,76 +3009,70 @@
   "nextActions": [
     {
       "id": "V7-002",
-      "action": "Add synthetic non-mutating tests to reproduce corrupt JSON fallback and wrong-type present fields; audit save callsites",
-      "files": [
-        "tests/regression.js",
-        "tests/fit-next.test.js",
-        "app.js",
-        "fit-next.js"
-      ],
-      "dependencies": [],
-      "acceptance": "Clearly distinguish current behavior, reproduced risk and failing desired behavior; no private data",
-      "priority": "P0",
-      "why": "Data loss risk before new features"
-    },
-    {
-      "id": "V7-007",
-      "action": "Cross-check 16 authored PSY/BEH/JOY criteria against all 86 competitor and 49 FIT IDs; remove only verified duplicate implementations",
-      "files": [
-        "docs/BEHAVIOR_TRACE_V7_AR.md",
-        "docs/FEATURE_MATRIX_V7_AR.md",
-        "docs/BASELINE_AUDIT_V7_AR.md"
-      ],
-      "dependencies": [
-        "V7-006"
-      ],
-      "acceptance": "All identifiers remain traceable, independent acceptance criteria retained",
-      "priority": "P1",
-      "why": "Prevent redundant UX systems"
-    },
-    {
-      "id": "V7-008",
-      "action": "Verify original academic evidence and official documentation, including date, methodology, licensing and applicability",
-      "files": [
-        "docs/BEHAVIOR_TRACE_V7_AR.md",
-        "docs/FEATURE_MATRIX_V7_AR.md"
-      ],
-      "dependencies": [
-        "V7-006"
-      ],
-      "acceptance": "Source links independently checked and unsupported claims marked",
-      "priority": "P1",
-      "why": "Evidence before behavioral intervention design"
-    },
-    {
-      "id": "V7-009",
-      "action": "Map F01-F16 plus behavioral criteria to code and tests with verified coverage labels",
+      "action": "Reproduce A01/A02/A10 in isolated synthetic fixtures, audit all save/mutation callsites without modifying production behavior",
       "files": [
         "app.js",
         "fit-next.js",
-        "docs/FEATURE_MATRIX_V7_AR.md"
+        "tests/regression.js",
+        "tests/fit-next.test.js"
       ],
       "dependencies": [
-        "V7-002",
+        "V7-003"
+      ],
+      "acceptance": "Reproducible pass/fail with no personal records; clearly distinguish static risk from tested failure",
+      "priority": "P0"
+    },
+    {
+      "id": "V7-007",
+      "action": "Complete exact duplicate/overlap audit across 86 competitor, 49 FIT and 16 behavioral acceptance criteria",
+      "files": [
+        "docs/FEATURE_MATRIX_V7_AR.md",
+        "docs/BEHAVIOR_TRACE_V7_AR.md"
+      ],
+      "dependencies": [
+        "V7-006"
+      ],
+      "acceptance": "Every historical ID retained; overlapping features share implementation but separate acceptance tests",
+      "priority": "P1"
+    },
+    {
+      "id": "V7-008",
+      "action": "Freshly verify primary scientific evidence, Saudi market competitors, open source licenses and dated claims",
+      "files": [
+        "docs/EVIDENCE_REGISTER_V7_AR.md"
+      ],
+      "dependencies": [
+        "V7-001"
+      ],
+      "acceptance": "Verifiable URLs and dates, distinguish claims from product proposals, unresolved links flagged",
+      "priority": "P1"
+    },
+    {
+      "id": "V7-009",
+      "action": "Expand 16-family static inventory to each of 151 acceptance IDs and tests, then validate against code",
+      "files": [
+        "docs/CODE_CAPABILITY_MAP_V7_AR.md",
+        "tests/"
+      ],
+      "dependencies": [
         "V7-007"
       ],
-      "acceptance": "Evidence path and test per capability; no inferred completion",
-      "priority": "P1",
-      "why": "Reuse existing code"
+      "acceptance": "No acceptance criterion called implemented without test evidence",
+      "priority": "P1"
     },
     {
       "id": "V7-010",
-      "action": "Prioritize data integrity, symptom safety and optional behavioral UX; defer camera/cloud",
+      "action": "Publish dependency-aware risk backlog for research/design gates without implementing early",
       "files": [
-        "docs/PROGRAM_CHECKPOINT_V7.json"
+        "docs/PRIORITY_BACKLOG_V7_AR.md"
       ],
       "dependencies": [
+        "V7-002",
         "V7-008",
         "V7-009"
       ],
-      "acceptance": "Risk-ranked backlog and gates",
-      "priority": "P1",
-      "why": "No premature build"
+      "acceptance": "P0 data integrity and safety precede P1 behavioral/delight; blocked scope documented",
+      "priority": "P1"
     }
   ],
   "backlog": [
@@ -3082,6 +3092,13 @@
       "reason": "Preserves historical provenance and avoids pretending unapproved IDs were prior requirements",
       "before": "Behavioral requirements not separately traceable",
       "after": "16 authored acceptance criteria mapped to existing families; no new implementation store authorized"
+    },
+    {
+      "id": "DEC-V7-03",
+      "date": "2026-11-27",
+      "before": "V7-009 TODO; capability code coverage not cataloged",
+      "after": "V7-009 PARTIAL with 16-family evidence map; criterion-level validation pending",
+      "why": "Prioritize P0 data-integrity risks before feature implementation; retain research gate"
     }
   ]
 }
