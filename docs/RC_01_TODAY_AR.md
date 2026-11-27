@@ -23,3 +23,18 @@ Verified [GitHub Actions 46008035467](https://github.com/wejdan0404/wejdan-fit/a
 - This closes the *CI evidence check* for the recovery-read/corrupt-JSON regression additions, not real-browser, offline, iPhone, data migration or clinical acceptance.
 - Next acceptance gates (synthetic data only): (1) HTTP browser import/export round-trip with identical stored records; (2) rejected/corrupt import retains original bytes and visible recovery controls; (3) offline reload after a controlled cache update; (4) nutrition provenance/unknown-allergen warnings; (5) iPhone Safari and Home Screen backup/restore with no duplicates; (6) human content/safety review and explicit owner release approval.
 - Release decision remains NO-GO. No schema/key changes, merge or deployment authorized.
+
+## RC-01-B — executable acceptance protocol, 27 Nov 2026 (manual continuation)
+Status: **BLOCKED for real-browser evidence**; no local HTTP browser or iPhone test was run in this turn. Existing `tests/regression.js` uses a Node VM/Map localStorage mock; `tests/browser_smoke.py` uses a simulated browser context. These are not equivalent to persistent real-origin storage.
+
+### Acceptance cases (use synthetic records only)
+1. **HTTP origin persistence:** Serve the checked-out branch on a localhost HTTP origin. Create synthetic meal + workout + rest choice, reload twice; compare IDs, dates, session variants, values, and theme. Pass only with unchanged records and no phantom completion.
+2. **Export/import round trip:** Export synthetic records, capture private file outside repository, clear only an isolated test browser profile, import file, reload; assert identical logical records and no duplicates. Never commit backup JSON.
+3. **Malformed-present import:** Supply a synthetic JSON with `meals` present as an object instead of an array. Import must reject before state assignment; old stored bytes and rendered records remain unchanged. Absent optional legacy fields should migrate when explicitly supported.
+4. **Corrupt persisted JSON:** In isolated test profile, inject malformed string at `wejdan-fit-app-v1`, reload. App must display blocked recovery guidance, prohibit normal writes, and permit optional private raw export without replacing original bytes.
+5. **Denied write/read:** Instrument an isolated browser profile to deny storage writes and recovery-key reads. Changes to reps/kg, training sets, food mode and theme must either persist or revert visually and in memory; failed recovery must never silently claim full undo protection.
+6. **Offline and upgrade:** After a successful online load on a real HTTP origin, disconnect network and reload; record actual page behavior, SW control state and cache version. Repeat after one controlled cache upgrade; never claim offline success from file:// or set_content.
+7. **Food safety copy:** Unknown ingredient provenance, unknown allergens and unreviewed alternatives must never display as clinically safe or verified; do not add individual calorie/training prescriptions.
+8. **iPhone gate:** Repeat Safari and Home Screen install-context export/import and persistence on a real iPhone, plus VoiceOver and content review; otherwise NO-GO.
+
+**Rollback:** no data schema or storage-key change permitted; if a candidate breaks acceptance, revert only its coherent development-branch commit after HEAD/conflict check. Do not replace live user data with a test fixture. **Evidence required:** tested SHA, browser/version, HTTP origin, exact steps, synthetic fixture IDs, assertions and results, offline mode, and redacted screenshots (no personal data). All cases remain unverified until executed.
