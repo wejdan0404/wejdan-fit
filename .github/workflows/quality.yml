@@ -36,6 +36,7 @@ jobs:
         run: node tests/masari-merge.test.js
       - name: Offline package preflight
         run: |
+          node tests/pwa-preflight.test.js
           test -s index.html
           test -s masari-catalog.js
           test -s masari-migration.js
