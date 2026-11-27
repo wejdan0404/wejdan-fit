@@ -1,44 +1,42 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "manual-continuation-02",
+  "runId": "manual-continuation-03",
   "scheduledRunsConsumed": 0,
-  "headExamined": "55f92d7248e424b1a50dddb5366076ffbb291fd4",
+  "headExamined": "57d050623712c43838e28f75d5ab875aa3ed7416",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
     "V7-001",
     "V7-003",
+    "V7-004",
     "V7-005",
     "V7-006"
   ],
   "partial": [
     {
       "id": "V7-002",
-      "reason": "Inspected PR, index, service worker, core modules and workflow; comprehensive code audit remains."
-    },
-    {
-      "id": "V7-004",
-      "reason": "Product and release guardrails recovered from V7 and existing docs; complete decision log remains."
+      "reason": "Static audit with 12 concrete findings saved; comprehensive code-path validation and reproduction tests remain."
     },
     {
       "id": "V7-007",
-      "reason": "Capability grouping is complete for R1–R4, but exact duplicate consolidation and FIT/PSY/BEH/JOY integration remain."
+      "reason": "86 historical competitor requirements and all 49 FIT tasks mapped; generalized PSY/BEH/JOY deduplication remains."
     }
   ],
   "blocked": [],
   "nextIds": [
     "V7-002",
-    "V7-004",
     "V7-007",
     "V7-008",
-    "V7-009"
+    "V7-009",
+    "V7-010"
   ],
   "artifacts": [
     "tests/pwa-preflight.test.js",
     ".github/workflows/quality.yml",
     "docs/MASTER_PROGRAM_V7_AR.md",
-    "docs/FEATURE_MATRIX_V7_AR.md"
+    "docs/FEATURE_MATRIX_V7_AR.md",
+    "docs/BASELINE_AUDIT_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -69,6 +67,19 @@
       "duplicateIds": 0,
       "missingIds": 0,
       "scope": "document check, not application or competitor verification"
+    },
+    "audit": {
+      "sha": "f160b4ee860e8e26e81869d510adfd31aef361ef",
+      "status": "verified document counts",
+      "legacy": 49,
+      "risks": 12,
+      "decisions": 10,
+      "scope": "static review; new failure reproduction pending"
+    },
+    "latestVerifiedCI": {
+      "sha": "57d050623712c43838e28f75d5ab875aa3ed7416",
+      "id": 45946018546,
+      "conclusion": "success"
     }
   },
   "tasks": [
@@ -88,7 +99,7 @@
       "focus": "تثبيت نقطة الانطلاق",
       "task": "تدقيق PR والكود",
       "status": "PARTIAL",
-      "note": "Inspected PR, index, service worker, core modules and workflow; comprehensive code audit remains."
+      "note": "Static audit with 12 concrete findings saved; comprehensive code-path validation and reproduction tests remain."
     },
     {
       "id": "V7-003",
@@ -105,8 +116,8 @@
       "phase": "R",
       "focus": "تثبيت نقطة الانطلاق",
       "task": "استخراج القرارات",
-      "status": "PARTIAL",
-      "note": "Product and release guardrails recovered from V7 and existing docs; complete decision log remains."
+      "status": "DONE",
+      "note": "10 baseline architectural, product, safety and release decisions documented with evidence in BASELINE_AUDIT_V7_AR.md."
     },
     {
       "id": "V7-005",
@@ -133,7 +144,7 @@
       "focus": "مصفوفة المنافسين",
       "task": "إزالة التكرار",
       "status": "PARTIAL",
-      "note": "Capability grouping is complete for R1–R4, but exact duplicate consolidation and FIT/PSY/BEH/JOY integration remain."
+      "note": "86 historical competitor requirements and all 49 FIT tasks mapped; generalized PSY/BEH/JOY deduplication remains."
     },
     {
       "id": "V7-008",
@@ -2958,6 +2969,43 @@
       "focus": "احتياط 2",
       "task": "لا نشر",
       "status": "TODO"
+    }
+  ],
+  "nextActions": [
+    {
+      "id": "V7-002",
+      "action": "Audit mutation/save callsites, workout state transitions, schema and storage tests; reproduce A01/A02/A03/A10 with synthetic fixtures",
+      "files": [
+        "app.js",
+        "fit-next.js",
+        "tests/regression.js",
+        "tests/fit-next.test.js"
+      ],
+      "acceptance": "Separate proven failure from static risk; retain real data untouched"
+    },
+    {
+      "id": "V7-007",
+      "action": "Consolidate generalized PSY/BEH/JOY requirements into V7 anchors with unique IDs and acceptance",
+      "files": [
+        "docs/FEATURE_MATRIX_V7_AR.md",
+        "docs/MASTER_PROGRAM_V7_AR.md"
+      ],
+      "acceptance": "Traceable non-overlapping behavior specs; no private disclosures"
+    },
+    {
+      "id": "V7-008",
+      "action": "Verify primary scientific and competitor evidence, record uncertainty and licensing",
+      "acceptance": "URLs and evidence types verified; no clinical inference"
+    },
+    {
+      "id": "V7-009",
+      "action": "Match capability families and legacy FIT tasks to code/tests",
+      "acceptance": "Implemented/partial/missing/blocked with actual evidence"
+    },
+    {
+      "id": "V7-010",
+      "action": "Prioritize verified gaps, with data-loss and safety P0 first",
+      "acceptance": "Dependency-aware backlog and review gates"
     }
   ]
 }
