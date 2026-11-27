@@ -1,9 +1,9 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "manual-continuation-03",
+  "runId": "scheduled-01",
   "scheduledRunsConsumed": 0,
-  "headExamined": "57d050623712c43838e28f75d5ab875aa3ed7416",
+  "headExamined": "160f0cff0490bd877e8807eff792ab528aabb86e",
   "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
   "phase": "R",
   "completedIds": [
@@ -16,7 +16,7 @@
   "partial": [
     {
       "id": "V7-002",
-      "reason": "Static audit with 12 concrete findings saved; comprehensive code-path validation and reproduction tests remain."
+      "reason": "Detailed mutation and storage static audit (12 findings) completed; synthetic reproduction and exhaustive callsite audit remain. docs/STORAGE_MUTATION_AUDIT_V7_AR.md"
     },
     {
       "id": "V7-007",
@@ -36,7 +36,8 @@
     ".github/workflows/quality.yml",
     "docs/MASTER_PROGRAM_V7_AR.md",
     "docs/FEATURE_MATRIX_V7_AR.md",
-    "docs/BASELINE_AUDIT_V7_AR.md"
+    "docs/BASELINE_AUDIT_V7_AR.md",
+    "docs/STORAGE_MUTATION_AUDIT_V7_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -80,6 +81,18 @@
       "sha": "57d050623712c43838e28f75d5ab875aa3ed7416",
       "id": 45946018546,
       "conclusion": "success"
+    },
+    "scheduled01": {
+      "baseHead": "160f0cff0490bd877e8807eff792ab528aabb86e",
+      "baseCI": {
+        "runId": 45948955156,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "auditRows": 12,
+      "verification": "static document and code inspection only",
+      "newTestsRun": false,
+      "deviceTests": false
     }
   },
   "tasks": [
@@ -99,7 +112,7 @@
       "focus": "تثبيت نقطة الانطلاق",
       "task": "تدقيق PR والكود",
       "status": "PARTIAL",
-      "note": "Static audit with 12 concrete findings saved; comprehensive code-path validation and reproduction tests remain."
+      "note": "Detailed mutation and storage static audit (12 findings) completed; synthetic reproduction and exhaustive callsite audit remain. docs/STORAGE_MUTATION_AUDIT_V7_AR.md"
     },
     {
       "id": "V7-003",
@@ -2974,38 +2987,84 @@
   "nextActions": [
     {
       "id": "V7-002",
-      "action": "Audit mutation/save callsites, workout state transitions, schema and storage tests; reproduce A01/A02/A03/A10 with synthetic fixtures",
+      "action": "Design synthetic corruption and quota-denial fixtures; reproduce parseSaved fallback and no-rollback handlers; finish remaining save callsites",
       "files": [
         "app.js",
         "fit-next.js",
         "tests/regression.js",
         "tests/fit-next.test.js"
       ],
-      "acceptance": "Separate proven failure from static risk; retain real data untouched"
+      "dependencies": [
+        "V7-002"
+      ],
+      "acceptance": "Reproduced vs unverified labeled separately; no real data and no code behavior changes before build gate",
+      "priority": "P0",
+      "why": "Prevent irreversible local data loss"
     },
     {
       "id": "V7-007",
-      "action": "Consolidate generalized PSY/BEH/JOY requirements into V7 anchors with unique IDs and acceptance",
+      "action": "Merge PSY/BEH/JOY acceptance requirements with 86 competitor + 49 FIT trace IDs, preserving independent criteria",
       "files": [
         "docs/FEATURE_MATRIX_V7_AR.md",
         "docs/MASTER_PROGRAM_V7_AR.md"
       ],
-      "acceptance": "Traceable non-overlapping behavior specs; no private disclosures"
+      "dependencies": [
+        "V7-006"
+      ],
+      "acceptance": "No missing original ID or untracked duplicate; behavioral safety constraints explicit",
+      "priority": "P1",
+      "why": "Avoid parallel implementations"
     },
     {
       "id": "V7-008",
-      "action": "Verify primary scientific and competitor evidence, record uncertainty and licensing",
-      "acceptance": "URLs and evidence types verified; no clinical inference"
+      "action": "Verify source quality, primary citations, licensing and Saudi applicability for high-risk claims",
+      "files": [
+        "docs/FEATURE_MATRIX_V7_AR.md"
+      ],
+      "dependencies": [
+        "V7-006"
+      ],
+      "acceptance": "Verified URL, source date, evidence type, limitations",
+      "priority": "P1",
+      "why": "Evidence gate before design"
     },
     {
       "id": "V7-009",
-      "action": "Match capability families and legacy FIT tasks to code/tests",
-      "acceptance": "Implemented/partial/missing/blocked with actual evidence"
+      "action": "Map F01-F16 and FIT-001..049 to current code and tests, classify existing/partial/missing/blocked",
+      "files": [
+        "docs/BASELINE_AUDIT_V7_AR.md",
+        "docs/FEATURE_MATRIX_V7_AR.md"
+      ],
+      "dependencies": [
+        "V7-002",
+        "V7-007"
+      ],
+      "acceptance": "Specific code and test evidence per feature",
+      "priority": "P1",
+      "why": "Reuse before building"
     },
     {
       "id": "V7-010",
-      "action": "Prioritize verified gaps, with data-loss and safety P0 first",
-      "acceptance": "Dependency-aware backlog and review gates"
+      "action": "Reprioritize backlog with data loss and clinical/content gates ahead of delight features",
+      "files": [
+        "docs/PROGRAM_CHECKPOINT_V7.json"
+      ],
+      "dependencies": [
+        "V7-008",
+        "V7-009"
+      ],
+      "acceptance": "Ordered backlog and blockers, no premature build",
+      "priority": "P1",
+      "why": "Risk-first delivery"
+    }
+  ],
+  "backlog": [
+    {
+      "id": "AUDIT-A01-A12",
+      "status": "RESEARCH_ONLY",
+      "source": "docs/STORAGE_MUTATION_AUDIT_V7_AR.md",
+      "scope": "12 baseline risks; no feature scope expansion",
+      "decision": "Data loss P0 ahead of UX enhancement; code fixes deferred until V7 design/build gates"
     }
   ]
 }
