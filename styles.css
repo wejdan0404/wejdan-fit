@@ -26,3 +26,61 @@
 
 /* Use the ORIGINAL vector W from Wejdan Brand/Logo/W in Figma. */
 .brand-symbol{position:relative;overflow:hidden}.brand-symbol .brand-logo-svg{display:block;width:35px;height:35px;object-fit:contain}.brand-symbol .brand-logo-fallback{display:none}.hero-art img{display:block;width:min(155px,22vw);height:auto;filter:drop-shadow(10px 12px 0 rgba(20,35,90,.15))}.hero-art i{z-index:1}@media(max-width:760px){.brand-symbol .brand-logo-svg{width:30px;height:30px}.hero-art img{width:80px}}
+
+/* Masari source library — subordinate to the active A/B workout plan */
+.masari-section{border:1px solid var(--line, #d6dbe8)}
+.catalog-ingredients{padding-inline-start:22px;line-height:1.9;color:var(--text)}
+.masari-consent{display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:14px;line-height:1.65}
+.masari-consent input{flex:0 0 19px;width:19px;height:19px;accent-color:var(--brand, #6172B5);margin-top:2px}
+.masari-section .recipe{min-width:0}
+@media(max-width:480px){.masari-section .actions-row{flex-direction:column;align-items:stretch}.masari-section .actions-row button{width:100%}}
+
+/* Workout V2: per-set records, scheduling, check-in and usability */
+.daily-plan{border-color:var(--border);background:var(--surface)}.daily-plan .pills{display:flex;flex-wrap:wrap;gap:8px}.set-logs{display:grid;gap:10px;margin:12px 0}.set-record{padding:13px;border:1px solid var(--border);border-radius:14px;background:var(--surface-subtle,rgba(97,114,181,.05))}.set-record>strong{display:block;margin-bottom:9px}.set-record .field{min-width:0}.safety-options{display:grid;gap:11px;margin:16px 0}.safety-options label{display:flex;align-items:center;gap:10px;font-size:14px}.safety-options input{width:20px;height:20px;accent-color:var(--brand)}.load-more{text-align:center;padding:18px}.set-record input{max-width:100%}@media(max-width:600px){.set-record .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.set-record .form-grid>.field:last-child{grid-column:1/-1}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:0.01ms!important;animation-duration:0.01ms!important}}
+
+/* WEJDAN FIT — phase 2: safe progressive enhancement */
+.shopping-rows { display:grid; gap:8px; margin-top:14px; }
+.shop-row { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px; background:var(--surface-subtle,#F2F7FE); border:1px solid var(--border,#D6E5F3); border-radius:13px; }
+.shop-row label {display:flex;align-items:center;gap:12px;flex:1;min-width:0;overflow-wrap:anywhere;cursor:pointer}
+.shop-row input {width:20px;height:20px;flex-shrink:0;accent-color:var(--brand,#6172B5)}
+.shop-row .completed {text-decoration:line-through;opacity:.65}
+.exercise-restrictions {border:1px solid var(--border,#D6E5F3);border-radius:14px;padding:14px;margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.exercise-restrictions legend {font-weight:800;padding:0 6px}
+.check-option {display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
+.check-option input {accent-color:var(--brand,#6172B5);width:18px;height:18px;flex-shrink:0}
+.pwa-update {position:fixed;z-index:10000;bottom:80px;left:50%;transform:translateX(-50%);width:min(500px,calc(100vw - 24px));background:var(--surface,#fff);color:var(--text,#0e121c);border:1px solid var(--border,#bedaf7);padding:14px;border-radius:16px;box-shadow:0 12px 38px rgba(3,9,31,.17);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pwa-update span {flex:1;min-width:140px}
+input:focus-visible,button:focus-visible,textarea:focus-visible,select:focus-visible {outline:3px solid #6172b5;outline-offset:3px}
+@media (max-width:560px){.exercise-restrictions{grid-template-columns:1fr}.shop-row{padding:10px}.pwa-update{bottom:85px}}
+@media (prefers-reduced-motion:reduce){.pwa-update,.shop-row{animation:none!important;transition:none!important}}
+
+/* Exercise quality review V1 — guidance without overriding program */
+.workout-prep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.workout-prep-grid>div{border:1px solid var(--border,#d6e5f3);background:var(--surface-subtle,#f2f7fe);border-radius:14px;padding:12px;min-width:0}
+.workout-prep-grid strong{font-weight:800;display:block}
+.workout-prep-grid p{font-size:13px;color:var(--text-secondary,#50545c);margin:7px 0 0;line-height:1.8}
+.coach-quick{font-size:12px!important;color:var(--text-secondary,#50545c);border-right:3px solid var(--brand,#6172b5);padding:3px 9px;margin:8px 0;line-height:1.75}
+.coach-spotlight{border:1px solid var(--border,#d6e5f3);border-radius:16px;background:var(--surface-subtle,#f2f7fe);padding:14px;margin-bottom:12px}
+.coach-spotlight h4{margin:10px 0 4px}
+.coach-spotlight p{margin:6px 0;line-height:1.7}
+.coach-cues{padding-inline-start:22px;margin:10px 0;line-height:1.8}
+.coach-cues li{padding-block:4px}
+.coach-mistake{border-right:3px solid #b77f33;padding:4px 11px;line-height:1.7}
+.coach-video-status{border:1px dashed var(--border,#d6e5f3);border-radius:12px;padding:12px;margin-bottom:13px;line-height:1.7}
+.coach-video-status p{margin:6px 0}
+@media(max-width:700px){.workout-prep-grid{grid-template-columns:1fr}}
+
+/* Exercise alternatives — readable cards, touch-friendly selection, independent from original demo */
+.alternatives-trigger{border:1px solid var(--brand);padding:9px 13px;border-radius:12px;color:var(--brand);font-weight:750;min-height:42px}
+.variant-grid{display:grid;gap:12px;margin:12px 0}
+.variant-card{padding:16px;border-radius:15px;border:1px solid var(--line);background:var(--card, var(--surface));display:grid;gap:9px}
+.variant-card.selected{border:2px solid var(--brand)}
+.variant-card p{margin:0;line-height:1.7}
+.variant-heading{display:flex;align-items:flex-start;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.variant-heading strong{font-size:1rem}
+.variant-meta{display:flex;flex-wrap:wrap;gap:7px;font-size:.84rem;color:var(--muted, var(--text-muted))}
+.variant-meta span{border:1px solid var(--line);border-radius:10px;padding:5px 9px}
+.variant-ack{display:flex;align-items:flex-start;gap:10px;padding:15px;border:1px solid var(--line);border-radius:12px;line-height:1.8;margin:16px 0;font-weight:600}
+.variant-ack input{width:20px;height:20px;flex:none;margin-top:4px;accent-color:var(--brand)}
+.variant-card button,.variant-card a{min-height:42px}
+@media(max-width:470px){.variant-card{padding:13px}.variant-heading{gap:7px}.variant-grid{gap:10px}}

@@ -1,0 +1,15 @@
+# V7 — Evidence register, batch 01
+Verified 2026-11-27 against indexed original journal/PubMed records. Scope: six selected behavioral references; not a systematic review of the whole product. Competitor claims, software licenses, exercise suitability, nutrition data, and remaining behavioral sources remain unverified here. Design implications are hypotheses requiring acceptance and evaluation, not medical advice or evidence of WEJDAN FIT efficacy.
+
+| Evidence ID | Source and date | Type / population | Design implication | Limit / acceptance | Requirement |
+|---|---|---|---|---|---|
+| E01 | [Teixeira et al., 2012](https://doi.org/10.1186/1479-5868-9-78) | Systematic review of 66 empirical studies, adults and exercise, through June 2011 | Support autonomy, meaningful choice and competence | Mixed study designs; no effect size asserted for an app; rest/skip/change must remain available | PSY-03, PSY-05 |
+| E02 | [Michie et al., 2011](https://pubmed.ncbi.nlm.nih.gov/21513547/) | Framework development and evaluation; COM-B | Ask about practical barriers (capability/opportunity/motivation) instead of assuming lack of willpower | Framework, not diagnostic score or intervention trial; optional barrier choices, no automatic training change | PSY-01, BEH-03 |
+| E03 | [Michie et al., 2013](https://pubmed.ncbi.nlm.nih.gov/23512568/) | International consensus taxonomy of 93 behavior change techniques | Label prompts/cues, action planning and self-monitoring in specs | Taxonomy is not proof of effectiveness; document each technique and test usability separately | BEH-01, BEH-05 |
+| E04 | [Singh et al., 2024](https://pubmed.ncbi.nlm.nih.gov/39685110/) | Systematic review/meta-analysis; 20 studies, 2,601 participants across health habits | Repeat optional cues in stable contexts; flexible time horizon | Large variability and multiple behaviors; no 21-day or 90-day guarantee, no streak loss | PSY-01, BEH-01, BEH-02 |
+| E05 | [Rhodes & Kates, 2015](https://pubmed.ncbi.nlm.nih.gov/25921307/) | Systematic review on affective responses and future physical activity | Optional experience check-in during or after approved activity | Association is not proof of causality or safety; never use enjoyment to increase exercise dose | JOY-01, JOY-02 |
+| E06 | [Self-compassion and dietary lapses, 2023](https://pubmed.ncbi.nlm.nih.gov/37619622/) | Ecological momentary assessment in 140 adults receiving group behavioral weight management treatment | Nonjudgmental return and optional reflection | Specific sample and observational associations; no promised weight or eating outcome; no restriction or compensation after missed plan | PSY-02, BEH-04, BEH-05 |
+
+No content, code, or datasets copied. Citation metadata and paraphrased design interpretations only; reuse of third-party assets requires separate license review.
+
+Next batch: local Saudi competitor primary pages and date/context; fear-avoidance and safe activity referrals; exercise enjoyment trials/music and ethical gamification; nutrition and storage official documentation. Evidence task V7-008 remains PARTIAL. 

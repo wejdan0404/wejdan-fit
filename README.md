@@ -1,57 +1,61 @@
-# WEJDAN FIT — رحلتك، بطريقتك 💜
+# WEJDAN FIT — GitHub Pages Edition
 
-تطبيق عربي للجوال والكمبيوتر، مبني بـ **HTML / CSS / JavaScript**، ويستخدم ألوان هوية وجدان مع Light / Dark Mode.
+**Application languages:** HTML, CSS, JavaScript (no backend).
 
-## رابط التطبيق
+### Deploy GitHub Pages
 
-**بعد تفعيل GitHub Pages:** https://wejdan0404.github.io/wejdan-fit/
+1. Create a new public repository named `wejdan-fit` (do not upload private backups or the source medical spreadsheet).
+2. Upload all files/folders from this package to the repository root, including `index.html` and `assets/`.
+3. Go to **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: main / (root) → Save**.
+4. After GitHub reports **Your site is live**, use the **actual link shown in Pages settings** on mobile. The expected URL format is `https://wejdan0404.github.io/wejdan-fit/`, but **do not consider that live before verifying**.
+5. iPhone: open in Safari → Share → Add to Home Screen → Open as Web App (if shown). Android: Chrome menu → Install app.
 
-> إذا لم يفتح الرابط بعد، افتحي [Settings → Pages](https://github.com/wejdan0404/wejdan-fit/settings/pages) واختاري:
-> **Build and deployment → Source: Deploy from a branch → main → /(root) → Save**.
-> لا يُعد الموقع منشورًا حتى تعرض إعدادات Pages حالة النشر الناجح.
+### Local personal data storage
 
-## المميزات
+- When you tick a completed exercise set, mark a finished session, record food, weight or sleep, it is stored with `localStorage` **on that device**. Reloading the installed PWA should preserve the entry. There is no account, no backend, and no cross-device synchronization.
+- You can export/import the JSON backup under **More / المزيد**. This JSON contains private health/food logs: **never upload it publicly to GitHub**.
+- Clearing Safari/browser website data, uninstalling app, switching browsers/devices may remove or isolate data. Back up regularly.
+- Updating the code on GitHub should not overwrite local logs, since the storage key remains stable at a consistent origin.
+- Video links require Internet. The text and interface are cached offline after the first successful load.
 
-- جدول مقاومة للمبتدئات بجلسات A/B، وشروحات وروابط YouTube.
-- تسجيل إكمال كل مجموعة ثم إكمال الجلسة بتاريخها.
-- متابعة الوجبتين والسعرات والماكروز وأيام الكارب الأعلى والمتوسط.
-- تسجيل الوزن والمشي والنوم والروتين اليومي، ورسائل تحفيزية بلا تأنيب.
-- ثيم فاتح وداكن، وتصميم متجاوب مع الجوال.
-- PWA قابلة للتثبيت على الشاشة الرئيسية، وتعمل بعض أجزائها دون اتصال بعد زيارتها أول مرة.
-- تصدير واسترجاع نسخة احتياطية JSON.
+### Privacy publication note
 
-## التثبيت على الجوال
+This public bundle excludes the original `.xlsx` source file, screenshots, medical reports, and user-generated logs. It includes public exercise templates, public YouTube links and estimated recipes. **Real starting weight, target weight, height, and age are requested privately on the phone at first run** and are not hardcoded into the public source. Actual entries on the phone never go into GitHub.
 
-**آيفون:** افتحي رابط التطبيق في Safari → المشاركة → **إضافة إلى الشاشة الرئيسية**. بعد التثبيت، افتحيه من الأيقونة نفسها لتستمر السجلات في السياق ذاته.
+### Sources
 
-**أندرويد:** افتحي الرابط في Chrome → قائمة النقاط الثلاث → **تثبيت التطبيق** أو **إضافة إلى الشاشة الرئيسية**.
+- [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- [Apple iPhone Add to Home Screen](https://support.apple.com/en-sa/guide/iphone/iph42ab2f3a7/26/ios/26)
 
-## كيف ينحفظ الإنجاز؟
+### تحديث الجودة V3
+- إضافة تسجيل العدات الفعلية والأوزان المستخدمة لكل تمرين في جدول الجلسة، مع سجل جلسات سابقة في صفحة التقدم.
+- تحسين التحقق من البيانات قبل الحفظ والاستيراد، ومنع القيم الغذائية السالبة.
+- تعديل افتراض أيام الكارب الأعلى إلى الاثنين والخميس والسبت، مع إمكانية اختيار نوع اليوم يدويًا.
+- تظل حسابات الغذاء تقديرية؛ الوصفات غير معتمدة المكونات ولا تمثل ضمان خلو من المواد المسببة للحساسية.
 
-تُسجَّل بيانات التمرين والغذاء والوزن محليًا في المتصفح باستخدام `localStorage`. عندما تعلّمين على مجموعة وتضغطين **«أنهيت جلستي»**، تبقى البيانات عند إعادة فتح التطبيق على **الجهاز نفسه وسياق التثبيت نفسه**.
+## Sprint 02 — توسيع تجربة WEJDAN FIT (فرع التطوير فقط)
 
-**مهم للخصوصية:** GitHub يستضيف كود التطبيق فقط، ولا يستقبل سجلّك الغذائي أو وزنك أو تمارينك تلقائيًا. المستودع عام، لكن سجلاتك المحلية ليست منشورة فيه. لا توجد مزامنة بين الأجهزة. حذف بيانات الموقع أو التطبيق قد يحذف السجلات، فاحفظي نسخة احتياطية من تبويب **المزيد** بشكل دوري، ولا ترفعي ملف JSON الاحتياطي إلى GitHub.
+- `fit-next.js` طبقة حسابات وتحقيق البيانات، مع schemaVersion 3.
+- تعديل الجلسات القديمة وقياسات الجسم، المتوسطات الأسبوعية، يوم هادئ، مراجعة أسبوعية، قوائم مشتريات، حصص وصفات مساري، وتعليمات محلية من الطبيبة.
+- احتفظنا بمفتاح البيانات `wejdan-fit-app-v1`. لا مزامنة سحابية ولا نشر سجلات المستخدم.
+- **حالة المهام الـ49:** [تقرير Sprint 02](docs/FULL_IMPROVEMENTS_STATUS_V3_AR.md).
+- لم يُنشر على `main`؛ يجب إجراء اختبار Safari ونسخ حقيقي قبل اعتماد الدمج.
 
-هذا التطبيق أداة متابعة، وليس بديلًا عن توجيهات طبيبتك أو اختصاصية العلاج الطبيعي.
+## تحسين شرح التمارين — Exercise Quality V1
 
-[تعليمات النشر التفصيلية](HOW_TO_PUBLISH_AR.md) · [GitHub Pages Docs](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+- بطاقة تدريب لكل تمرين من حركات البداية الـ12: الهدف، 3 مفاتيح للحركة، الخطأ الشائع، موضع الجهد، تحذير مطابقة الفيديو.
+- تهيئة قبل الجلسة وتهدئة بعدها، وتعليمات وضعية سريعة ضمن قائمة التمرين.
+- بقي جدول A/B نفسه دون تغيير تلقائي في الشدة أو التكرارات أو الحركات.
+- التفاصيل والحدود: [docs/EXERCISE_QUALITY_V1_AR.md](docs/EXERCISE_QUALITY_V1_AR.md)
 
-## تحديث الجودة — 23 نوفمبر 2026
+## Exercise Alternatives V2 — 23 November 2026 (feature-branch review)
 
-- سجل التمارين يحفظ عدد الجولات المكتملة، وعدد العدّات الفعلية، ووزن الأداة لكل تمرين (اختياري)، ويعرض تاريخ آخر 12 جلسة.
-- أُضيف تحقق من بيانات الإعداد والسعرات والماكروز لمنع القيم السالبة والخاطئة.
-- استيراد النسخة الاحتياطية يتحقق من البيانات قبل استبدال السجلات، ويتراجع عند فشل الحفظ.
-- افتراض أيام الكارب الأعلى أصبح الاثنين والخميس والسبت؛ يمكن تغييره لكل يوم يدويًا.
-- **غير مكتمل:** حساب وصفات الطعام آليًا من مقادير موثقة، مراجعة كل مسببات الحساسية، الربط بين الأجهزة، والتحقق الواقعي من التثبيت على هاتف المستخدم.
+- Added **36 educational exercise alternatives** for the **12 A/B beginner movements**, grouped as lower-load, alternative method, and higher-challenge. Their muscle/goal equivalence is explicitly labeled; not every alternative is equivalent.
+- Open **تماريني → بدائل التمرين (3)** to compare equipment, technique, cautions and a public professional reference, then explicitly acknowledge review before selecting a variant for the current workout. No automatic changes to the A/B template, repetitions, or intensity.
+- The chosen variant is stored as `workouts[date__session].exerciseChoices[exerciseId]`; previous records remain intact. Once sets/reps/load are recorded, variant switching is blocked to avoid misleading history.
+- Progress comparisons are separated by exact variant; the parent YouTube demonstration is hidden for selected alternatives until variant-specific media has been verified.
+- Partial-purpose options cannot mark the unchanged A/B plan as fully completed; the partial session can still be saved.
+- **Medical boundary:** all alternatives require individual suitability review, particularly for neck/back and neurological symptoms. These are suggestions rather than clinical clearance. The original plan is untouched in `main`.
+- New tests: `tests/exercise-alternatives.test.js` plus expanded browser/regression checks.
 
-## تحديث تجربة الاستخدام — 23 نوفمبر 2026 (V4)
-
-- **حاسبة مكونات بالجرام:** تعالج عدة مكونات باستعمال القيم لكل 100 جم، وتملأ نموذج الوجبة بنتائج الحساب التجريبية.
-- **الماكروز الناقصة:** تظهر «غير مكتمل» بدل اعتبار القيم غير المدخلة صفرًا مقاسًا.
-- **ملخص 7 أيام:** تمارين، وجبات مسجلة، دقائق مشي، ومتوسط نوم عند توفر بياناته.
-- **وصول أفضل:** رابط تخطي إلى المحتوى، إدارة تركيز النوافذ، وحالة الأزرار المختارة.
-- **هوية أصلية:** شعار W المتجهي من ملف Figma؛ مع Light / Dark tokens.
-- **اختبارات تلقائية:** [WEJDAN FIT code quality](https://github.com/wejdan0404/wejdan-fit/actions/workflows/quality.yml) و `node tests/regression.js`.
-- **تدقيق مفصل:** [UX_AUDIT_AR.md](docs/UX_AUDIT_AR.md).
-
-**تنبيه:** كود التطبيق العام لا يتضمن بيانات الصحة أو وزن المستخدم أو سجلاته، ولا يستورد تلقائيًا ملف Excel. يتم الحساب من مدخلات المستخدم، والتحقق من مسببات الحساسية مسؤولية المستخدم بناءً على ملصقات المنتجات وتوجيهات الطبيب. لا توجد مزامنة بين الأجهزة.
+[Exercise science review + full table](docs/EXERCISE_ALTERNATIVES_V2_AR.md) · [NHS strength exercises](https://www.nhs.uk/live-well/exercise/strength-exercises/) · [ACSM 2026 resistance guidelines](https://doi.org/10.1249/MSS.0000000000003897)

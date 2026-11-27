@@ -1,7 +1,7 @@
 name: WEJDAN FIT code quality
 on:
   push:
-    branches: [main]
+    branches: [main, "feature/masari-safe-merge-v1"]
   pull_request:
 permissions:
   contents: read
@@ -17,13 +17,32 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check app.js
+          node --check exercise-coach.js
+          node --check exercise-alternatives.js
           node --check fit-data.js
           node --check sw.js
+          node --check masari-catalog.js
+          node --check masari-migration.js
+          node --check fit-core.js
+          node --check fit-next.js
       - name: App regression tests
-        run: node tests/regression.js
+        run: |
+          node tests/regression.js
+          node tests/fit-core.test.js
+          node tests/fit-next.test.js
+          node tests/exercise-coach.test.js
+          node tests/exercise-alternatives.test.js
+      - name: Masari safe merge tests
+        run: node tests/masari-merge.test.js
       - name: Offline package preflight
         run: |
+          node tests/pwa-preflight.test.js
           test -s index.html
+          test -s masari-catalog.js
+          test -s masari-migration.js
+          test -s fit-core.js
+          test -s fit-next.js
+          test -s exercise-alternatives.js
           test -s manifest.webmanifest
           test -s assets/wejdan-w-reversed.svg
           test -s assets/icon-192.png
