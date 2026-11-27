@@ -17,3 +17,9 @@ Verified [GitHub Actions 46008035467](https://github.com/wejdan0404/wejdan-fit/a
 - No claim of browser/iPhone/offline testing, clinical validation, or production release.
 - P0 outstanding: validate new commit CI; import/export round-trip and recovery UI in real HTTP browser; offline storage smoke; content and safety review.
 - Decision: NO-GO for release. Keep draft PR, unchanged main and no automatic deployment.
+
+## RC-01 verification — exact-SHA CI follow-up (27 Nov 2026)
+- Confirmed GitHub Actions [46024793037](https://github.com/wejdan0404/wejdan-fit/actions/runs/46024793037) `completed/success` for exact SHA `73053194d49d254e99d6bb3064eebfb71b3540dc` (synthetic CI only). Draft PR #1 remains open, not merged.
+- This closes the *CI evidence check* for the recovery-read/corrupt-JSON regression additions, not real-browser, offline, iPhone, data migration or clinical acceptance.
+- Next acceptance gates (synthetic data only): (1) HTTP browser import/export round-trip with identical stored records; (2) rejected/corrupt import retains original bytes and visible recovery controls; (3) offline reload after a controlled cache update; (4) nutrition provenance/unknown-allergen warnings; (5) iPhone Safari and Home Screen backup/restore with no duplicates; (6) human content/safety review and explicit owner release approval.
+- Release decision remains NO-GO. No schema/key changes, merge or deployment authorized.
