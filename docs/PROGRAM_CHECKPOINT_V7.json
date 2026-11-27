@@ -1,10 +1,10 @@
 {
   "version": "V7.0",
   "date": "2026-11-27",
-  "runId": "manual-recovery-v7.1",
+  "runId": "manual-rc01-today",
   "scheduledRunsConsumed": 7,
-  "headExamined": "9ca770884203cf6f4db047451b48d73fb1f2195e",
-  "latestImplementationCommit": "256420249e7e06353802f9686ec2a5b79cd04710",
+  "headExamined": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
+  "latestImplementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
   "phase": "R",
   "completedIds": [
     "V7-001",
@@ -49,7 +49,8 @@
     "tests/fit-next.test.js",
     "docs/STORAGE_CI_VERIFICATION_V7_AR.md",
     "docs/UNIFIED_REQUIREMENTS_V7_AR.md",
-    "docs/EVIDENCE_REGISTER_V7_AR.md"
+    "docs/EVIDENCE_REGISTER_V7_AR.md",
+    "docs/RC_01_TODAY_AR.md"
   ],
   "tests": {
     "baseline": {
@@ -185,6 +186,11 @@
         }
       ],
       "scope": "Document validation and prior synthetic CI, no new runtime app or device testing."
+    },
+    "rc01": {
+      "sha": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
+      "status": "pending CI verification",
+      "scope": "synthetic data, no real device test"
     }
   },
   "tasks": [
@@ -3201,6 +3207,14 @@
       "after": "7 recorded ordinal, manual run does not increment; 151 IDs unified, six sources verified, nextActions diversified",
       "reason": "Prevent starvation without bypassing phase gates; original schedule untouched",
       "evidence": "UNIFIED_REQUIREMENTS_V7_AR.md; EVIDENCE_REGISTER_V7_AR.md"
+    },
+    {
+      "run": "manual-rc01-today",
+      "decision": "Timebox existing-app RC as owner priority; defer 360-task expansion, retain gates and task IDs",
+      "before": "Research-first V7",
+      "after": "Narrow existing-app defect fixes with acceptance tests and release checklist",
+      "evidence": "docs/RC_01_TODAY_AR.md",
+      "commit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319"
     }
   ],
   "lastScheduledRun": {
@@ -3220,5 +3234,61 @@
       "acceptance and checkpoint"
     ],
     "note": "Independent research advances while P0 waits; no phase gate bypass, same original 72 scheduled occurrences."
-  }
+  },
+  "rc01": {
+    "status": "PARTIAL",
+    "scope": "Existing app personal-use release candidate; separate from V7 expansion",
+    "implementationCommit": "64bbe2a9b1c66e6ad56577f5c51e3021d6c18319",
+    "ci": "not yet verified",
+    "release": "NO-GO",
+    "remaining": [
+      "Exact-SHA CI and remediation",
+      "Remaining storage mutation/recovery audit M04/M05 and recovery UX",
+      "Core flow and HTTP/offline tests",
+      "Real iPhone, safety/content review, explicit release approval"
+    ]
+  },
+  "rcNextActions": [
+    {
+      "id": "RC-01-A",
+      "priority": "P0",
+      "action": "Verify exact-SHA CI; fix any failed syntax/regression",
+      "files": [
+        "app.js",
+        "fit-next.js",
+        "tests/regression.js",
+        "tests/fit-next.test.js"
+      ],
+      "acceptance": "All relevant CI workflows green on tested SHA"
+    },
+    {
+      "id": "RC-01-B",
+      "priority": "P0",
+      "action": "Review recovery flow and remaining save-failure paths M04/M05",
+      "files": [
+        "app.js",
+        "tests/regression.js"
+      ],
+      "acceptance": "No lost prior records or phantom session; blocked raw never overwritten"
+    },
+    {
+      "id": "RC-01-C",
+      "priority": "P1",
+      "action": "Verify existing daily plan, workout, food, progress, backup and rest choice",
+      "files": [
+        "app.js",
+        "tests/browser_smoke.py"
+      ],
+      "acceptance": "Core flow works with synthetic data; actual device tests separate"
+    },
+    {
+      "id": "RC-01-D",
+      "priority": "P0",
+      "action": "Complete release checklist and report blockers",
+      "files": [
+        "docs/RC_01_TODAY_AR.md"
+      ],
+      "acceptance": "Honest GO/NO-GO, no automatic publish"
+    }
+  ]
 }
